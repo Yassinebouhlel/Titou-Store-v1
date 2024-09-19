@@ -1,13 +1,9 @@
-
-
-import { motion } from 'framer-motion';
-
-import React, { useEffect,useState } from 'react';
-
-import ProductCard from '@/components/PrxTry';
+import {motion} from 'framer-motion';
+import React, {useEffect, useState} from 'react';
 import CardAd from '@/components/AdsCard';
 import ColorPicker from '@/components/ColorSelector';
 import ColorPicker2 from '@/components/ExpandedColorSelector';
+import ProductCard from '@/components/PrxTry';
 
 interface Product {
   id: string;
@@ -26,102 +22,101 @@ interface FilterOption {
 
 interface FilterSection {
   title: string;
-  options: FilterOption[];
+  options: Array<FilterOption>;
 }
 
-
-
-const FilterSection: React.FC<{ section: FilterSection, availbleColors:any[]}> = ({ section,availbleColors }) => {
+const FilterSection: React.FC<{
+  section: FilterSection;
+  availbleColors: Array<any>;
+}> = ({availbleColors, section}) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <motion.div 
+    <motion.div
+      animate={{opacity: 1, y: 0}}
       className="mb-4"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={{opacity: 0, y: -20}}
+      transition={{duration: 0.3}}
     >
       <button
-        className="flex justify-between items-center w-full text-left font-semibold mb-2"
+        className="mb-2 flex w-full items-center justify-between text-left font-semibold"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {section.title}
-        <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
+        <motion.div animate={{rotate: isExpanded ? 180 : 0}}>
           {/* <ChevronDown size={16} /> */}
         </motion.div>
       </button>
       <motion.ul
-        animate={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        animate={{height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0}}
         className="overflow-hidden"
+        transition={{duration: 0.3}}
       >
-        <ColorPicker2   productColors={ availbleColors}/>
+        <ColorPicker2 productColors={availbleColors} />
       </motion.ul>
-
     </motion.div>
   );
 };
 
 const SkeletonCard: React.FC = () => (
   <motion.div
-  className="max-w-xs p-4 bg-white rounded-lg shadow-md"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.5 }}
->
-  {/* Image Skeleton */}
-  <div className="w-full h-64 bg-gray-200 animate-pulse rounded-lg"></div>
-  <div className="mt-4 flex space-x-2">
-    <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-    <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-    <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-    <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
-  </div>
-  {/* Product Name Skeleton */}
-  <div className="mt-4 space-y-2">
-    <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse"></div>
-    <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse"></div>
-  </div>
+    animate={{opacity: 1}}
+    className="max-w-xs rounded-lg bg-white p-4 shadow-md"
+    initial={{opacity: 0}}
+    transition={{duration: 0.5}}
+  >
+    {/* Image Skeleton */}
+    <div className="h-64 w-full animate-pulse rounded-lg bg-gray-200" />
+    <div className="mt-4 flex space-x-2">
+      <div className="h-4 w-4 animate-pulse rounded-full bg-gray-200" />
+      <div className="h-4 w-4 animate-pulse rounded-full bg-gray-200" />
+      <div className="h-4 w-4 animate-pulse rounded-full bg-gray-200" />
+      <div className="h-4 w-4 animate-pulse rounded-full bg-gray-200" />
+    </div>
+    {/* Product Name Skeleton */}
+    <div className="mt-4 space-y-2">
+      <div className="h-4 w-3/4 animate-pulse rounded bg-gray-200" />
+      <div className="h-3 w-1/2 animate-pulse rounded bg-gray-200" />
+    </div>
 
-  {/* Price Skeleton */}
-  <div className="mt-4">
-    <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse"></div>
-  </div>
+    {/* Price Skeleton */}
+    <div className="mt-4">
+      <div className="h-4 w-1/4 animate-pulse rounded bg-gray-200" />
+    </div>
 
-  {/* Color Picker Skeleton */}
-  
-</motion.div>
+    {/* Color Picker Skeleton */}
+  </motion.div>
 );
-function hexToRgb(hex:string) {
+function hexToRgb(hex: string) {
   const bigint = parseInt(hex.slice(1), 16);
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
   const b = bigint & 255;
-  return { r, g, b };
+  return {r, g, b};
 }
-function getUniqueColorCodes(categories:any[]) {
+function getUniqueColorCodes(categories: Array<any>) {
   const colorCodes = new Set();
 
-  categories.forEach(category => {
-    category.colors.forEach((colorObj:any) => {
-      colorCodes.add({code:colorObj.code});
+  categories.forEach((category) => {
+    category.colors.forEach((colorObj: any) => {
+      colorCodes.add({code: colorObj.code});
     });
   });
 
   return Array.from(colorCodes);
 }
-function getOrderedColorsByRgb(categories:any[]) {
+function getOrderedColorsByRgb(categories: Array<any>) {
   const colorCodes = new Set();
 
   // Extract unique color codes
-  categories.forEach(category => {
-    category.colors.forEach((colorObj:any) => {
-      colorCodes.add({code:colorObj.code});
+  categories.forEach((category) => {
+    category.colors.forEach((colorObj: any) => {
+      colorCodes.add({code: colorObj.code});
     });
   });
 
   // Convert hex colors to RGB and sort by red, green, blue values
-  return Array.from(colorCodes).sort((a:any, b:any) => {
+  return Array.from(colorCodes).sort((a: any, b: any) => {
     const rgbA = hexToRgb(a.code);
     const rgbB = hexToRgb(b.code);
 
@@ -130,82 +125,90 @@ function getOrderedColorsByRgb(categories:any[]) {
   });
 }
 
-const ProductListing: React.FC<{ products: any[], filters: FilterSection[] }> = ({ products, filters }) => {
+const ProductListing: React.FC<{
+  products: Array<any>;
+  filters: Array<FilterSection>;
+}> = ({filters, products}) => {
   const [isLoading, setIsLoading] = useState(true);
-const availbleColors = getOrderedColorsByRgb(products)
+  const availbleColors = getOrderedColorsByRgb(products);
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
+      animate={{opacity: 1}}
       className="container mx-auto px-4 py-8 "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{opacity: 0}}
+      transition={{duration: 0.5}}
     >
-      <motion.h1 
-        className="text-2xl font-bold mb-4"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-       
-      </motion.h1>
+      <motion.h1
+        animate={{y: 0, opacity: 1}}
+        className="mb-4 font-bold text-2xl"
+        initial={{y: -20, opacity: 0}}
+        transition={{delay: 0.2, duration: 0.5}}
+      />
       <div className="flex flex-col lg:flex-row ">
-        <motion.aside 
-          className="w-full lg:w-1/4 mb-8 lg:mb-0 lg:mr-8"
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+        <motion.aside
+          animate={{x: 0, opacity: 1}}
+          className="mb-8 w-full lg:mb-0 lg:mr-8 lg:w-1/4"
+          initial={{x: -50, opacity: 0}}
+          transition={{delay: 0.3, duration: 0.5}}
         >
-          <div className=" p-4 rounded-lg ">
-            <h2 className="font-semibold mb-4">Filtres</h2>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {['Shine', 'Shine +', 'Multi-Color', ].map((duration, index) => (
+          <div className=" rounded-lg p-4 ">
+            <h2 className="mb-4 font-semibold">Filtres</h2>
+            <div className="mb-4 flex flex-wrap gap-2">
+              {['Shine', 'Shine +', 'Multi-Color'].map((duration, index) => (
                 <motion.button
                   key={duration}
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    duration === 'Shine' ? 'bg-black text-white font-semibold' : 'bg-white text-black font-semibold'
+                  animate={{opacity: 1, y: 0}}
+                  className={`rounded-full px-3 py-1 text-sm ${
+                    duration === 'Shine'
+                      ? 'bg-black font-semibold text-white'
+                      : 'bg-white font-semibold text-black'
                   }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index, duration: 0.3 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  initial={{opacity: 0, y: 20}}
+                  transition={{delay: 0.1 * index, duration: 0.3}}
+                  whileHover={{scale: 1.05}}
+                  whileTap={{scale: 0.95}}
                 >
                   {duration}
                 </motion.button>
               ))}
             </div>
             {filters.map((section, index) => (
-              <FilterSection key={index} section={section} availbleColors={availbleColors} />
+              <FilterSection
+                key={index}
+                availbleColors={availbleColors}
+                section={section}
+              />
             ))}
           </div>
         </motion.aside>
-        
+
         <main className="w-full lg:w-3/4">
-          
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+          <motion.div
+            animate={{opacity: 1}}
+            className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            initial={{opacity: 0}}
+            transition={{delay: 0.5, duration: 0.5}}
           >
             {isLoading
-              ? Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)
-              : products.map((product,i) => <ProductCard key={i} product={product} />)
-            }
-             
+              ? Array.from({length: 6}).map((_, index) => (
+                  <SkeletonCard key={index} />
+                ))
+              : products.map((product, i) => (
+                  <ProductCard key={i} product={product} />
+                ))}
           </motion.div>
           <CardAd
-      backgroundUrl="https://titou.ma/wp-content/uploads/2024/01/ee.png?id=9668"
-      title="Nouvelle Collection Luxe"
-      description="Explorez des pièces exclusives pour un style raffiné."
-      ctaText="Découvrir maintenant"
-      ctaLink="#"
-    />
+            backgroundUrl="https://titou.ma/wp-content/uploads/2024/01/ee.png?id=9668"
+            ctaLink="#"
+            ctaText="Découvrir maintenant"
+            description="Explorez des pièces exclusives pour un style raffiné."
+            title="Nouvelle Collection Luxe"
+          />
         </main>
       </div>
     </motion.div>

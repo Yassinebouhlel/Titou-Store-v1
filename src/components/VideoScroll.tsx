@@ -1,25 +1,23 @@
-"use client"
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-
-import { OverlayCopy } from '@/components/PxContent';
+'use client';
+import {motion, useScroll, useTransform} from 'framer-motion';
+import {useEffect, useRef} from 'react';
+import {OverlayCopy} from '@/components/PxContent';
 
 const VideoScroll: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const { scrollYProgress } = useScroll({
+  const {scrollYProgress} = useScroll({
     target: sectionRef,
-    offset: ["end end", "end start"],
+    offset: ['end end', 'end start']
   });
 
-  const scale :any= useTransform(scrollYProgress, [0, 1], [1, 0.85]);
- 
-  const opacity:any = useTransform(scrollYProgress, [0, 1], [1,0]) ;
+  const scale: any = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+
+  const opacity: any = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const bgOpacity = useTransform(scrollYProgress, [0, 1], [70, 100]);
- 
+
   useEffect(() => {
-    
     const video = videoRef.current;
     const section = sectionRef.current;
 
@@ -31,7 +29,10 @@ const VideoScroll: React.FC = () => {
 
     const handleScroll = () => {
       const distanceScrolled = window.scrollY - section.offsetTop;
-      const percentage = Math.min(Math.max(distanceScrolled / totalScrollableDistance, 0), 1);
+      const percentage = Math.min(
+        Math.max(distanceScrolled / totalScrollableDistance, 0),
+        1
+      );
 
       if (video.duration > 0) {
         video.currentTime = video.duration * percentage;
@@ -44,38 +45,31 @@ const VideoScroll: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
- 
 
   return (
     <motion.section
       ref={sectionRef}
-      className="h-[300vh] relative mt-24 m-4 rounded-3xl zoom"
-      style={{ scale }}
+      className="zoom relative m-4 mt-24 h-[300vh] rounded-3xl"
+      style={{scale}}
     >
-      <motion.div
-        className="sticky top-0"
-        style={{ opacity }}
-      >
+      <motion.div className="sticky top-0" style={{opacity}}>
         <video
           ref={videoRef}
-          src="/videos/BagTrim.mp4"
-          muted
+          className="h-full w-full rounded-3xl object-cover"
           loop
+          muted
           playsInline
-          className="w-full h-full object-cover rounded-3xl"
+          src="/videos/BagTrim.mp4"
         />
       </motion.div>
       <motion.div
         className="absolute inset-0 rounded-3xl"
         style={{
           opacity,
-          backgroundColor: `rgba(0, 0, 0, 0.6)`,
-          
+          backgroundColor: `rgba(0, 0, 0, 0.6)`
         }}
-     
       />
-      <OverlayCopy subheading='hello'
-heading='hello' />
+      <OverlayCopy heading="hello" subheading="hello" />
       {/* <div className="absolute top-0 left-0 w-full text-secondary">
         <div className="h-screen flex items-center justify-center text-center">
           <h1 className='text-[8rem] font-bold text-white'>Titou Luggage</h1>

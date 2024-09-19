@@ -51,6 +51,7 @@
   body {
       font-family: 'PointSoft', sans-serif;
       /* Additional global styles */
+      
   }
 
   /* #region  /**=========== Typography =========== */
@@ -133,4 +134,9 @@ background-size: cover;
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
+}
+
+html body[data-scroll-locked]{
+  overflow: visible !important;
+  margin-right: 0 !important;
 }

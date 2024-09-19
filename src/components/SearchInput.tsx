@@ -1,18 +1,17 @@
+import {IoSearchSharp} from 'react-icons/io5';
 
-import { IoSearchSharp } from "react-icons/io5";
-
-const SearchInput = ({ placeholder, className = '', ...props }: any) => {
+function SearchInput({className = '', placeholder, ...props}: any) {
   return (
     <div className="relative w-8/12  ">
       <input
-        type="text"
+        className={`rounded-full py-2 pl-16 pr-8 focus:outline-none ${className}`}
         placeholder={placeholder}
-        className={`pl-16 pr-8 py-2 rounded-full focus:outline-none ${className}`}
+        type="text"
         {...props}
       />
-      <IoSearchSharp className='w-16 absolute top-0 px-5 rounded-full h-full  hover:bg-[#b2ac9c7d] hover:top-0 ' />
+      <IoSearchSharp className="absolute top-0 h-full w-16 rounded-full px-5  hover:top-0 hover:bg-[#b2ac9c7d] " />
     </div>
   );
-};
+}
 
 export default SearchInput;

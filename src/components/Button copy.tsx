@@ -1,14 +1,14 @@
 // components/Button.js
-const Button = ({ children, onClick, className = '', ...props } :any) => {
+function Button({children, className = '', onClick, ...props}: any) {
   return (
     <button
+      className={`rounded-full bg-white px-4 py-2 font-semibold hover:bg-[#b2ac9c7d] ${className}`}
       onClick={onClick}
-      className={`py-2 px-4 rounded-full hover:bg-[#b2ac9c7d] bg-white font-semibold ${className}`}
       {...props}
     >
       {children}
     </button>
   );
-};
+}
 
 export default Button;

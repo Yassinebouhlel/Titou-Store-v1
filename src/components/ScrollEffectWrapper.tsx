@@ -1,6 +1,6 @@
-"use client"
-import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+'use client';
+import {motion, useScroll, useTransform} from 'framer-motion';
+import React, {useRef} from 'react';
 
 interface ScrollEffectWrapperProps {
   children: React.ReactNode;
@@ -12,15 +12,15 @@ interface ScrollEffectWrapperProps {
 
 const ScrollEffectWrapper: React.FC<ScrollEffectWrapperProps> = ({
   children,
-  scaleRange = [1, 0.85],
   opacityRange = [1, 0],
+  scaleRange = [1, 0.85],
   transformRange = [0, 1],
-  yRange = [50, -50],
+  yRange = [50, -50]
 }) => {
   const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
+  const {scrollYProgress} = useScroll({
     target: targetRef,
-    offset: ["end end", "end start"],
+    offset: ['end end', 'end start']
   });
 
   const scale = useTransform(scrollYProgress, transformRange, scaleRange);
@@ -30,12 +30,12 @@ const ScrollEffectWrapper: React.FC<ScrollEffectWrapperProps> = ({
   return (
     <motion.div
       ref={targetRef}
+      className="sticky z-0 overflow-hidden rounded-3xl"
       style={{
         scale,
         opacity,
-        y,
+        y
       }}
-      className="sticky z-0 overflow-hidden rounded-3xl"
     >
       {children}
     </motion.div>

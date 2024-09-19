@@ -2,8 +2,30 @@ import {NextResponse} from 'next/server';
 import type {NextRequest} from 'next/server';
 
 const STORE_COOKIE = 'selectedStore';
-const VALID_STORES = ['ca', 'sa', 'tn', 'us', 'fr', 'ma'];
-const PROTECTED_PATHS = ['api', '_next', 'favicon.ico','public','images','fonts','videos','svg'];
+const VALID_STORES = [
+  'ca',
+  'sa',
+  'tn',
+  'us',
+  'fr',
+  'ma',
+  'CA',
+  'SA',
+  'TN',
+  'US',
+  'FR',
+  'MA'
+];
+const PROTECTED_PATHS = [
+  'api',
+  '_next',
+  'favicon.ico',
+  'public',
+  'images',
+  'fonts',
+  'videos',
+  'svg'
+];
 
 export function middleware(request: NextRequest) {
   const {pathname} = request.nextUrl;

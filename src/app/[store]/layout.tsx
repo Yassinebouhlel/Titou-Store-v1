@@ -16,9 +16,8 @@ export default async function StoreLayout({children, params}: Props) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <div>
-     <Navbar/>
+        <Navbar />
         <main>{children}</main>
-       
       </div>
     </NextIntlClientProvider>
   );

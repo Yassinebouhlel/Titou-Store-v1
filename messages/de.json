@@ -28,5 +28,16 @@
   },
   "StoreLanding":{
     "welcome":"trabakhou "
+  },
+  "NavBar":{
+    "whyTitou": "Why Titou",
+    "login": "Login",
+    "products": "Products",
+    "findProduct": "Find a product...",
+    "news": "News",
+    "howItWork": "How it works",
+    "home":"Home",
+    "aboutUs":"About us",
+    "contact":"Contact"
   }
 }

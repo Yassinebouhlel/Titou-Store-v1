@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import {motion, useAnimation} from 'framer-motion';
+import React, {useEffect} from 'react';
+import {useInView} from 'react-intersection-observer';
 
 interface GalaxyAdProps {
   backgroundUrl: string;
@@ -12,15 +12,15 @@ interface GalaxyAdProps {
 
 const CardAd: React.FC<GalaxyAdProps> = ({
   backgroundUrl,
-  title,
-  description,
-  ctaText,
   ctaLink,
+  ctaText,
+  description,
+  title
 }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.2
   });
 
   useEffect(() => {
@@ -30,39 +30,37 @@ const CardAd: React.FC<GalaxyAdProps> = ({
   }, [controls, inView]);
 
   const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: {opacity: 0, y: 20},
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+        ease: 'easeOut'
+      }
+    }
   };
 
   return (
-    
-    <div 
-      className="mt-8 mb-8  relative w-full h-[300px] overflow-hidden shadow-lg bg-cover bg-center flex rounded-[36px]  "
-      style={{ backgroundImage: `url(${backgroundUrl})` }}
+    <div
+      className="relative my-8  flex h-[300px] w-full overflow-hidden rounded-[36px] bg-cover bg-center shadow-lg"
+      style={{backgroundImage: `url(${backgroundUrl})`}}
     >
-      
-      <div className="relative w-1/2 h-full flex flex-col justify-center items-start p-8">
+      <div className="relative flex h-full w-1/2 flex-col items-start justify-center p-8">
         <motion.h2
           ref={ref}
-          initial="hidden"
           animate={controls}
+          className="mb-4 font-bold text-4xl text-black"
+          initial="hidden"
           variants={textVariants}
-          className="text-4xl font-bold text-black mb-4"
         >
           {title}
         </motion.h2>
         <motion.p
-          initial="hidden"
           animate={controls}
+          className="mb-6 text-xl text-black"
+          initial="hidden"
           variants={textVariants}
-          className="text-xl text-black mb-6"
         >
           {description}
         </motion.p>
@@ -77,8 +75,6 @@ const CardAd: React.FC<GalaxyAdProps> = ({
         </motion.a> */}
       </div>
     </div>
-  
-
   );
 };
 

@@ -1,18 +1,17 @@
 /* eslint-disable react/no-children-prop */
 
-
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
-import "@/styles/globals.css";
-import { ReactNode } from "react";
-import Head from "next/head";
-import Footer from "@/components/Footer";
+import {NextIntlClientProvider} from 'next-intl';
+import {getLocale, getMessages} from 'next-intl/server';
+import '@/styles/globals.css';
+import {ReactNode} from 'react';
+import Head from 'next/head';
+import Footer from '@/components/Footer';
 
 type Props = {
   children: ReactNode;
 };
 
-export default async function LocaleLayout({ children }: Props) {
+export default async function LocaleLayout({children}: Props) {
   const locale = await getLocale();
 
   // Providing all messages to the client
@@ -24,10 +23,10 @@ export default async function LocaleLayout({ children }: Props) {
       <Head>
         <title>Titou luggage Store</title>
       </Head>
-      <body className='bg-primary'>
+      <body className="bg-primary ">
         <NextIntlClientProvider messages={messages}>
           {children}
-          <Footer/>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

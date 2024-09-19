@@ -9,8 +9,8 @@
   },
   "LocaleSwitcher": {
     "de": "Deutsch",
-    "en": "English",
-    "fr":"French",
+    "en": "Englais",
+    "fr":"Francais",
     "label": "Language"
   },
   "LoginPage": {
@@ -31,14 +31,14 @@
     "welcome":"hello "
   },
   "NavBar":{
-    "whyTitou": "Why Titou",
-    "login": "Login",
-    "products": "Products",
-    "findProduct": "Find a product...",
-    "news": "News",
-    "howItWork": "How it works",
-    "home":"Home",
-    "aboutUs":"About us",
-    "contact":"Contact"
+    "whyTitou":"Pourquoi Titou",
+    "login":"Se connecter",
+    "products":"Produits",
+    "findProduct":"Cherche un produit...",
+    "news":"Nouveautés",
+    "howItWork":"Comment ça marche",
+    "home":"Accueil",
+    "aboutUs":"À propos de nous"  ,
+     "contact":"Contact"
   }
 }
