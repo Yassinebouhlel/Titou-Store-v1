@@ -1,0 +1,44 @@
+import { Metadata } from "next";
+
+export const siteConfig = {
+  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  description:
+    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
+  url: 'https://tsnext-tw.thcl.dev',
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  robots: { index: true, follow: true },
+  // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
+  // ! copy to /favicon folder
+  icons: {
+    icon: '/favicon/favicon.ico',
+    shortcut: '/favicon/favicon-16x16.png',
+    apple: '/favicon/apple-touch-icon.png',
+  },
+  manifest: `/favicon/site.webmanifest`,
+  openGraph: {
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.title,
+    images: [`${siteConfig.url}/images/og.jpg`],
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/images/og.jpg`],
+    // creator: '@th_clarence',
+  },
+
+};
