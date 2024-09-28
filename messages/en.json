@@ -40,5 +40,49 @@
     "home":"Home",
     "aboutUs":"About us",
     "contact":"Contact"
+  },
+  "benefits":{
+    "FreeDelivery":"Free Delivery",
+    "FreeDeliveryDescription":"Free shipping on orders over $99.",
+    "SecurePayment":"100% Secure Payment.",
+    "SecurePaymentDescription":"Buy with confidence.",
+    "FullSupport":"Customer Service",
+    "FullSupportDescription":"Questions? We’d love to hear from you!",
+    "ReturnPolicy":"Return Policy",
+    "ReturnPolicyDescription":"100% satisfaction guaranteed."
+  },
+  "why":{
+    "WhyPP":"Why a polypropylene suitcase?",
+    "Lightweight":"Lightweight",
+    "LightweightDescription":"Hardshell made of lightweight and resistant Polypropylene",
+    "MultipleSizes":"Multiple Sizes",
+    "MultipleSizesDescription":"The set includes suitcases of different sizes, suitable for a variety of occasions",
+    "Secure":"Secure",
+    "SecureDescription":"Built-in TSA lock for extra safety",
+    "Stretchable":"Stretchable",
+    "StretchableDescription":"Signature lined interior with dividing panel, practical pockets and tightening",
+    "RemovalbleWheels":"Robust removable wheels",
+    "RemovalbleWheelsDescription":"360-degree detachable wheels ensure smooth maneuverability on various surfaces",
+    "Quality":"High quality 100%",
+    "QualityDescription":"Made from high-quality materials, Titou suitcases are resistant to bumps, scratches and daily wear and tear."
+  },
+  "newsletter":{
+    "subscribe":"Sign up and recieve exclusive offers, special deals and upcoming collections."
+  },
+  "footer":{
+    "description":"Titou is a brand that has been producing polypropylene suitcases since 2018. Our brand combines resistance, practicality and design and offers a set of three suitcases in different colors."
+  },
+  "LearnMore":{
+    "more":"Learn More",
+    "LuggageTesting":"Luggage Quality Testing",
+    "Airlines":"Airlines Carry-On Guide",
+    "tsa":"TSA Lock Instructions",
+    "tips":"Luggage Tips"
+  },
+  "aboutTitou":{
+    "company":"Our Company",
+    "companystart":"We take pride in offering you a wide selection of premium quality suitcases to meet all your travel needs. Whether you're looking for a hard-shell suitcase for family vacations or a sleek option for business trips, we've got you covered. All our suitcases are crafted with durable materials and designed to last. They come equipped with the latest innovations available at affordable prices, providing the ruggedness you can rely on in case of theft or loss of luggage. That's why we provide expert advice and reviews to help you find the suitcase that best suits your needs. So, what are you waiting for to embark on your next adventure with a high-quality suitcase that will last as long as you need it? Find the perfect suitcase for your next journey!",
+    "aboutmission":"Our Mission",
+    "missiondescription":"Delivering an exceptional travel experience by providing top-quality suitcase compartments at low prices while preserving efficiency and style."
   }
 }

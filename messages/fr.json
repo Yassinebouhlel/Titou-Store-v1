@@ -9,7 +9,7 @@
   },
   "LocaleSwitcher": {
     "de": "Deutsch",
-    "en": "Englais",
+    "en": "Anglais",
     "fr":"Francais",
     "label": "Language"
   },
@@ -40,5 +40,49 @@
     "home":"Accueil",
     "aboutUs":"À propos de nous"  ,
      "contact":"Contact"
+  },
+  "benefits":{
+    "FreeDelivery":"Livraison gratuite",
+    "FreeDeliveryDescription":"Livraison gratuite pour les commandes de plus de 99 $.",
+    "SecurePayment":"Paiement 100% sécurisé",
+    "SecurePaymentDescription":"Achetez en toute confiance.",
+    "FullSupport":"Service clientèle",
+    "FullSupportDescription":"Des questions ? Nous serions ravis de vous entendre !",
+    "ReturnPolicy":"Politique de retour",
+    "ReturnPolicyDescription":"100% de satisfaction garantie."
+  },
+  "why":{
+    "WhyPP":"Pourquoi une valise en polypropylène ?",
+    "Lightweight":"Poids léger",
+    "LightweightDescription":"Valise rigide en polypropylène léger et résistant",
+    "MultipleSizes":"Plusieurs tailles",
+    "MultipleSizesDescription":"L’ensemble comprend des valises de tailles différentes, adaptées à une variété d’occasions",
+    "Secure":"Sécurité",
+    "SecureDescription":"Serrure TSA intégrée pour plus de sécurité",
+    "Stretchable":"Extensible",
+    "StretchableDescription":"Intérieur doublé signature avec panneau de séparation, poches pratiques et serrage",
+    "RemovalbleWheels":"Roues démontables Robustes",
+    "RemovalbleWheelsDescription":"Les roues démontables à 360 degrés garantissent une maniabilité fluide sur divers terrains",
+    "Quality":"Haute qualité 100%",
+    "QualityDescription":"Fabriquées à partir de matériaux de haute qualité, ces valises résistent aux chocs, aux rayures et à l’usure quotidienne"
+  },
+  "newsletter":{
+    "subscribe":"Inscrivez-vous pour être le premier informé des offres exclusives, offres spéciales et collections à venir."
+  },
+  "footer":{
+    "description":"Titou est une marque 100 % tunisienne qui produit des valises en polypropylène depuis 2018. La marque allie résistance, praticité et design et propose un ensemble de trois valises de couleurs différentes."
+  },
+  "LearnMore":{
+    "more":"Savoir Plus",
+    "LuggageTesting":"Test de qualité de Nos Valises",
+    "Airlines":"Guide des compagnies aériennes",
+    "tsa":"Instructions pour le cadenas TSA",
+    "tips":"Conseils pour les bagages"
+  },
+  "aboutTitou":{
+    "company":"L'entreprise",
+    "companystart":"Nous sommes fiers de vous offrir une large sélection de valises de qualité supérieure pour tous vos besoins de voyage. Que vous cherchiez une valise rigide pour des vacances en famille ou un voyage d'affaire pour des déplacements d'affaires, nous avons ce qu'il vous faut. Toutes nos valises sont fabriquées avec des matériaux durables et conçues pour durer. Elles sont équipées des dernières innovations disponibles, à des prix abordables et offrent une robustesse à toute épreuve à laquelle vous pouvez compter en cas de vol ou de perte des bagages. C'est pourquoi nous offrons des conseils et des avis d'experts pour vous aider à trouver la valise qui conviendra le mieux à vos besoins. Alors, qu'attendez-vous pour commencer votre prochaine aventure avec une valise de qualité supérieure qui durera aussi longtemps que vous en aurez besoin? Trouvez la valise parfaite pour votre prochain voyage!",
+    "aboutmission":"Notre mission",
+    "missiondescription":"Offrir une expérience de voyage exceptionnelle en fournissant les meilleurs compartiments de valise de qualité à des prix bas tout en préservant l'efficacité et le style."
   }
 }
