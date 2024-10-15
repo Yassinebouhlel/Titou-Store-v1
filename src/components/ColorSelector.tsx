@@ -68,6 +68,17 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
     initial: {opacity: 1},
     hover: {opacity: 0}
   };
+
+  // Function to apply background style based on the number of colors
+  const getBackgroundStyle = (codes: string[]) => {
+    if (codes.length > 1) {
+      return {
+        background: `linear-gradient(45deg, ${codes[0]} 50%, ${codes[1]} 50%)`,
+      };
+    }
+    return { backgroundColor: codes[0] };
+  };
+
   return (
     <div className=" my-2 flex flex-wrap gap-4">
       {/* Display initial color buttons */}
@@ -76,7 +87,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
           key={color.code}
           className="h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={() => setSelectedColor(color)}
-          style={{backgroundColor: color.code}}
+          style={getBackgroundStyle(color.code)}
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
@@ -94,7 +105,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
               whileTap="tap"
             >
               <motion.div
-                className="flex h-5 w-5 flex-row flex-row-reverse items-center justify-center gap-1 rounded-full border p-0.5 "
+                className="flex h-5 w-5 flex-row-reverse items-center justify-center gap-1 rounded-full border p-0.5 "
                 variants={dotsContainerVariants}
               >
                 {[0, 1, 2].map((index) => (
@@ -115,7 +126,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
               whileTap="tap"
             >
               <motion.div
-                className="flex h-5 w-5 flex-row flex-row-reverse items-center justify-center gap-1 rounded-full border p-0.5  "
+                className="flex h-5 w-5 flex-row-reverse items-center justify-center gap-1 rounded-full border p-0.5  "
                 variants={dotsContainerVariants}
               >
                 {[0, 1].map((index) => (
@@ -145,7 +156,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
                     key={color.code}
                     className="h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
                     onClick={() => setSelectedColor(color)}
-                    style={{backgroundColor: color.code}}
+                    style={getBackgroundStyle(color.code)}
                     variants={colorVariants}
                     whileHover={{scale: 1.05}}
                     whileTap={{scale: 0.95}}

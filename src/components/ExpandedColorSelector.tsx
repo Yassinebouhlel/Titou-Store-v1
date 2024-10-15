@@ -14,76 +14,51 @@ const colors = [
   {name: 'Light Gray', hex: '#CBD5E0'}
 ];
 
-function ColorPicker2({productColors}: any) {
+
+interface ProductColor {
+  color: string;
+  code: string[];
+}
+
+interface ColorPicker2Props {
+  productColors: ProductColor[];
+}
+
+const ColorPicker2: React.FC<ColorPicker2Props> = ({ productColors }) => {
   const [showAllColors, setShowAllColors] = useState(false);
-  const dotsContainerVariants = {
-    hover: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-  const dotVariants = {
-    initial: {y: 0},
-    hover: {
-      y: [0, -5, 0],
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
 
   const buttonVariants = {
-    hover: {scale: 1.1},
-    tap: {scale: 0.95}
+    hover: { scale: 1.1 },
+    tap: { scale: 0.95 },
   };
 
-  const containerVariants = {
-    hidden: {opacity: 0, y: -20},
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        when: 'beforeChildren',
-        staggerChildren: 0.1
-      }
+  const getBackgroundStyle = (code: string[]) => {
+    if (code.length > 1) {
+      // Create a linear gradient if there are multiple colors
+      return {
+        background: `linear-gradient(to right, ${code[0]} 50%, ${code[1]} 50%)`,
+      };
+    } else {
+      // Use a solid color for a single color code
+      return { backgroundColor: code[0] };
     }
   };
 
-  const colorVariants = {
-    hidden: {opacity: 0, y: -10},
-    visible: {opacity: 1, y: 0, transition: {duration: 0.4}}
-  };
-  const buttonVariantsClose = {
-    hover: {
-      scale: 1.1
-    },
-    tap: {
-      scale: 0.95
-    }
-  };
-
-  const dotVariantsClose = {
-    initial: {opacity: 1},
-    hover: {opacity: 0}
-  };
   return (
-    <div className=" my-2 flex flex-wrap gap-4 rounded-[20px] bg-white py-4 pl-4 pr-2 shadow-md">
-      {/* Display initial color buttons */}
-      {productColors.map((color: any) => (
+    <div className="my-2 flex flex-wrap gap-4 rounded-[20px] bg-white py-4 pl-4 pr-2 shadow-md">
+      {/* Display color buttons */}
+      {productColors.map((color) => (
         <motion.button
-          key={color.code}
+          key={color.color}
           className="h-6 w-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
-          style={{backgroundColor: color.code}}
+          style={getBackgroundStyle(color.code)}
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
-          // onClick={() => setSe6ectedColor(color)}
         />
       ))}
     </div>
   );
-}
+};
 
 export default ColorPicker2;

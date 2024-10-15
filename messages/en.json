@@ -40,5 +40,111 @@
     "home":"Home",
     "aboutUs":"About us",
     "contact":"Contact"
+  },
+  "benefits":{
+    "FreeDelivery":"Free Delivery",
+    "FreeDeliveryDescription":"Free shipping on orders over $99.",
+    "SecurePayment":"100% Secure Payment.",
+    "SecurePaymentDescription":"Buy with confidence.",
+    "FullSupport":"Customer Service",
+    "FullSupportDescription":"Questions? We’d love to hear from you!",
+    "ReturnPolicy":"Return Policy",
+    "ReturnPolicyDescription":"100% satisfaction guaranteed."
+  },
+  "why":{
+    "WhyPP":"Why a polypropylene suitcase?",
+    "Lightweight":"Lightweight",
+    "LightweightDescription":"Hardshell made of lightweight and resistant Polypropylene",
+    "MultipleSizes":"Multiple Sizes",
+    "MultipleSizesDescription":"The set includes suitcases of different sizes, suitable for a variety of occasions",
+    "Secure":"Secure",
+    "SecureDescription":"Built-in TSA lock for extra safety",
+    "Stretchable":"Stretchable",
+    "StretchableDescription":"Signature lined interior with dividing panel, practical pockets and tightening",
+    "RemovalbleWheels":"Robust removable wheels",
+    "RemovalbleWheelsDescription":"360-degree detachable wheels ensure smooth maneuverability on various surfaces",
+    "Quality":"High quality 100%",
+    "QualityDescription":"Made from high-quality materials, Titou suitcases are resistant to bumps, scratches and daily wear and tear."
+  },
+  "newsletter":{
+    "subscribe":"Sign up and recieve exclusive offers, special deals and upcoming collections."
+  },
+  "footer":{
+    "description":"Titou is a brand that has been producing polypropylene suitcases since 2018. Our brand combines resistance, practicality and design and offers a set of three suitcases in different colors."
+  },
+  "LearnMore":{
+    "more":"Learn More",
+    "LuggageTesting":"Luggage Quality Testing",
+    "Airlines":"Airlines Carry-On Guide",
+    "tsa":"TSA Lock Instructions",
+    "tips":"Luggage Tips"
+  },
+  "aboutTitou":{
+    "histoire":"Our Story",
+    "loveDo":"We Love What We Do",
+    "loveDoDescription":"We are proud to offer you a wide selection of premium quality suitcases for all your travel needs. Whether you're looking for a hard-shell suitcase for family vacations or a soft one for business trips, we have what you need. All our suitcases are made from durable materials and built to last. They are equipped with sturdy zippers, comfortable handles, and smooth wheels for easy transportation.",
+    "company":"Our Company",
+    "companystart":"We take pride in offering you a wide selection of premium quality suitcases to meet all your travel needs. Whether you're looking for a hard-shell suitcase for family vacations or a sleek option for business trips, we've got you covered. All our suitcases are crafted with durable materials and designed to last. They come equipped with the latest innovations available at affordable prices, providing the ruggedness you can rely on in case of theft or loss of luggage. That's why we provide expert advice and reviews to help you find the suitcase that best suits your needs. So, what are you waiting for to embark on your next adventure with a high-quality suitcase that will last as long as you need it? Find the perfect suitcase for your next journey!",
+    "aboutmission":"Our Mission",
+    "missiondescription":"Delivering an exceptional travel experience by providing top-quality suitcase compartments at low prices while preserving efficiency and style."
+  },
+  "ContactUs":{
+    "Title":"Proudly Designed in Tunisia, Now Expanding Globally",
+    "Description1":"With impeccable design standards and careful material selection, we offer a diverse range of choices for any journey.Our aim is to make traveling effortless, and we achieve this with our variety of even lighter cases, making a vast difference to all kinds of journeys. You can travel confidently with Titou cases, whether you are walking through an airport, boarding a ship or plane, or traveling by car or train.",
+    "Description2":"We adhere to the highest quality standards, subjecting all raw materials and manufacturing processes to quality controls before production. We test every developed product in our lab and test centers, ensuring high levels of product control on all components.",
+    "Description3":"We design, manufacture, and extensively test our products to withstand modern-day travel rigors. Our products go through overpass or steps tests and are subject to stringent quality controls. At Titou, we are committed to providing exceptional products that make your journey effortless and enjoyable."  
+  },
+  "Product":{
+    "AddToCart":"Add To Cart",
+    "Description1":"Discover Titou's Shine Collection hardside luggage, expertly crafted from a durable blend of polypropylene. These cases feature removable wheels, telescopic handles, TSA locks, and well-organized interiors, designed to meet all your travel needs.",
+    "Description2":"Lightweight 4 x multi-direction double wheels For more stability and better performance, 360° rotatin",
+    "Description3":"TSA INTEGRATED SECURE FLAT COMBI LOCK.",
+    "Description4":"Cabin Approved Size",
+    "Description5":"INTERIOR with double-sided packing system & garment section",
+    "Description6":"Unbreakable & Scratch Resistant",
+    "Description7":"DETACHABLE Luggage Wheels",
+    "Shipping":"FREE SHIPPING",
+    "ShippingDescription":"For orders over $99.",
+    "Return":"30 DAY RETURN",
+    "ReturnDescription":"All items can be returned within 30 days of receiving your order.",
+    "Warranty":"WARRANTY",
+    "WarrantyDescription":"Lifetime limited warranty on luggage."
+  },
+  "Color":{
+    "ColorLabel":"Color",
+    "BLACK":"Black",
+    "BLUE_CHEWING":"Blue Chewing Gum",
+    "BORDEAUX":"Burgundy",
+    "CREAM":"Cream",
+    "NAVY_BLUE":"Navy Blue",
+    "SALMON":"Salmon",
+    "CREAM_WITH_BLACK_ACCESSORIES":"Cream With Black Accessories ",
+    "CREAM_WITH_BLUE_CHEWING_GUM_ACCESSORIES":"Cream With Blue Chewing Gum Accessories",
+    "CREAM_WITH_GRAY_ACCESSORIES":"Cream With Gray Accessories",
+    "CREAM_WITH_NAVY_BLUE_ACCESSORIES":"Cream With Navy Blue Accessories",
+    "GREEN_CHEWING_GUM_WITH_BLACK_ACCESSORIES":"Green Chewing Gum With Black Accessories",
+    "GREEN_CHEWING_GUM_WITH_GREEN_CHEWING_GUM_ACCESSORIES":"Green Chewing Gum With Green Chewing Gum Accessories",
+    "SALMON_WITH_BLACK_ACCESSORIES":"Salmon With Black Accessories",
+    "SALMON_WITH_GRAY_ACCESSORIES":"Salmon With Gray Accessories",
+    "YELLOW_WITH_BLACK_ACCESSORIES":"Yellow With Black Accessories",
+    "BORDEAUX_WITH_CREAM_ACCESSORIES":"Burgundy With Cream Accessories",
+    "CREAM_WITH_BORDEAUX_ACCESSORIES":"Cream With Burgundy Accessories",
+    "CREAM_WITH_GREEN_CHEWING_GUM_ACCESSORIES":"Cream With Green Chewing Gum Accessories",
+    "CREAM_WITH_RED_ACCESSORIES":"Cream With Red Accessories",
+    "CREAM_WITH_TURQUOISE_BLUE_ACCESSORIES":"Cream With Turquoise Blue Accessories",
+    "CREAM_WITH_YELLOW_ACCESSORIES":"Cream With Yellow Accessories",
+    "GRAY_WITH_SALMON_ACCESSORIES":"Gray With Salmon Accessories",
+    "GRAY_WITH_SKY_BLUE_ACCESSORIES":"Gray With Sky Blue Accessories",
+    "NAVY_BLUE_WITH_CREAM_ACCESSORIES":"Navy Blue With Cream Accessories",
+    "NAVY_BLUE_WITH_SALMON_ACCESSORIES":"Navy Blue With Salmon Accessories",
+    "SALMON_WITH_CREAM_ACCESSORIES":"Salmon With Cream Accessories",
+    "SALMON_WITH_NAVY_BLUE_ACCESSORIES":"Salmon With Navy Blue Accessories"
+  },
+  "ProductList": {
+    "brillant":"3-Piece Luggage Set - Shine",
+    "mat":"3-Piece Luggage Set - Mat",
+    "multicolor":"3-Piece Luggage Set - Multicolor",
+    "subtitlefix":"Discover our exclusive set of 3 suitcases with fixed wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience.",
+    "subtitleRemove":"Discover our exclusive set of 3 suitcases with removable wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience."
   }
 }
