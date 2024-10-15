@@ -35,7 +35,7 @@ export default function StoreSelector() {
   return (
     <Dialog onClose={() => {}} open={isOpen}>
       <div aria-hidden="true" className="fixed inset-0 bg-black/30" />
-      <div className="fixed inset-0 flex items-center justify-center p-4">
+      <div className="fixed inset-0 flex items-center justify-center p-4 bg-[url('/images/elephant.jpg')]  ">
         <Dialog.Panel className="w-full max-w-sm rounded bg-white p-6">
           <Dialog.Title className="mb-4 font-bold text-2xl">
             Select Your Store

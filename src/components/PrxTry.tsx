@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {useState} from 'react';
 import {FaArrowRight} from 'react-icons/fa6';
 import ColorPicker from '@/components/ColorSelector';
+import {useTranslations} from 'next-intl';
 
 type Product = {
   name: string;
@@ -17,12 +18,10 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({product}) => {
-  console.log('🚀 ~ product:', product);
   const [selectedColor, setSelectedColor] = useState<any>(product.colors[0]);
-  console.log('🚀 ~ selectedColor:', selectedColor);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const arrayOfImgs = [];
-  console.log('🚀 ~ currentImageIndex:', currentImageIndex);
+
 
   const handleColorSelect = (color: string) => {
     setSelectedColor(color);
@@ -33,7 +32,8 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
       (prevIndex) => (prevIndex + 1) % selectedColor.images.length
     );
   };
-
+  const t = useTranslations('ProductList');
+  {console.log("🚀 ~ product.colors:", product.colors)}
   return (
     <motion.div
       animate={{opacity: 1}}
@@ -53,12 +53,10 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
         setSelectedColor={setSelectedColor}
       />
       <div className="mt-4 w-full">
-        <h2 className="font-bold text-lg">{product.name}</h2>
-        <p className="text-sm text-gray-600">
-          lorem ipsuem doloren foo ba lorem doloran ipsum.
-        </p>
+        <h2 className="font-bold text-lg">{t(`${product.id}`)}</h2>
+        
         <div className="flex items-center justify-between ">
-          <p className="mt-2 text-lg font-semibold">${199.99}</p>
+          <p className="mt-2 text-lg font-semibold">${product.price}</p>
         </div>
       </div>
       <Link href={`/products/${product.id}`}>

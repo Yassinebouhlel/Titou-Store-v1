@@ -39,7 +39,7 @@
     "howItWork":"Comment ça marche",
     "home":"Accueil",
     "aboutUs":"À propos de nous"  ,
-     "contact":"Contact"
+    "contact":"Contact"
   },
   "benefits":{
     "FreeDelivery":"Livraison gratuite",
@@ -80,9 +80,72 @@
     "tips":"Conseils pour les bagages"
   },
   "aboutTitou":{
+    "histoire":"Notre histoire",
+    "loveDo":"On aime ce qu'on fait",
+    "loveDoDescription":"Nous sommes fiers de vous offrir une large sélection de valises de qualité supérieure pour tous vos besoins de voyage. Que vous cherchiez une valise rigide pour des vacances en famille ou une valise souple pour des déplacements d’affaires, nous avons ce qu’il vous faut. Toutes nos valises sont fabriquées avec des matériaux durables et conçues pour durer. Elles sont équipées de fermetures à glissière robustes, de poignées confortables et de roulettes lisses pour un transport facile.",
     "company":"L'entreprise",
     "companystart":"Nous sommes fiers de vous offrir une large sélection de valises de qualité supérieure pour tous vos besoins de voyage. Que vous cherchiez une valise rigide pour des vacances en famille ou un voyage d'affaire pour des déplacements d'affaires, nous avons ce qu'il vous faut. Toutes nos valises sont fabriquées avec des matériaux durables et conçues pour durer. Elles sont équipées des dernières innovations disponibles, à des prix abordables et offrent une robustesse à toute épreuve à laquelle vous pouvez compter en cas de vol ou de perte des bagages. C'est pourquoi nous offrons des conseils et des avis d'experts pour vous aider à trouver la valise qui conviendra le mieux à vos besoins. Alors, qu'attendez-vous pour commencer votre prochaine aventure avec une valise de qualité supérieure qui durera aussi longtemps que vous en aurez besoin? Trouvez la valise parfaite pour votre prochain voyage!",
     "aboutmission":"Notre mission",
     "missiondescription":"Offrir une expérience de voyage exceptionnelle en fournissant les meilleurs compartiments de valise de qualité à des prix bas tout en préservant l'efficacité et le style."
+  },
+  "ContactUs":{
+    "Title":"Fièrement Conçu en Tunisie, Désormais en Expansion Globale",
+    "Description1":"Avec des normes de conception impeccables et une sélection minutieuse des matériaux, nous offrons une gamme diversifiée de choix pour tous les voyages.Notre objectif est de rendre les voyages sans effort, et nous y parvenons grâce à notre variété de valises encore plus légères, qui font une grande différence pour tous types de voyages. Vous pouvez voyager en toute confiance avec les valises Titou, que vous marchiez dans un aéroport, embarquiez sur un bateau ou un avion, ou voyagiez en voiture ou en train.",
+    "Description2":"Nous adhérons aux normes de qualité les plus élevées, en soumettant toutes les matières premières et les processus de fabrication à des contrôles de qualité avant la production. Nous testons chaque produit développé dans nos laboratoires et centres d'essai, garantissant des niveaux élevés de contrôle sur tous les composants.",
+    "Description3":"Nous concevons, fabriquons et testons rigoureusement nos produits pour résister aux rigueurs des voyages modernes. Nos produits subissent des tests de résistance aux surcharges ou aux marches et sont soumis à des contrôles de qualité stricts. Chez Titou, nous nous engageons à fournir des produits exceptionnels qui rendent vos voyages faciles et agréables."
+  },
+  "Product":{
+    "AddToCart":"Ajouter au panier",
+    "Description1":"Découvrez la collection Brilliant de Titou, une gamme de valises rigides conçues à partir d'un mélange robuste de polypropylène. Ces valises sont dotées de roues amovibles, de poignées télescopiques, de serrures TSA et d'intérieurs bien organisés, conçus pour répondre à tous vos besoins de voyage.",
+    "Description2":"Roues doubles multidirectionnelles 4 x légères Pour plus de stabilité et de meilleures performances, rotation à 360°.",
+    "Description3":"SERRURE TSA SÉCURISÉE INTÉGRÉE.",
+    "Description4":"APPROUVÉ EN CABINE",
+    "Description5":"Intérieur avec système de rangement double face et section pour vêtements",
+    "Description6":"Incassable",
+    "Description7":"Roues de bagages détachables",
+    "Shipping":"LIVRAISON GRATUITE",
+    "ShippingDescription":"Pour les commandes de plus de 99 $.",
+    "Return":"Politique de retour",
+    "ReturnDescription":"Retour gratuit dans les 30 jours suivant la réception de votre commande.",
+    "Warranty":"GARANTIE",
+    "WarrantyDescription":"Garantie à vie limitée sur les bagages."
+
+  },
+  "Color": {
+    "ColorLabel": "Couleur",
+    "BLACK": "Noir",
+    "BLUE_CHEWING": "Gomme bleue",
+    "BORDEAUX": "Bordeaux",
+    "CREAM": "Crème",
+    "NAVY_BLUE": "Bleu marine",
+    "SALMON": "Saumon",
+    "CREAM_WITH_BLACK_ACCESSORIES": "Crème avec accessoires noirs",
+    "CREAM_WITH_BLUE_CHEWING_GUM_ACCESSORIES": "Crème avec accessoires gomme bleue",
+    "CREAM_WITH_GRAY_ACCESSORIES": "Crème avec accessoires gris",
+    "CREAM_WITH_NAVY_BLUE_ACCESSORIES": "Crème avec accessoires bleu marine",
+    "GREEN_CHEWING_GUM_WITH_BLACK_ACCESSORIES": "Gomme verte avec accessoires noirs",
+    "GREEN_CHEWING_GUM_WITH_GREEN_CHEWING_GUM_ACCESSORIES": "Gomme verte avec accessoires gomme verte",
+    "SALMON_WITH_BLACK_ACCESSORIES": "Saumon avec accessoires noirs",
+    "SALMON_WITH_GRAY_ACCESSORIES": "Saumon avec accessoires gris",
+    "YELLOW_WITH_BLACK_ACCESSORIES": "Jaune avec accessoires noirs",
+    "BORDEAUX_WITH_CREAM_ACCESSORIES": "Bordeaux avec accessoires crème",
+    "CREAM_WITH_BORDEAUX_ACCESSORIES": "Crème avec accessoires bordeaux",
+    "CREAM_WITH_GREEN_CHEWING_GUM_ACCESSORIES": "Crème avec accessoires gomme verte",
+    "CREAM_WITH_RED_ACCESSORIES": "Crème avec accessoires rouges",
+    "CREAM_WITH_TURQUOISE_BLUE_ACCESSORIES": "Crème avec accessoires bleu turquoise",
+    "CREAM_WITH_YELLOW_ACCESSORIES": "Crème avec accessoires jaunes",
+    "GRAY_WITH_SALMON_ACCESSORIES": "Gris avec accessoires saumon",
+    "GRAY_WITH_SKY_BLUE_ACCESSORIES": "Gris avec accessoires bleu ciel",
+    "NAVY_BLUE_WITH_CREAM_ACCESSORIES": "Bleu marine avec accessoires crème",
+    "NAVY_BLUE_WITH_SALMON_ACCESSORIES": "Bleu marine avec accessoires saumon",
+    "SALMON_WITH_CREAM_ACCESSORIES": "Saumon avec accessoires crème",
+    "SALMON_WITH_NAVY_BLUE_ACCESSORIES": "Saumon avec accessoires bleu marine"
+  },
+  "ProductList": {
+    "brillant":"Ensemble de 3 valise - Brilliant",
+    "mat":"Ensemble de 3 valise - Mat",
+    "multicolor":"Ensemble de 3 valise - Multicouleur",
+    "subtitlefix":"Découvrez notre ensemble exclusif de 3 valises avec roues fixes, l’ultime compagnon de voyage pour ceux qui recherchent à la fois la fonctionnalité et l’élégance. Chaque valise de cet ensemble est méticuleusement conçue pour offrir une expérience de voyage sans tracas.",
+    "subtitleRemove":"Découvrez notre ensemble exclusif de 3 valises avec roues démontables, l’ultime compagnon de voyage pour ceux qui recherchent à la fois la fonctionnalité et l’élégance. Chaque valise de cet ensemble est méticuleusement conçue pour offrir une expérience de voyage sans tracas."
   }
 }

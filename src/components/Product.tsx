@@ -2,6 +2,15 @@ import {motion} from 'framer-motion';
 import Image from 'next/image';
 import React, {useEffect, useState} from 'react';
 import Counter from '@/components/Counter';
+import {useTranslations} from 'next-intl';
+import { PiAirplaneInFlightFill } from "react-icons/pi";
+import { GiCarWheel } from "react-icons/gi";
+import { FaLock } from "react-icons/fa";
+import { BsFillLuggageFill } from "react-icons/bs";
+import { GiHammerBreak } from "react-icons/gi";
+import { GiUnplugged } from "react-icons/gi";
+
+
 
 // ColorSelector Component
 const ColorSelector: React.FC<{
@@ -9,12 +18,16 @@ const ColorSelector: React.FC<{
   selectedColor: any;
   onColorChange(color: any): void;
 }> = ({colors, onColorChange, selectedColor}) => {
-  console.log('🚀 ~ selectedColor:', selectedColor);
-  console.log('🚀 ~ colors:', colors);
+  const t = useTranslations('Color');
+  
+  const selectedColorKey = selectedColor.color.replace(/ /g, "_"); // Replace spaces with underscores
+  
 
   return (
     <div className="mt-4">
-      <h3 className="text-sm font-medium text-gray-900">Color</h3>
+      <h3 className="text-sm font-medium text-gray-900">
+        {t('ColorLabel')}: {selectedColor ? t(`${selectedColorKey}`) : t('colorNoneSelected')}
+      </h3>
       <div className="mt-2 flex space-x-3">
         {colors.map((color) => (
           <button
@@ -26,7 +39,11 @@ const ColorSelector: React.FC<{
                 : ''
             }`}
             onClick={() => onColorChange(color)}
-            style={{backgroundColor: color.code}}
+            style={{
+              background: color.code.length > 1
+                ? `linear-gradient(to right, ${color.code[0]} 50%, ${color.code[1]} 50%)`
+                : color.code[0]
+            }}
           />
         ))}
       </div>
@@ -38,28 +55,43 @@ const ColorSelector: React.FC<{
 const ProductImage: React.FC<{
   images: Array<string>;
   color: string;
-}> = ({color, images}) => {
+}> = ({ color, images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleImageLoad = () => {
-    console.log('com');
     setIsLoading(false);
   };
+
   useEffect(() => {
     setCurrentImageIndex(0);
   }, [color]);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+ 
+
+  
+
   return (
-    <div className="relative w-full ">
-      <div className="w-full overflow-hidden rounded-3xl bg-white">
+    <div className="relative w-full">
+      <div className="relative w-full overflow-hidden rounded-3xl bg-white">
         {isLoading && <div className="h-96 w-full animate-pulse bg-gray-200" />}
         <motion.div
           key={images[currentImageIndex]}
-          animate={{opacity: 1, scale: 1}}
-          className=""
-          exit={{opacity: 0, scale: 0.95}}
-          initial={{opacity: 0, scale: 0.95}}
-          transition={{duration: 0.5}}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.5 }}
         >
           <Image
             alt={`${color} product image`}
@@ -73,7 +105,59 @@ const ProductImage: React.FC<{
             width={500}
           />
         </motion.div>
+
+        {/* Custom Left and Right Navigation Buttons */}
+        <button
+          type="button"
+          className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          onClick={handlePrevImage}
+        >
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg
+              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+            <span className="sr-only">Previous</span>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          onClick={handleNextImage}
+        >
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg
+              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span className="sr-only">Next</span>
+          </span>
+        </button>
       </div>
+
       <div className="mt-4 flex justify-center">
         {images.map((image, index) => (
           <button
@@ -99,8 +183,16 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDescription = () => {
+    setIsOpen(!isOpen); // Toggle open/close state
+  };
+  const t = useTranslations('Product');
+  const p = useTranslations('ProductList');
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mb-12">
       <nav className="mb-4 text-sm">
         <ol className="inline-flex list-none p-0">
           <li className="flex items-center">
@@ -176,12 +268,12 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
-                <span className="ml-2 text-gray-600">{product.rating} / 5</span>
+                <span className="ml-2 text-gray-600">{product.rating} / 50</span>
                 <span className="ml-2 text-gray-500">
                   ({product.reviews} reviews)
                 </span>
               </div>
-              <p className="mt-2 text-gray-600">{product.subtitle}</p>
+              <p className="mt-2 text-gray-600">{p(`${product.subtitle}`)}</p>
 
               <p className="mt-4 font-bold text-3xl">
                 {product.price} {product.currency}{' '}
@@ -196,12 +288,87 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
                 selectedColor={selectedColor}
               />
               <Counter />
+              <div className="border-t border-b border-gray-300 px-6 py-4 mt-6">
+                <div className="flex justify-between items-center cursor-pointer" onClick={toggleDescription}>
+                  <p className="text-[16px] leading-[150%] font-sans">Description</p>
+                  <span className="text-[25px] font-bold">
+                    {isOpen ? '−' : '+'} {/* Conditionally render + or - */}
+                  </span>
+                </div>
 
-              <div className="mt-8 flex w-full items-center justify-center">
-                <button className="mt-4 w-1/2 rounded-3xl bg-[#FFD500] px-4 py-2 font-bold  text-xl text-black hover:bg-black hover:text-white">
-                  Ajouter au panier
-                </button>
+                {isOpen && ( // Conditionally render the description content when isOpen is true
+                  <div className="mt-4">
+                    <p className="text-[16px] leading-[150%] font-sans text-gray-600 tracking-[0.00938rem]">
+                      {t('Description1')}
+                    </p>
+
+                    <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Features:</h3>
+                    <ul className="pl-6 mt-2 text-[16px] font-sans text-gray-600 leading-[150%] tracking-[0.00938rem]">
+                      <li className="flex items-center mb-5">
+                        <GiCarWheel className="text-black font-bold text-5xl"/>
+                        <span className="ml-4">{t('Description2')}</span>
+                      </li>
+                      <li className="flex items-center mb-5">
+                        <FaLock className="text-black font-bold text-5xl"/>
+                        <span className="ml-4">{t('Description3')}</span>
+                      </li>
+                      <li className="flex items-center mb-5">
+                        <PiAirplaneInFlightFill className="text-black font-bold text-5xl"/>
+                        <span className="ml-4">{t('Description4')}</span>
+                      </li>
+                      <li className="flex items-center mb-5">
+                        <BsFillLuggageFill className="text-black font-bold text-5xl" />
+                        <span className="ml-4">{t('Description5')}</span>
+                      </li>
+                      <li className="flex items-center mb-5">
+                        <GiHammerBreak className="text-black font-bold text-5xl"/>
+                        <span className="ml-4">{t('Description6')}</span>
+                      </li>
+                      <li className="flex items-center mb-5">
+                        <GiUnplugged className="text-black font-bold text-5xl"/>
+                        <span className="ml-4">{t('Description7')}</span>
+                      </li>
+                    </ul>
+
+                    <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Dimensions:</h3>
+                      <table className="mt-4 w-full text-left text-[16px] text-gray-600 leading-[150%] tracking-[0.00938rem] font-sans">
+                        <thead>
+                          <tr className="bg-gray-200 font-bold">
+                            <th className="px-4 py-2">Size</th>
+                            <th className="px-4 py-2">Dimensions</th>
+                            <th className="px-4 py-2">Volume</th>
+                            <th className="px-4 py-2">Capacity</th>
+                            <th className="px-4 py-2">Weight</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border px-4 py-2">Big</td>
+                            <td className="border px-4 py-2">75 x 49 x 32 cm</td>
+                            <td className="border px-4 py-2">106 liters</td>
+                            <td className="border px-4 py-2">30 Kg</td>
+                            <td className="border px-4 py-2">4.51 Kg</td>
+                          </tr>
+                          <tr>
+                            <td className="border px-4 py-2">Medium</td>
+                            <td className="border px-4 py-2">65 x 42 x 39 cm</td>
+                            <td className="border px-4 py-2">70 liters</td>
+                            <td className="border px-4 py-2">20 Kg</td>
+                            <td className="border px-4 py-2">3.25 Kg</td>
+                          </tr>
+                          <tr>
+                            <td className="border px-4 py-2">Small</td>
+                            <td className="border px-4 py-2">55 x 32 x 24 cm</td>
+                            <td className="border px-4 py-2">55 liters</td>
+                            <td className="border px-4 py-2">15 Kg</td>
+                            <td className="border px-4 py-2">3.66 Kg</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                )}
               </div>
+
             </>
           )}
         </div>

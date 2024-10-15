@@ -1,15 +1,37 @@
 import Image from 'next/image';
+import {useTranslations} from 'next-intl';
+
+
 
 export default function ProductPage() {
+  const t = useTranslations('ContactUs');
+
   return (
     <div>
       <section className="bg-primary e px-2 pt-20">
 
+      <div className="bg-[#f0e7d5] h-[600px]  p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex flex-col justify-center items-start">
+          <h1 className="text-black text-[40px] font-bold uppercase tracking-wide">
+            {t('Title')} {/* Your original title here */}
+          </h1>
+          <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div> {/* This is for the underline element */}
+          <p className="text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
+            {t('Description1')} {/* Your original paragraph content here */}
+          </p>
+          <p className="text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
+            {t('Description2')} {/* Your original paragraph content here */}
+          </p>
+          <p className="text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
+            {t('Description3')} {/* Your original paragraph content here */}
+          </p>
+        
+      </div>
+     
         {/* Tunisia */}
-        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-1/2 mx-auto my-[50px] flex items-center">
+        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex items-center">
           <div className="w-1/3 flex justify-center">
             {/* Flag goes here */}
-            <div className="relative w-[250px] h-[250px]">
+            <div className="relative w-[350px] h-[250px]">
               <Image
                 src="/images/countries/Flag_of_Tunisia.png"
                 alt="KSA flag"
@@ -66,12 +88,12 @@ export default function ProductPage() {
           </div>
         </div>
 
-        
+
         {/* Saudi Arabie */}
-        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-1/2 mx-auto my-[50px] flex items-center">
+        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex items-center">
           <div className="w-1/3 flex justify-center">
             {/* Flag goes here */}
-            <div className="relative w-[250px] h-[250px]">
+            <div className="relative w-[350px] h-[250px]">
               <Image
                 src="/images/countries/saudi-arabia-flag.png"
                 alt="KSA flag"
@@ -107,10 +129,10 @@ export default function ProductPage() {
         </div>
 
         {/* Canada */}
-        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-1/2 mx-auto my-[50px] flex items-center">
+        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex items-center">
           <div className="w-1/3 flex justify-center">
             {/* Flag goes here */}
-            <div className="relative w-[250px] h-[250px]">
+            <div className="relative w-[350px] h-[250px]">
               <Image
                 src="/images/countries/Flag_of_Canada.png"
                 alt="KSA flag"
@@ -146,10 +168,10 @@ export default function ProductPage() {
         </div>
 
         {/* USA */}
-        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-1/2 mx-auto my-[50px] flex items-center">
+        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex items-center">
           <div className="w-1/3 flex justify-center">
             {/* Flag goes here */}
-            <div className="relative w-[250px] h-[250px]">
+            <div className="relative w-[350px] h-[250px]">
               <Image
                 src="/images/countries/usa.jpg"
                 alt="KSA flag"
@@ -168,7 +190,7 @@ export default function ProductPage() {
             </h1>
             <h1 className="mt-1 text-start text-[20px] text-black flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" w-6 h-6 mr-4 size-10">
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM6.262 6.072a8.25 8.25 0 1 0 10.562-.766 4.5 4.5 0 0 1-1.318 1.357L14.25 7.5l.165.33a.809.809 0 0 1-1.086 1.085l-.604-.302a1.125 1.125 0 0 0-1.298.21l-.132.131c-.439.44-.439 1.152 0 1.591l.296.296c.256.257.622.374.98.314l1.17-.195c.323-.054.654.036.905.245l1.33 1.108c.32.267.46.694.358 1.1a8.7 8.7 0 0 1-2.288 4.04l-.723.724a1.125 1.125 0 0 1-1.298.21l-.153-.076a1.125 1.125 0 0 1-.622-1.006v-1.089c0-.298-.119-.585-.33-.796l-1.347-1.347a1.125 1.125 0 0 1-.21-1.298L9.75 12l-1.64-1.64a6 6 0 0 1-1.676-3.257l-.172-1.03Z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM6.262 6.072a8.25 8.25 0 1 0 10.562-.766 4.5 4.5 0 0 1-1.318 1.357L14.25 7.5l.165.33a.809.809 0 0 1-1.086 1.085l-.604-.302a1.125 1.125 0 0 0-1.298.21l-.132.131c-.439.44-.439 1.152 0 1.591l.296.296c.256.257.622.374.98.314l1.17-.195c.323-.054.654.036.905.245l1.33 1.108c.32.267.46.694.358 1.1a8.7 8.7 0 0 1-2.288 4.04l-.723.724a1.125 1.125 0 0 1-1.298.21l-.153-.076a1.125 1.125 0 0 1-.622-1.006v-1.089c0-.298-.119-.585-.33-.796l-1.347-1.347a1.125 1.125 0 0 1-.21-1.298L9.75 12l-1.64-1.64a6 6 0 0 1-1.676-3.257l-.172-1.03Z" clipRule="evenodd" />
               </svg>
               Amazon.com/TitouStore
             </h1>
@@ -191,10 +213,10 @@ export default function ProductPage() {
         </div>
 
         {/* France */}
-        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-1/2 mx-auto my-[50px] flex items-center">
+        <div className="bg-[#f0e7d5] h-[400px] p-4 rounded-[30px] w-3/4 mx-auto my-[50px] flex items-center">
           <div className="w-1/3 flex justify-center">
             {/* Flag goes here */}
-            <div className="relative w-[250px] h-[250px]">
+            <div className="relative w-[350px] h-[250px]">
               <Image
                 src="/images/countries/Flag_of_France.png"
                 alt="KSA flag"
