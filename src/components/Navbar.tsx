@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
             alt="titou logo"
             className="w-20"
             height={20}
-            src="/svg/logo.svg"
+            src="/svg/Logo.svg"
             width={20}
           />
 
