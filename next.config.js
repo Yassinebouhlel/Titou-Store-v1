@@ -6,6 +6,7 @@ module.exports = withNextIntl({images: {
     domains: ['www.titou.ma'], // Add your image domain here
 
   },
-  assetPrefix: isProd ? '/Titou-Store-v1/' : '',
-  basePath: isProd ? '/Titou-Store-v1' : '',
+  assetPrefix: isProd ? '' : '',
+  basePath: isProd ? '' : '',
+  output: 'standalone',
 });

@@ -32,7 +32,8 @@ export default function HomePage() {
     { src: '/images/HomePage/bn-blue.jpg', alt: 'Blue banner' },
     { src: '/images/HomePage/bn-green.jpg', alt: 'Green banner' },
     { src: '/images/HomePage/bn-red.jpg', alt: 'Red banner' },
-    { src: '/images/HomePage/Titou Saudia Web Banner.png', alt: 'Saudi store' }
+    { src: '/images/HomePage/Titou Saudia Web Banner.png', alt: 'Saudi store' },
+    { src: '/images/HomePage/Titou Canada Web Banner v2.png', alt: 'Canada store' }
   ];
 
   
