@@ -1,11 +1,13 @@
 import {motion} from 'framer-motion';
-import {useState} from 'react';
+import React,{useState} from 'react';
 import {useTranslations} from 'next-intl';
 
-function Counter() {
+const  Counter: React.FC<{addItemToBasket: any}> = ({addItemToBasket}) => {
   const [count, setCount] = useState(1);
   const t = useTranslations('Product');
-
+const addItem = ()=>{
+  addItemToBasket(count)
+}
   return (
     <div className="mt-8 w-full flex items-start justify-start space-x-4">
       <div className="flex flex-col items-center">
@@ -42,7 +44,11 @@ function Counter() {
       </div>
 
       <div className="flex items-center">
-        <button className="w-full rounded-3xl bg-[#FFD500] px-6 py-3 font-bold text-xl text-black hover:bg-black hover:text-white">
+        <button onClick={
+          ()=>{
+            addItem()
+          }
+        } className="w-full rounded-3xl bg-[#FFD500] px-6 py-3 font-bold text-xl text-black hover:bg-black hover:text-white">
           {t('AddToCart')}
         </button>
       </div>

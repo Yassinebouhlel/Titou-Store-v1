@@ -9,6 +9,8 @@ import { FaLock } from "react-icons/fa";
 import { BsFillLuggageFill } from "react-icons/bs";
 import { GiHammerBreak } from "react-icons/gi";
 import { GiUnplugged } from "react-icons/gi";
+import { getCartItems,addItemToCart } from '@/services/cartStorage';
+import { useCart } from '@/context/CartContext';  // Use CartContext
 
 
 
@@ -176,9 +178,20 @@ const ProductImage: React.FC<{
 
 const ProductPage: React.FC<{product: any}> = ({product}) => {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  console.log('🚀 ~ selectedColor:', selectedColor);
   const [isLoading, setIsLoading] = useState(true);
+  const { addItemToCart } = useCart();
 
+const addItemToBasket = async (quantity:any)=>{
+
+  const newItem = {
+    ...product,
+    selectedColor,
+    quantity
+
+  }
+  addItemToCart(newItem)
+
+}
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
@@ -252,7 +265,7 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
 
           {!isLoading && (
             <>
-              <h1 className="font-bold text-2xl">{product.name}</h1>
+              <h1 className="font-bold text-2xl">{p(`${product.id}`)}</h1>
               <div className="mt-0.5 flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <svg
@@ -287,7 +300,7 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
                 onColorChange={setSelectedColor}
                 selectedColor={selectedColor}
               />
-              <Counter />
+              <Counter addItemToBasket={addItemToBasket} />
               <div className="border-t border-b border-gray-300 px-6 py-4 mt-6">
                 <div className="flex justify-between items-center cursor-pointer" onClick={toggleDescription}>
                   <p className="text-[16px] leading-[150%] font-sans">Description</p>

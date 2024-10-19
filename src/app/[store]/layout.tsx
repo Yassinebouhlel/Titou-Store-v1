@@ -3,6 +3,7 @@ import {getLocale, getMessages} from 'next-intl/server';
 import {ReactNode} from 'react';
 import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
+import { CartProvider } from '@/context/CartContext';
 
 type Props = {
   children: ReactNode;
@@ -15,10 +16,13 @@ export default async function StoreLayout({children, params}: Props) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <div>
-        <Navbar />
-        <main>{children}</main>
-      </div>
+      <CartProvider>
+        <div>
+          <Navbar />
+          <main>{children}</main>
+        </div>
+      </CartProvider>
+      
     </NextIntlClientProvider>
   );
 }

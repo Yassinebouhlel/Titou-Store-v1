@@ -5,6 +5,7 @@ type Category = {
   name: string;
   colors: Array<{
     color: string;
+    idColor: string;
     code: Array<string> ;
     images: Array<string>;
   }>;
@@ -68,6 +69,7 @@ export const categories: Array<Category> = [
     colors: [
       {
         color: 'BLACK',
+        idColor:'BLACK',
         code: ['#000000'],
         images: [
           '/images/Brillant/Black/1.png',
@@ -79,6 +81,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'BLUE CHEWING',
+        idColor:'BLUE_CHEWING',
         code: ['#79c8c3'],
         images: [
           '/images/Brillant/blue_2/1.png',
@@ -90,6 +93,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'BORDEAUX',
+        idColor:'BORDEAUX',
         code: ['#621620'],
         images: [
           '/images/Brillant/BORDEAUX/titou-photos-190.jpg',
@@ -106,6 +110,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM',
+        idColor:'BORDEAUX',
         code: ['#d2ccc0'],
         images: [
           '/images/Brillant/CREAM/titou-photos-155.jpg',
@@ -124,6 +129,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'NAVY BLUE',
+        idColor:'NAVY_BLUE',
         code: ['#1f2f48'],
         images: [
           '/images/Brillant/NAVY BLUE/titou-photos-1.jpg',
@@ -145,6 +151,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'SALMON',
+        idColor:'SALMON',
         code: ['#be8e80'],
         images: [
           '/images/Brillant/SALMON/titou-photos-79.jpg',
@@ -192,6 +199,7 @@ export const categories: Array<Category> = [
     colors: [
       {
         color: 'CREAM WITH BLACK ACCESSORIES',
+        idColor:'CREAM_WITH_BLACK_ACCESSORIES',
         code: ['#d2ccc0','#000000'],
         images: [
           '/images/Mat/CREAM WITH BLACK ACCESSORIES/82.jpg',
@@ -212,6 +220,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "CREAM WITH BLUE CHEWING GUM ACCESSORIES",
+        idColor:'CREAM_WITH_BLUE_CHEWING_GUM_ACCESSORIES',
         code: ['#d2ccc0', '#8eccdb'],
         images: [
           "/images/Mat/CREAM WITH BLUE CHEWING GUM ACCESSORIES/110.jpg",
@@ -230,6 +239,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "CREAM WITH GRAY ACCESSORIES",
+        idColor:'CREAM_WITH_GRAY_ACCESSORIES',
         code: ['#d2ccc0','#5f6065'],
         images: [
           "/images/Mat/CREAM WITH GRAY ACCESSORIES/35.jpg",
@@ -249,6 +259,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "CREAM WITH NAVY BLUE ACCESSORIES",
+        idColor:'CREAM_WITH_NAVY_BLUE_ACCESSORIES',
         code: ['#d2ccc0','#1f2f48'],
         images: [
           "/images/Mat/CREAM WITH NAVY BLUE ACCESSORIES/69.jpg",
@@ -268,6 +279,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "GREEN CHEWING GUM WITH BLACK ACCESSORIES",
+        idColor:'GREEN_CHEWING_GUM_WITH_BLACK_ACCESSORIES',
         code: ['#94dcd9','#000000'],
         images: [
           "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/96.jpg",
@@ -288,6 +300,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "GREEN CHEWING GUM WITH GREEN CHEWING GUM ACCESSORIES",
+        idColor:'GREEN_CHEWING_GUM_WITH_GREEN_CHEWING_GUM_ACCESSORIES',
         code: ['#94dcd9'],
         images: [
           "/images/Mat/GREEN CHEWING GUM WITH GREEN CHEWING GUM ACCESSORIES/44.jpg",
@@ -307,6 +320,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "SALMON WITH BLACK ACCESSORIES",
+        idColor:'SALMON_WITH_BLACK_ACCESSORIES',
         code: ['#be8e80','#000000'],
         images: [
           "/images/Mat/SALMON WITH BLACK ACCESSORIES/21.jpg",
@@ -328,6 +342,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "SALMON WITH GRAY ACCESSORIES",
+        idColor:'SALMON_WITH_GRAY_ACCESSORIES',
         code: ['#be8e80','#5f6065'],
         images: [
           "/images/Mat/SALMON WITH GRAY ACCESSORIES/57.jpg",
@@ -347,6 +362,7 @@ export const categories: Array<Category> = [
       },
       {
         color: "YELLOW WITH BLACK ACCESSORIES",
+        idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
         code: ['#e5d01f','#000000'],
         images: [
           "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -392,6 +408,7 @@ export const categories: Array<Category> = [
     colors: [
       {
         color: 'BORDEAUX WITH CREAM ACCESSORIES',
+        idColor:'BORDEAUX_WITH_CREAM_ACCESSORIES',
         code: ['#621620','#d2ccc0'],
         images: [
           '/images/Multicouleur/BORDEAUX WITH CREAM ACCESSORIES/titou-photos-199.jpg',
@@ -410,6 +427,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH BORDEAUX ACCESSORIES',
+        idColor:'CREAM_WITH_BORDEAUX_ACCESSORIES',
         code: ['#d2ccc0','#621620'],
         images: [
           '/images/Multicouleur/CREAM WITH BORDEAUX ACCESSORIES/titou-photos-94.jpg',
@@ -432,6 +450,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH GREEN CHEWING GUM ACCESSORIES',
+        idColor:'CREAM_WITH_GREEN_CHEWING_GUM_ACCESSORIES',
         code: ['#d2ccc0','#94dcd9'],
         images: [
           '/images/Multicouleur/CREAM WITH GREEN CHEWING GUM ACCESSORIES/titou-photos-142.jpg',
@@ -450,6 +469,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH NAVY BLUE ACCESSORIES',
+        idColor:'CREAM_WITH_NAVY_BLUE_ACCESSORIES',
         code: ['#d2ccc0','#1f2f48'],
         images: [
           '/images/Multicouleur/CREAM WITH NAVY BLUE ACCESSORIES/titou-photos-33.jpg',
@@ -469,6 +489,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH RED ACCESSORIES',
+        idColor:'CREAM_WITH_RED_ACCESSORIES',
         code: ['#d2ccc0','#FF0000'],
         images: [
           '/images/Multicouleur/CREAM WITH RED ACCESSORIES/titou-photos-16.jpg',
@@ -492,6 +513,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH TURQUOISE BLUE ACCESSORIES',
+        idColor:'CREAM_WITH_TURQUOISE_BLUE_ACCESSORIES',
         code: ['#d2ccc0','#02658c'],
         images: [
           '/images/Multicouleur/CREAM WITH TURQUOISE BLUE ACCESSORIES/titou-photos-167.jpg',
@@ -508,6 +530,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'CREAM WITH YELLOW ACCESSORIES',
+        idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
         code: ['#d2ccc0','#fccd01'],
         images: [
           '/images/Multicouleur/CREAM WITH YELLOW ACCESSORIES/titou-photos-62.jpg',
@@ -531,6 +554,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'GRAY WITH SALMON ACCESSORIES',
+        idColor:'GRAY_WITH_SALMON_ACCESSORIES',
         code: ['#5f6065','#be8e80'],
         images: [
           '/images/Multicouleur/GRAY WITH SALMON ACCESSORIES/titou-photos-211.jpg',
@@ -549,6 +573,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'GRAY WITH SKY BLUE ACCESSORIES',
+        idColor:'GRAY_WITH_SKY_BLUE_ACCESSORIES',
         code: ['#5f6065','#a9d9e7'],
         images: [
           '/images/Multicouleur/GRAY WITH SKY BLUE ACCESSORIES/titou-photos-177.jpg',
@@ -567,6 +592,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'NAVY BLUE WITH CREAM ACCESSORIES',
+        idColor:'NAVY_BLUE_WITH_CREAM_ACCESSORIES',
         code: ['#1f2f48','#d2ccc0'],
         images: [
           '/images/Multicouleur/NAVY BLUE WITH CREAM ACCESSORIES/titou-photos-46.jpg',
@@ -588,6 +614,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'NAVY BLUE WITH SALMON ACCESSORIES',
+        idColor:'NAVY_BLUE_WITH_SALMON_ACCESSORIES',
         code: ['#1f2f48','#be8e80'],
         images: [
           '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/démontabe-16.jpg',
@@ -608,6 +635,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'SALMON WITH CREAM ACCESSORIES',
+        idColor:'SALMON_WITH_CREAM_ACCESSORIES',
         code: ['#be8e80','#d2ccc0'],
         images: [
           '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-132.jpg',
@@ -625,6 +653,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'SALMON WITH GRAY ACCESSORIES',
+        idColor:'SALMON_WITH_GRAY_ACCESSORIES',
         code: ['#be8e80','#5f6065'],
         images: [
           '/images/Multicouleur/SALMON WITH GRAY ACCESSORIES/titou-photos-111.jpg',
@@ -651,6 +680,7 @@ export const categories: Array<Category> = [
       },
       {
         color: 'SALMON WITH NAVY BLUE ACCESSORIES',
+        idColor:'SALMON_WITH_NAVY_BLUE_ACCESSORIES',
         code: ['#be8e80','#1f2f48'],
         images: [
           '/images/Multicouleur/SALMON WITH NAVY BLUE ACCESSORIES/démontabe-2.jpg',

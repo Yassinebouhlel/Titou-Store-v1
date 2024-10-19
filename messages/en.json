@@ -146,5 +146,10 @@
     "multicolor":"3-Piece Luggage Set - Multicolor",
     "subtitlefix":"Discover our exclusive set of 3 suitcases with fixed wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience.",
     "subtitleRemove":"Discover our exclusive set of 3 suitcases with removable wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience."
+  },
+  "Cart":{
+    "ShoppingCart":"Your shopping cart",
+    "EmptyCart":"Your shopping cart is empty.",
+    "CartButton":"Proceed to checkout"
   }
 }
