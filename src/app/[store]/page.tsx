@@ -29,11 +29,12 @@ export default function HomePage() {
   const s = useTranslations('newsletter');
 
   const images = [
-    { src: '/images/HomePage/bn-blue.jpg', alt: 'Blue banner' },
-    { src: '/images/HomePage/bn-green.jpg', alt: 'Green banner' },
-    { src: '/images/HomePage/bn-red.jpg', alt: 'Red banner' },
+    // { src: '/images/HomePage/bn-blue.jpg', alt: 'Blue banner' },
+    // { src: '/images/HomePage/bn-green.jpg', alt: 'Green banner' },
+    // { src: '/images/HomePage/bn-red.jpg', alt: 'Red banner' },
     { src: '/images/HomePage/Titou Saudia Web Banner.png', alt: 'Saudi store' },
-    { src: '/images/HomePage/Titou Canada Web Banner v2.png', alt: 'Canada store' }
+    { src: '/images/HomePage/Titou Canada Web Banner v2.png', alt: 'Canada store' },
+    { src: '/images/HomePage/Titou America web banner 2.png', alt: 'USA store' }
   ];
 
   
@@ -131,7 +132,6 @@ export default function HomePage() {
 
         {/* <VideoScroll /> */}
         <ScrollEffectWrapper>
-          <div className='w-full h-full p-16 bg-red-600 sm:bg-yellow-400 md:bg-pink-400 lg:bg-blue-300 xl:bg-gray-300'></div>
           <div className="m-4 flex min-h-[500px] py-4 gap-2 rounded-[60px] bg-white itmes-center justify-center  ">
             <div className="   flex flex-col  items-center md:flex-row justify-between gap-x-6 gap-y-6  ">
               <div className="flex  flex-col items-center   ">
@@ -292,6 +292,29 @@ export default function HomePage() {
             {/* <h2 className="font-bold text-3xl">More content as you scroll!</h2> */}
           {/* </div> */}
         {/* </section> */}
+        <div className="m-4 mb-[80px] flex flex-col md:flex-row h-auto rounded-[60px]">
+          <div className="flex flex-col md:flex-row gap-4 w-full">
+            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
+              <video className="w-full h-full rounded-[30px]" controls autoPlay muted loop>
+                <source src="/videos/videoValise2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
+              <video className="w-full h-full rounded-[30px]" controls autoPlay muted loop>
+                <source src="/videos/videoValise3.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
+              <video className="w-full h-full rounded-[30px]" controls autoPlay muted loop>
+                <source src="/videos/videoValise4.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+        
         <div className="relative flex justify-center items-center bg-[#724740] py-10 px-5">
       {/* Background Image */}
       {/* <div className="absolute inset-0 bg-cover bg-center opacity-70">
