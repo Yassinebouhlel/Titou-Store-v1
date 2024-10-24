@@ -43,14 +43,14 @@ const CardAd: React.FC<GalaxyAdProps> = ({
 
   return (
     <div
-      className="relative my-8  flex h-[300px] w-full overflow-hidden rounded-[36px] bg-cover bg-center shadow-lg"
-      style={{backgroundImage: `url(${backgroundUrl})`}}
+      className="relative my-8 flex flex-col sm:flex-row h-[300px] w-full overflow-hidden rounded-[36px] bg-cover bg-center shadow-lg"
+      style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
-      <div className="relative flex h-full w-1/2 flex-col items-start justify-center p-8">
+      <div className="relative flex h-full w-full sm:w-1/2 flex-col items-start justify-center p-4 sm:p-8">
         <motion.h2
           ref={ref}
           animate={controls}
-          className="mb-4 font-bold text-4xl text-black"
+          className="mb-4 font-bold text-2xl sm:text-4xl text-black"
           initial="hidden"
           variants={textVariants}
         >
@@ -58,23 +58,15 @@ const CardAd: React.FC<GalaxyAdProps> = ({
         </motion.h2>
         <motion.p
           animate={controls}
-          className="mb-6 text-xl text-black"
+          className="mb-6 text-lg sm:text-xl text-black"
           initial="hidden"
           variants={textVariants}
         >
           {description}
         </motion.p>
-        {/* <motion.a
-          href={ctaLink}
-          initial="hidden"
-          animate={controls}
-          variants={textVariants}
-          className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300"
-        >
-          {ctaText}
-        </motion.a> */}
       </div>
     </div>
+
   );
 };
 

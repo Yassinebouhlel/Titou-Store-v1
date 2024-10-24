@@ -344,7 +344,8 @@ const addItemToBasket = async (quantity:any)=>{
                     </ul>
 
                     <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Dimensions:</h3>
-                      <table className="mt-4 w-full text-left text-[16px] text-gray-600 leading-[150%] tracking-[0.00938rem] font-sans">
+                    <div className="overflow-x-auto mt-4">
+                      <table className="w-full text-left text-[14px] sm:text-[16px] text-gray-600 leading-[150%] tracking-[0.00938rem] font-sans">
                         <thead>
                           <tr className="bg-gray-200 font-bold">
                             <th className="px-4 py-2">Size</th>
@@ -378,6 +379,7 @@ const addItemToBasket = async (quantity:any)=>{
                           </tr>
                         </tbody>
                       </table>
+                    </div>
                   </div>
                 )}
               </div>

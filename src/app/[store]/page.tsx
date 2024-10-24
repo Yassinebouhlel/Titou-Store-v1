@@ -62,21 +62,21 @@ export default function HomePage() {
     <main>
       <section className="bg-primary e px-2 pt-20">
       <div className="relative flex flex-col items-center justify-center px-6 text-center">
-          <div className="relative h-[900px] w-full overflow-hidden rounded-lg ">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`duration-700 ease-in-out ${index === currentSlide ? 'block' : 'hidden'}`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="relative w-full overflow-hidden rounded-lg h-[400px] aspect-w-4 aspect-h-3 ">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`duration-700 ease-in-out ${index === currentSlide ? 'block' : 'hidden'}`}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          ))}
+        </div>
 
           {/* Slider controls */}  
             <button
