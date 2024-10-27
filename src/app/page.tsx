@@ -3,7 +3,7 @@ import StoreSelector from '@/components/StoreSelector';
 
 export default function RootPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-700">
+    <div className="flex min-h-screen ">
       <StoreSelector />
     </div>
   );

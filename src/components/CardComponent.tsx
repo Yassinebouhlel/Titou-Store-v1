@@ -19,9 +19,9 @@ function CardComponent({
 }: Props) {
   return (
     <div
-      className={`rounded-3xl shadow-lg ${bgColor} flex h-full w-full  ${textColor} max-h-[280px]`}
+      className={`rounded-3xl shadow-lg ${bgColor} flex  items-center justify-center ${textColor} `}
     >
-      <div className="mr-4 flex max-h-80 w-2/5 flex-col-reverse items-center justify-center">
+      <div className="mr-4 flex min-h-36 max-h-36 w-2/5 flex-col-reverse items-center justify-center">
       {icon ? (
           <div className="text-6xl mb-2">{icon}</div> // Render icon if passed
         ) : (

@@ -49,7 +49,7 @@ const VideoScroll: React.FC = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="zoom relative m-4 mt-24 h-[300vh] rounded-3xl"
+      className="zoom relative m-4 mt-24 h-[100vh] rounded-3xl"
       style={{scale}}
     >
       <motion.div className="sticky top-0" style={{opacity}}>
@@ -59,7 +59,7 @@ const VideoScroll: React.FC = () => {
           loop
           muted
           playsInline
-          src="/videos/BagTrim.mp4"
+          src="/videos/videoValise.mp4"
         />
       </motion.div>
       <motion.div

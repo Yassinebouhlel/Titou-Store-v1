@@ -140,3 +140,103 @@ html body[data-scroll-locked]{
   overflow: visible !important;
   margin-right: 0 !important;
 }
+
+.borderless-flags-select .ReactFlagsSelect__button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.borderless-flags-select .ReactFlagsSelect__select {
+  border: none !important;
+}
+
+/* Custom styles for the ReactFlagsSelect component */
+.custom-flags-select {
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  width: 100%;
+  border: none !important;
+}
+
+.custom-flags-select .ReactFlagsSelect__select {
+  border: none;
+  background-color: transparent;
+
+}
+
+.custom-flags-select .ReactFlagsSelect__button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none !important;
+}
+
+.custom-flags-select .ReactFlagsSelect__option {
+  padding: 8px 12px;
+  color: #333;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s;
+  border: none !important;
+}
+
+.custom-flags-select .ReactFlagsSelect__option:hover {
+  background-color: #e0e0e0;
+  border: none !important;
+}
+.custom-flags-select .module_selectBtn {
+  border: none !important;
+}
+
+/* StoreSelector.css */
+
+/* Remove the border from the ReactFlagsSelect button */
+.ReactFlagsSelect .ReactFlagsSelect__button {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: transparent; /* Optional: To make the background transparent */
+}
+
+/* Additional customization, if needed */
+.ReactFlagsSelect .ReactFlagsSelect__options {
+  border: none !important;
+  box-shadow: none !important;
+}
+.ReactFlagsSelect button {
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  color: black;
+}
+
+.ReactFlagsSelect ul {
+  border: none !important;
+  box-shadow: navajowhite;
+  text-align: center;
+ border-radius: 10px;
+}
+
+/* styles/globals.css */
+
+/* Spinner styles */
+.loader {
+  border: 6px solid #f3f3f3; /* Light gray */
+  border-top: 6px solid #ffd500; /* Black */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

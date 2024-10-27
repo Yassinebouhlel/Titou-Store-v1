@@ -44,7 +44,7 @@ export default function LocaleSwitcherSelect({
         <Select.Portal>
           <Select.Content
             align="end"
-            className="min-w-[8rem] rounded-sm bg-white py-1 shadow-md"
+            className="min-w-[8rem] rounded-sm bg-white py-1 shadow-md z-50"
             position="popper"
           >
             <Select.Viewport>

@@ -143,7 +143,9 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden flex flex-col mt-4 space-y-4">
+          
+          <div className="md:hidden flex flex-col  gap-6 text-xl space-y-4 h-screen mt-16 relative">
+            <div className='flex items-end justify-between absolute top-0 right-0'><div></div><LocaleSwitcher /></div>
             <Link href="/" passHref>
               <span
                 className={`font-bold text-black hover:text-[#b2ac9c7d] ${
@@ -194,7 +196,7 @@ const Navbar: React.FC = () => {
                 <span>{t('login')}</span>
               </Button>
             </Link>
-            <LocaleSwitcher />
+            
           </div>
         )}
       </nav>
