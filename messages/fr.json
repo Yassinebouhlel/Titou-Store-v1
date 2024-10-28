@@ -28,7 +28,8 @@
     "title": "Profile"
   },
   "StoreLanding":{
-    "welcome":"hello "
+    "welcome":"hello ",
+    "BestSeller":"Magasinez nos meilleurs ventes"
   },
   "NavBar":{
     "whyTitou":"Pourquoi Titou",

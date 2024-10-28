@@ -8,6 +8,7 @@ import { GiCarWheel, GiResize } from "react-icons/gi";
 import { IoShieldCheckmark } from "react-icons/io5";
 import CardComponent from "@/components/CardComponent";
 import ScrollEffectWrapper from "@/components/ScrollEffectWrapper";
+import Carousel from '@/components/Carousel';
 import { useTranslations } from "next-intl";
 
 export default function HomePage() {
@@ -52,7 +53,7 @@ export default function HomePage() {
     <main>
       <section className="bg-primary e px-2 pt-20">
         <div className="relative flex flex-col items-center justify-center px-6 text-center">
-          <div className="relative w-full overflow-hidden rounded-lg h-[400px] aspect-w-4 aspect-h-3 ">
+          <div className="relative w-full overflow-hidden rounded-lg h-[600px] aspect-w-4 aspect-h-3 ">
             {images.map((image, index) => (
               <div
                 key={index}
@@ -120,6 +121,8 @@ export default function HomePage() {
           </button>
         </div>
 
+
+
         {/* <VideoScroll /> */}
         <ScrollEffectWrapper>
           <div className="m-4 flex min-h-[500px] py-4 gap-2 rounded-[60px] bg-white itmes-center justify-center  ">
@@ -178,41 +181,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
-            {/* <div className=" flex flex-row   ">
-              <div className="flex w-1/4 flex-col items-center   ">
-                <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                  {t('FreeDelivery')}
-                </h1>
-                <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                  {t('FreeDeliveryDescription')}
-                </p>
-              </div>
-              <div className="flex w-1/4 flex-col items-center  ">
-                <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                  {t('SecurePayment')}
-                </h1>
-                <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                  {t('SecurePaymentDescription')}
-                </p>
-              </div>
-              <div className="flex w-1/4 flex-col items-center  ">
-                <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                  {t('FullSupport')}
-                </h1>
-                <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                  {t('FullSupportDescription')}
-                </p>
-              </div>
-              <div className="flex w-1/4 flex-col items-center  ">
-                <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                  {t('ReturnPolicy')}
-                </h1>
-                <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                  {t('ReturnPolicyDescription')}
-                </p>
-              </div>
-            </div> */}
           </div>
           
             <video
@@ -281,52 +249,8 @@ export default function HomePage() {
       </section>
 
       <div>
-        {/* <section className="h-screen bg-gray-100"> */}
-        {/* <div className="flex h-full items-center justify-center bg-[url('/images/infolettre.png')]" > */}
-        {/* <div className="flex h-full items-center justify-center bg-[url('/images/infolettre.png')] bg-no-repeat bg-center bg-cover"> */}
-        {/* <h2 className="font-bold text-3xl">More content as you scroll!</h2> */}
-        {/* </div> */}
-        {/* </section> */}
-        <div className="m-4 mb-[80px] flex flex-col md:flex-row h-auto rounded-[60px]">
-          <div className="flex flex-col md:flex-row gap-4 w-full">
-            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
-              <video
-                className="w-full h-full rounded-[30px]"
-                controls
-                autoPlay
-                muted
-                loop
-              >
-                <source src="/videos/videoValise2.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
-              <video
-                className="w-full h-full rounded-[30px]"
-                controls
-                autoPlay
-                muted
-                loop
-              >
-                <source src="/videos/videoValise3.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div className="rounded-[30px] flex flex-col justify-center items-center h-[300px] md:h-[668px] w-full md:w-1/3">
-              <video
-                className="w-full h-full rounded-[30px]"
-                controls
-                autoPlay
-                muted
-                loop
-              >
-                <source src="/videos/videoValise4.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
+
+         <Carousel />
 
         <div className="relative flex justify-center items-center bg-[#724740] py-10 px-5">
           {/* Background Image */}

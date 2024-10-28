@@ -60,7 +60,15 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center w-full">
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">
-            <Image alt="titou logo" className="w-20" height={20} src="/svg/Logo.svg" width={20} />
+            <Link href="/" passHref>
+              <Image
+                alt="titou logo"
+                className="w-20 cursor-pointer"
+                height={20}
+                src="/svg/Logo.svg"
+                width={20}
+              />
+            </Link>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">

@@ -30,21 +30,20 @@ const ColorSelector: React.FC<{
       <h3 className="text-sm font-medium text-gray-900">
         {t('ColorLabel')}: {selectedColor ? t(`${selectedColorKey}`) : t('colorNoneSelected')}
       </h3>
-      <div className="mt-2 flex space-x-3">
+      <div className="mt-2 flex flex-wrap gap-3">
         {colors.map((color) => (
           <button
             key={color.color}
             aria-label={color.color}
             className={`h-8 w-8 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-              selectedColor.color === color.color
-                ? 'ring-2 ring-indigo-500'
-                : ''
+              selectedColor.color === color.color ? 'ring-2 ring-indigo-500' : ''
             }`}
             onClick={() => onColorChange(color)}
             style={{
-              background: color.code.length > 1
-                ? `linear-gradient(to right, ${color.code[0]} 50%, ${color.code[1]} 50%)`
-                : color.code[0]
+              background:
+                color.code.length > 1
+                  ? `linear-gradient(to right, ${color.code[0]} 50%, ${color.code[1]} 50%)`
+                  : color.code[0],
             }}
           />
         ))}

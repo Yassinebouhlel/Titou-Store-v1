@@ -638,17 +638,17 @@ export const categories: Array<Category> = [
         idColor:'SALMON_WITH_CREAM_ACCESSORIES',
         code: ['#be8e80','#d2ccc0'],
         images: [
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-132.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-131.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-133.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-134.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-135.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-136.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-137.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-138.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-139.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-140.jpg',
-          '/images/Multicouleur/NAVY BLUE WITH SALMON ACCESSORIES/titou-photos-141.jpg'
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-132.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-131.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-133.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-134.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-135.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-136.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-137.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-138.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-139.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-140.jpg',
+          '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-141.jpg'
         ]
       },
       {

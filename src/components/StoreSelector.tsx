@@ -52,7 +52,7 @@ export default function StoreSelector() {
       <div className="hidden md:flex flex-1 items-center justify-center bg-yellow-500/40 p-8">
         <div className="relative w-full max-w-xl">
           <video
-            src="/videos/videoValise.mp4"
+            src="/videos/videoValise3.mp4"
             autoPlay
             loop
             muted
