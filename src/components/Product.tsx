@@ -9,6 +9,7 @@ import { FaLock } from "react-icons/fa";
 import { BsFillLuggageFill } from "react-icons/bs";
 import { GiHammerBreak } from "react-icons/gi";
 import { GiUnplugged } from "react-icons/gi";
+import {data} from '@/constant/config';
 import { getCartItems,addItemToCart } from '@/services/cartStorage';
 import { useCart } from '@/context/CartContext';  // Use CartContext
 

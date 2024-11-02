@@ -17,14 +17,28 @@ export default function HomePage() {
   const s = useTranslations("newsletter");
 
   const images = [
-
-    { src: "/images/HomePage/Titou Saudia Web Banner.png", alt: "Saudi store" },
     {
-      src: "/images/HomePage/Titou Canada Web Banner v2.png",
+      src: {
+        small: "/images/HomePage/Titou_Saudia_Web_Banner_600x400.png", 
+        medium: "/images/HomePage/Titou_Saudia_Web_Banner_800x600.png", 
+        large: "/images/HomePage/Titou_Saudia_Web_Banner_1200x800.png", 
+      },
+      alt: "Saudi store",
+    },
+    {
+      src: {
+        small: "/images/HomePage/Titou_Canada_Web_Banner_600x400.png", 
+        medium: "/images/HomePage/Titou_Canada_Web_Banner_800x600.png", 
+        large: "/images/HomePage/Titou_Canada_Web_Banner_1200x800.png", 
+      },
       alt: "Canada store",
     },
     {
-      src: "/images/HomePage/Titou America web banner 2.png",
+      src: {
+        small: "/images/HomePage/Titou_America_Web_Banner_600x400.png", 
+        medium: "/images/HomePage/Titou_America_Web_Banner_800x600.png", 
+        large: "/images/HomePage/Titou_America_Web_Banner_1200x800.png", 
+      },
       alt: "USA store",
     },
   ];
@@ -49,21 +63,39 @@ export default function HomePage() {
     setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth || 0);
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getImageSrc = (image: any) => {
+    if (windowWidth <= 640) {
+      return image.src.small;
+    } else if (windowWidth <= 1024) {
+      return image.src.medium;
+    } else {
+      return image.src.large;
+    }
+  };
+
   return (
     <main>
       <section className="bg-primary e px-2 pt-20">
         <div className="relative flex flex-col items-center justify-center px-6 text-center">
-          <div className="relative w-full overflow-hidden rounded-lg h-[600px] aspect-w-4 aspect-h-3 ">
+          <div className="relative w-full overflow-hidden rounded-lg h-[600px]">
             {images.map((image, index) => (
               <div
                 key={index}
                 className={`duration-700 ease-in-out ${index === currentSlide ? "block" : "hidden"}`}
               >
                 <Image
-                  src={image.src}
+                  src={getImageSrc(image)}
                   alt={image.alt}
                   fill
                   style={{ objectFit: "cover" }}
+                  className="w-full h-full"
                 />
               </div>
             ))}

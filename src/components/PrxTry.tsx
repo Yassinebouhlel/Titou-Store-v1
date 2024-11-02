@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
     );
   };
   const t = useTranslations('ProductList');
-  {console.log("🚀 ~ product.colors:", product.colors)}
+ 
   return (
     <motion.div
       animate={{opacity: 1}}
