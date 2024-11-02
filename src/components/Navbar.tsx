@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
   const handleNavigation = (navItem: string) => {
     setSelectedNavItem(navItem);
     localStorage.setItem('path', navItem);
+    setIsMobileMenuOpen(false)
   };
 
   useEffect(() => {
