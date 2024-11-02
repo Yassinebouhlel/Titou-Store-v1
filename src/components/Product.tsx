@@ -193,7 +193,7 @@ const addItemToBasket = async (quantity:any)=>{
 
 }
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
+    const timer = setTimeout(() => setIsLoading(false), 0);
     return () => clearTimeout(timer);
   }, []);
 
@@ -260,6 +260,17 @@ const addItemToBasket = async (quantity:any)=>{
               <div className="h-6 w-1/2 animate-pulse rounded bg-gray-200" />
               <div className="h-10 w-full animate-pulse rounded bg-gray-200" />
               <div className="h-32 w-full animate-pulse rounded bg-gray-200" />
+              <div className="mt-4">
+                    <div className="h-6 w-24 bg-gray-200 rounded mb-2"></div>
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {[...Array(4)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="h-8 w-8 bg-gray-300 rounded-full"
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
             </div>
           )}
 
