@@ -158,33 +158,33 @@ export default function ProductPage() {
         ) : (
           <>
             <ProductOnePage product={products} />
-            <div className="relative flex flex-col sm:flex-row justify-between items-center h-auto bg-[#f0e7d5] py-10 px-5 mb-8">
+            <div className="flex flex-col sm:flex-row bg-[#f0e7d5] py-10 px-5 mb-8 gap-8">
               {/* Free Shipping */}
-              <div className="flex flex-col items-center text-center mb-8 sm:mb-0">
+              <div className="flex-1 flex flex-col items-center text-center">
                 <FaShippingFast className="text-6xl mb-4" />
                 <h1 className="text-black text-[30px] sm:text-[40px] font-bold uppercase tracking-wide">
                   {t("Shipping")}
                 </h1>
-                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>{" "}
-                {/* Underline element */}
+                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>
                 <p className="text-[14px] sm:text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
                   {t("ShippingDescription")}
                 </p>
               </div>
+
               {/* Free return */}
-              <div className="flex flex-col items-center text-center mb-8 sm:mb-0">
+              <div className="flex-1 flex flex-col items-center text-center">
                 <TbTruckReturn className="text-7xl mb-4" />
                 <h1 className="text-black text-[30px] sm:text-[40px] font-bold uppercase tracking-wide">
                   {t("Return")}
                 </h1>
-                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>{" "}
-                {/* Underline element */}
+                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>
                 <p className="text-[14px] sm:text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
                   {t("ReturnDescription")}
                 </p>
               </div>
+
               {/* Warranty */}
-              <div className="flex flex-col items-center text-center">
+              <div className="flex-1 flex flex-col items-center text-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-16 w-16 mb-4"
@@ -202,8 +202,7 @@ export default function ProductPage() {
                 <h1 className="text-black text-[30px] sm:text-[40px] font-bold uppercase tracking-wide">
                   {t("Warranty")}
                 </h1>
-                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>{" "}
-                {/* Underline element */}
+                <div className="w-[60px] h-[3px] bg-black mt-2 mb-4"></div>
                 <p className="text-[14px] sm:text-[16px] leading-[1.8] tracking-[0.005rem] text-gray-700">
                   {t("WarrantyDescription")}
                 </p>

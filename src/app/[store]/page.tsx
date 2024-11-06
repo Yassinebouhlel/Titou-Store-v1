@@ -19,7 +19,7 @@ export default function HomePage() {
   const images = [
     {
       src: {
-        small: "/images/HomePage/Titou_Saudia_Web_Banner_600x400.png", 
+        small: "/images/HomePage/Titou_Saudia_Web_Banner_360x240.png", 
         medium: "/images/HomePage/Titou_Saudia_Web_Banner_800x600.png", 
         large: "/images/HomePage/Titou_Saudia_Web_Banner_1200x800.png", 
       },
@@ -27,7 +27,7 @@ export default function HomePage() {
     },
     {
       src: {
-        small: "/images/HomePage/Titou_Canada_Web_Banner_600x400.png", 
+        small: "/images/HomePage/Titou_Canada_Web_Banner_360x240.png", 
         medium: "/images/HomePage/Titou_Canada_Web_Banner_800x600.png", 
         large: "/images/HomePage/Titou_Canada_Web_Banner_1200x800.png", 
       },
@@ -35,7 +35,7 @@ export default function HomePage() {
     },
     {
       src: {
-        small: "/images/HomePage/Titou_America_Web_Banner_600x400.png", 
+        small: "/images/HomePage/Titou_America_Web_Banner_360x240.png", 
         medium: "/images/HomePage/Titou_America_Web_Banner_800x600.png", 
         large: "/images/HomePage/Titou_America_Web_Banner_1200x800.png", 
       },
@@ -84,7 +84,7 @@ export default function HomePage() {
     <main>
       <section className="bg-primary e px-2 pt-20">
         <div className="relative flex flex-col items-center justify-center px-6 text-center">
-          <div className="relative w-full overflow-hidden rounded-lg h-[600px]">
+          <div className="relative w-full overflow-hidden rounded-lg h-[1200px]">
             {images.map((image, index) => (
               <div
                 key={index}

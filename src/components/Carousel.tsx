@@ -2,86 +2,84 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState, useMemo } from 'react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { useTranslations } from 'next-intl';
+import { data } from "@/constant/config";
 
 type Card = {
   id: number;
   image: string;
   price: string;
   description: string;
-  details: string;
+  details?: string;
 };
 
-const cards: Array<Card> = [
-  {
-    id: 1,
-    image: '/images/Transparent/1-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 3 valise Shine',
-    details: 'Roues démontables Color Brillant'
-  },
-  {
-    id: 2,
-    image: '/images/Transparent/2-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 3 valise Mat',
-    details: 'Roues démontables  Color Mat Pro'
-  },
-  {
-    id: 3,
-    image: '/images/Transparent/82-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 3 valise Multicolor',
-    details: 'Roues démontables Multi Color Pro'
-  },
-  {
-    id: 4,
-    image: '/images/Transparent/96-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 2 valise',
-    details: '28 - 70 mm'
-  },
-  {
-    id: 5,
-    image: '/images/Transparent/titou-photos-1-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 2 valise',
-    details: '28 - 70 mm'
-  },
-  {
-    id: 6,
-    image: '/images/Transparent/titou-photos-132-removebg-preview.png',
-    price: '199.99',
-    description: 'Ensemble de 2 valise',
-    details: '28 - 70 mm'
-  }
-];
-
 function Carousel() {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [visibleCardsCount, setVisibleCardsCount] = useState(4); // Default to 4 cards at a time
+  const [visibleCardsCount, setVisibleCardsCount] = useState(4);
   const t = useTranslations('StoreLanding');
+  const p = useTranslations('ProductList');
+  const selectedStore = document.cookie.split('; ').find(row => row.startsWith('selectedStore='))?.split('=')[1] || 'TN';
+
+  // Memoize the cards array to prevent recreating on every render
+  const cards = useMemo(() => [
+    {
+      id: 1,
+      image: data[selectedStore].categories[0].colors[0].transparent,
+      price: data[selectedStore].categories[0].price,
+      description: p(data[selectedStore].categories[0].id)
+    },
+    {
+      id: 2,
+      image: data[selectedStore].categories[1].colors[8].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
+    },
+    {
+      id: 3,
+      image: data[selectedStore].categories[1].colors[0].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
+    },
+    {
+      id: 4,
+      image: data[selectedStore].categories[1].colors[4].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
+    },
+    {
+      id: 5,
+      image: data[selectedStore].categories[0].colors[4].transparent,
+      price: data[selectedStore].categories[0].price,
+      description: p(data[selectedStore].categories[0].id)
+    },
+    {
+      id: 6,
+      image: data[selectedStore].categories[2].colors[11].transparent,
+      price: data[selectedStore].categories[2].price,
+      description: p(data[selectedStore].categories[2].id)
+    }
+  ], [data, selectedStore, p]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200); // Simulate loading time
+    const timer = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle window resize to update visibleCardsCount based on screen size
   useEffect(() => {
     const updateVisibleCardsCount = () => {
-      // Check if the screen width is less than 640px (mobile)
       if (window.innerWidth < 640) {
-        setVisibleCardsCount(1); // Show 1 card on mobile
+        setVisibleCardsCount(1);
       } else {
-        setVisibleCardsCount(4); // Show 4 cards on larger screens
+        setVisibleCardsCount(4);
       }
     };
 
-    updateVisibleCardsCount(); // Run initially
+    updateVisibleCardsCount();
     window.addEventListener('resize', updateVisibleCardsCount);
     return () => window.removeEventListener('resize', updateVisibleCardsCount);
   }, []);
@@ -98,20 +96,21 @@ function Carousel() {
     );
   };
 
+  const handleProductClick = (productId: number) => {
+    router.push(`/products/${productId}`);
+  };
+
   const visibleCards = cards.slice(
     currentIndex,
     currentIndex + visibleCardsCount
   );
 
   const handleInfiniteLoop = (
-    cardsToDisplay: Array<Card>,
-    totalCards: number
+    cardsToDisplay: Array<Card>
   ) => {
     if (cardsToDisplay.length < visibleCardsCount) {
-      return [
-        ...cardsToDisplay,
-        ...cards.slice(0, visibleCardsCount - cardsToDisplay.length)
-      ];
+      const remainingCount = visibleCardsCount - cardsToDisplay.length;    
+      return [...cardsToDisplay, ...cards.slice(0, remainingCount)];
     }
     return cardsToDisplay;
   };
@@ -127,14 +126,15 @@ function Carousel() {
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          
-          {handleInfiniteLoop(visibleCards, cards.length).map((card) => (
+          {handleInfiniteLoop(visibleCards).map((card) => (
             <motion.div
-              key={card.id}
-              className="w-full sm:w-1/4 flex flex-col items-center"
+              key={`${card.id}-${currentIndex}`}
+              className="w-full sm:w-1/4 flex flex-col items-center transform transition-transform hover:scale-105"
+              onClick={() => handleProductClick(card.id)}
               transition={{ type: 'spring', stiffness: 300 }}
+              style={{ cursor: 'pointer' }}
             >
-              <div className="rounded-custom-card bg-white p-4 text-left shadow-lg max-h-[200px] min-h-[200px]">
+              <div className="rounded-custom-card bg-white p-4 text-left shadow-lg max-h-[200px] min-h-[200px] w-full">
                 {loading ? (
                   <div className="mx-auto mb-6 mt-2 h-[200px] w-[200px] animate-pulse bg-gray-200" />
                 ) : (
@@ -156,7 +156,6 @@ function Carousel() {
           ))}
         </motion.div>
       </div>
-      {/* Navigation buttons */}
       <div className="absolute -bottom-3 right-4 flex w-full justify-end gap-x-4 p-4 text-white">
         <button
           className="rounded-full bg-[#d3cdbd8e] p-2 hover:bg-[#b2ac9cad]"

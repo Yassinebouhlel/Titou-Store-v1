@@ -8,6 +8,7 @@ type Category = {
     idColor: string;
     code: Array<string> ;
     images: Array<string>;
+    transparent?: string;
   }>;
   subtitle: string;
   price: number;
@@ -740,7 +741,8 @@ export const data: any = {
               '/images/Brillant/Black/3.png',
               '/images/Brillant/Black/4.png',
               '/images/Brillant/Black/5.png'
-            ]
+            ],
+            transparent:'/images/Transparent/1-removebg-preview.png'
           },
           {
             color: 'BLUE CHEWING',
@@ -810,7 +812,8 @@ export const data: any = {
               '/images/Brillant/NAVY BLUE/titou-photos-13.jpg',
               '/images/Brillant/NAVY BLUE/titou-photos-14.jpg',
               '/images/Brillant/NAVY BLUE/titou-photos-15.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-1-removebg-preview.png'
           },
           {
             color: 'SALMON',
@@ -879,7 +882,8 @@ export const data: any = {
               '/images/Mat/CREAM WITH BLACK ACCESSORIES/93.jpg',
               '/images/Mat/CREAM WITH BLACK ACCESSORIES/94.jpg',
               '/images/Mat/CREAM WITH BLACK ACCESSORIES/95.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/82-removebg-preview.png'
           },
           {
             color: "CREAM WITH BLUE CHEWING GUM ACCESSORIES",
@@ -959,7 +963,8 @@ export const data: any = {
               "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/107.jpg",
               "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/108.jpg",
               "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/109.jpg",
-            ]
+            ],
+            transparent:'/images/Transparent/96-removebg-preview.png'
           },
           {
             color: "GREEN CHEWING GUM WITH GREEN CHEWING GUM ACCESSORIES",
@@ -1042,7 +1047,8 @@ export const data: any = {
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/13.jpg",
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/14.jpg",
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/1.jpg"
-            ]
+            ],
+            transparent:'/images/Transparent/2-removebg-preview.png'
           },
         ],
         subtitle:'subtitlefix',
@@ -1312,7 +1318,8 @@ export const data: any = {
               '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-139.jpg',
               '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-140.jpg',
               '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-141.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-132-removebg-preview.png'
           },
           {
             color: 'SALMON WITH GRAY ACCESSORIES',
