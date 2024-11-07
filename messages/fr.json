@@ -153,5 +153,12 @@
     "ShoppingCart":"Ton panier d'achat",
     "EmptyCart":"Votre panier est vide.",
     "CartButton":"Finaliser la commande"
+  },
+  "ContactForm":{
+    "ContactUs": "Contactez-nous",
+    "Description":"N'hésitez pas à nous contacter à votre convenance. Nous vous répondrons dans un délai de trois jours.",
+    "Name":"Votre nom",
+    "Message": "Votre message",
+    "Submit": "Envoyer"
   }
 }

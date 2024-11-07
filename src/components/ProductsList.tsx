@@ -190,7 +190,7 @@ const ProductListing: React.FC<{
         <main className="w-full lg:w-3/4">
           <motion.div
             animate={{opacity: 1}}
-            className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
             initial={{opacity: 0}}
             transition={{delay: 0.5, duration: 0.5}}
           >

@@ -193,7 +193,7 @@ const addItemToBasket = async (quantity:any)=>{
 
 }
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 0);
+    const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -260,17 +260,6 @@ const addItemToBasket = async (quantity:any)=>{
               <div className="h-6 w-1/2 animate-pulse rounded bg-gray-200" />
               <div className="h-10 w-full animate-pulse rounded bg-gray-200" />
               <div className="h-32 w-full animate-pulse rounded bg-gray-200" />
-              <div className="mt-4">
-                    <div className="h-6 w-24 bg-gray-200 rounded mb-2"></div>
-                    <div className="flex flex-wrap gap-3 mt-2">
-                      {[...Array(4)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="h-8 w-8 bg-gray-300 rounded-full"
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
             </div>
           )}
 
@@ -327,31 +316,24 @@ const addItemToBasket = async (quantity:any)=>{
                     </p>
 
                     <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Features:</h3>
-                    <ul className="pl-6 mt-2 text-[16px] font-sans text-gray-600 leading-[150%] tracking-[0.00938rem]">
-                      <li className="flex items-center mb-5">
-                        <GiCarWheel className="text-black font-bold text-5xl"/>
-                        <span className="ml-4">{t('Description2')}</span>
-                      </li>
-                      <li className="flex items-center mb-5">
-                        <FaLock className="text-black font-bold text-5xl"/>
-                        <span className="ml-4">{t('Description3')}</span>
-                      </li>
-                      <li className="flex items-center mb-5">
-                        <PiAirplaneInFlightFill className="text-black font-bold text-5xl"/>
-                        <span className="ml-4">{t('Description4')}</span>
-                      </li>
-                      <li className="flex items-center mb-5">
-                        <BsFillLuggageFill className="text-black font-bold text-5xl" />
-                        <span className="ml-4">{t('Description5')}</span>
-                      </li>
-                      <li className="flex items-center mb-5">
-                        <GiHammerBreak className="text-black font-bold text-5xl"/>
-                        <span className="ml-4">{t('Description6')}</span>
-                      </li>
-                      <li className="flex items-center mb-5">
-                        <GiUnplugged className="text-black font-bold text-5xl"/>
-                        <span className="ml-4">{t('Description7')}</span>
-                      </li>
+                    <ul className="w-full max-w-2xl mx-auto space-y-6">
+                      {[
+                        { Icon: GiCarWheel, description: t('Description2') },
+                        { Icon: FaLock, description: t('Description3') },
+                        { Icon: PiAirplaneInFlightFill, description: t('Description4') },
+                        { Icon: BsFillLuggageFill, description: t('Description5') },
+                        { Icon: GiHammerBreak, description: t('Description6') },
+                        { Icon: GiUnplugged, description: t('Description7') }
+                      ].map(({ Icon, description }, index) => (
+                        <li key={index} className="flex items-start gap-4">
+                          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                            <Icon className="text-black w-8 h-8" />
+                          </div>
+                          <span className="flex-1 pt-2 text-base text-gray-600">
+                            {description}
+                          </span>
+                        </li>
+                      ))}
                     </ul>
 
                     <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Dimensions:</h3>

@@ -152,5 +152,12 @@
     "ShoppingCart":"Your shopping cart",
     "EmptyCart":"Your shopping cart is empty.",
     "CartButton":"Proceed to checkout"
+  },
+  "ContactForm":{
+    "ContactUs": "Contact Us",
+    "Description":"Drop us a line at your convenience. We’ll get back to you within three days.",
+    "Name":"Name",
+    "Message": "Message",
+    "Submit": "Submit"
   }
 }
