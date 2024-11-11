@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import {useTranslations} from 'next-intl';
+import Link from 'next/link';
 
 function Footer() {
   const t = useTranslations('footer');
@@ -29,18 +30,27 @@ function Footer() {
       <div className="flex flex-col rounded-full px-2 py-1">
         <p className="font-bold text-[1rem] text-[#FFD500]">{l('more')}</p>
       </div>
-      <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
-        {l('LuggageTesting')}
-      </p>
-      <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
-        {l('Airlines')}
-      </p>
-      <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
-        {l('tsa')}
-      </p>
-      <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
-        {l('tips')}
-      </p>
+      <Link href="/constructionPage">
+        <p className="mt-3 text-start font-sans text-[0.875rem] text-white cursor-pointer">
+          {l('LuggageTesting')}
+        </p>
+      </Link>
+      <Link href="/constructionPage">
+        <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
+          {l('Airlines')}
+        </p>
+      </Link>
+      <Link href="/constructionPage">
+        <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
+          {l('tsa')}
+        </p>
+      </Link>
+      <Link href="/constructionPage">
+        <p className="mt-3 text-start font-sans text-[0.875rem] text-white">
+          {l('tips')}
+        </p>
+      </Link>
+      
     </div>
 
     {/* Contact Section */}

@@ -16,10 +16,6 @@ type Category = {
   rating: number;
   sizes: Array<never>;
   reviews: number;
-  storage: Array<string>;
-  leaseDurations: Array<number>;
-  defaultLeaseDuration: number;
-  features: Array<string>;
   additionalInfo: any;
 };
 export const siteConfig = {
@@ -180,15 +176,6 @@ export const categories: Array<Category> = [
     rating: 4.64,
     sizes: [],
     reviews: 6,
-    storage: ['128GB', '256GB', '512GB', '1TB'],
-    leaseDurations: [1, 3, 6, 12, 24],
-    defaultLeaseDuration: 12,
-    features: [
-      'A17 Pro chip',
-      'Pro camera system',
-      'Action button',
-      'Always-On display'
-    ],
     additionalInfo: {
       care: 'Titou Care, livraison et support inclus.',
       paymentNote: ''
@@ -389,15 +376,6 @@ export const categories: Array<Category> = [
     rating: 4.64,
     sizes: [],
     reviews: 6,
-    storage: ['128GB', '256GB', '512GB', '1TB'],
-    leaseDurations: [1, 3, 6, 12, 24],
-    defaultLeaseDuration: 12,
-    features: [
-      'A17 Pro chip',
-      'Pro camera system',
-      'Action button',
-      'Always-On display'
-    ],
     additionalInfo: {
       care: 'Titou Care, livraison et support inclus.',
       paymentNote: ''
@@ -708,15 +686,6 @@ export const categories: Array<Category> = [
     rating: 4.64,
     sizes: [],
     reviews: 6,
-    storage: ['128GB', '256GB', '512GB', '1TB'],
-    leaseDurations: [1, 3, 6, 12, 24],
-    defaultLeaseDuration: 12,
-    features: [
-      'A17 Pro chip',
-      'Pro camera system',
-      'Action button',
-      'Always-On display'
-    ],
     additionalInfo: {
       care: 'Titou Care, livraison et support inclus.',
       paymentNote: ''
@@ -845,15 +814,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -1057,15 +1017,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -1377,15 +1328,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -1511,15 +1453,6 @@ export const data: any = {
       rating: 4.64,
       sizes: [],
       reviews: 6,
-      storage: ['128GB', '256GB', '512GB', '1TB'],
-      leaseDurations: [1, 3, 6, 12, 24],
-      defaultLeaseDuration: 12,
-      features: [
-        'A17 Pro chip',
-        'Pro camera system',
-        'Action button',
-        'Always-On display'
-      ],
       additionalInfo: {
         care: 'Titou Care, livraison et support inclus.',
         paymentNote: ''
@@ -1720,15 +1653,6 @@ export const data: any = {
       rating: 4.64,
       sizes: [],
       reviews: 6,
-      storage: ['128GB', '256GB', '512GB', '1TB'],
-      leaseDurations: [1, 3, 6, 12, 24],
-      defaultLeaseDuration: 12,
-      features: [
-        'A17 Pro chip',
-        'Pro camera system',
-        'Action button',
-        'Always-On display'
-      ],
       additionalInfo: {
         care: 'Titou Care, livraison et support inclus.',
         paymentNote: ''
@@ -2039,15 +1963,6 @@ export const data: any = {
       rating: 4.64,
       sizes: [],
       reviews: 6,
-      storage: ['128GB', '256GB', '512GB', '1TB'],
-      leaseDurations: [1, 3, 6, 12, 24],
-      defaultLeaseDuration: 12,
-      features: [
-        'A17 Pro chip',
-        'Pro camera system',
-        'Action button',
-        'Always-On display'
-      ],
       additionalInfo: {
         care: 'Titou Care, livraison et support inclus.',
         paymentNote: ''
@@ -2175,15 +2090,7 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
+        
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -2387,15 +2294,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -2707,15 +2605,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -2843,15 +2732,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -3055,15 +2935,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -3375,15 +3246,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -3511,15 +3373,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -3723,15 +3576,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
@@ -4043,15 +3887,6 @@ export const data: any = {
         rating: 4.64,
         sizes: [],
         reviews: 6,
-        storage: ['128GB', '256GB', '512GB', '1TB'],
-        leaseDurations: [1, 3, 6, 12, 24],
-        defaultLeaseDuration: 12,
-        features: [
-          'A17 Pro chip',
-          'Pro camera system',
-          'Action button',
-          'Always-On display'
-        ],
         additionalInfo: {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
