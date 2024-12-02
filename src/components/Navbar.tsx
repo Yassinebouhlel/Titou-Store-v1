@@ -212,18 +212,15 @@ const Navbar: React.FC = () => {
 
       {/* Cart Modal */}
       {isCartModalOpen && (
-        <div className="fixed inset-0 z-50 flex">
-          {/* Overlay */}
+          <div className="fixed inset-0 z-50 flex justify-end">
           <div
-            className="absolute inset-0 bg-black opacity-50"
+            className="w-full h-full bg-black opacity-50"
             onClick={() => setIsCartModalOpen(false)}
           />
 
-          {/* Cart Panel */}
-          <div className="absolute inset-0 w-screen h-screen bg-[#F4EEE1] p-4 md:w-120 md:h-auto md:inset-auto md:right-0 md:top-0 md:shadow-lg transition-transform transform translate-x-0 overflow-y-auto">
-            {/* Header */}
+          <div className="w-full md:w-120 bg-[#F4EEE1] h-full p-6 shadow-lg transition-transform transform translate-x-0">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg md:text-xl font-bold text-gray-800">{f('ShoppingCart')}</h2>
+              <h2 className="text-xl font-bold text-gray-800">{f('ShoppingCart')}</h2>
               <button
                 className="text-gray-500 hover:text-gray-700 focus:outline-none"
                 onClick={() => setIsCartModalOpen(false)}
@@ -232,48 +229,44 @@ const Navbar: React.FC = () => {
               </button>
             </div>
 
-            {/* Cart Items */}
             <div className="space-y-4">
               {cartItems.length > 0 ? (
                 cartItems.map((item: any, index: any) => (
                   <div
-                    className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 rounded-lg border border-gray-200 bg-white shadow-md"
+                    className="flex justify-between items-center p-3 rounded-md border border-gray-300 bg-gray-50 shadow-sm"
                     key={index}
                   >
-                    {/* Image Section */}
                     <div className="flex items-center">
                       <Image
                         src={item.selectedColor.images[0]}
                         alt={item.name}
-                        width={60}
-                        height={60}
-                        className="rounded-lg"
+                        width={50}
+                        height={50}
+                        className="rounded-md"
                       />
-                      <div className="ml-4">
+                      <div className="ml-3">
                         <p className="font-medium text-gray-800">{p(`${item.id}`)}</p>
                         <p className="text-sm text-gray-500">{c(`${item.selectedColor.idColor}`)}</p>
                       </div>
                     </div>
-
-                    {/* Quantity and Actions */}
-                    <div className="flex items-center mt-4 sm:mt-0 space-x-4">
+                    <div className="flex items-center space-x-2">
                       <button
                         onClick={() => updateCartItemQuantity(index, item.quantity - 1)}
-                        className="px-3 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
+                        className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
                         disabled={item.quantity === 1}
                       >
                         <AiOutlineMinus />
                       </button>
-                      <span className="text-lg font-medium text-gray-800">{item.quantity}</span>
+                      <span className="px-3">{item.quantity}</span>
                       <button
                         onClick={() => updateCartItemQuantity(index, item.quantity + 1)}
-                        className="px-3 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
+                        className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
                       >
                         <AiOutlinePlus />
                       </button>
                       <button
                         onClick={() => removeItemFromCart(index)}
-                        className="px-3 py-1 text-red-600 hover:text-red-700 focus:outline-none"
+                        className="px-2 py-1 text-[#b2ab9a]-500 hover:text-red-700 focus:outline-none"
                       >
                         <AiOutlineDelete />
                       </button>
@@ -285,7 +278,6 @@ const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Footer */}
             {cartItems.length > 0 && (
               <>
                 <div className="border-t border-gray-300 mt-6 pt-4">
@@ -293,7 +285,7 @@ const Navbar: React.FC = () => {
                     Total: {totalPrice.toFixed(2)} {cartItems[0]?.currency || '$'}
                   </p>
                 </div>
-                <Button className="w-full mt-4 bg-[#ffd500] font-bold text-lg md:text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg">
+                <Button className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg">
                   {f('CartButton')}
                 </Button>
               </>
