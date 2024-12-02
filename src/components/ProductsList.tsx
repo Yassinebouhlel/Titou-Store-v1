@@ -131,8 +131,6 @@ const ProductListing: React.FC<{
 }> = ({filters, products}) => {
   const [isLoading, setIsLoading] = useState(true);
   const availbleColors = getOrderedColorsByRgb(products);
-  const uniqueArray = availbleColors.filter((item, index) => availbleColors.indexOf(item) === index);
-  console.log("🚀 ~ uniqueArray:", uniqueArray)
   
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
@@ -205,13 +203,6 @@ const ProductListing: React.FC<{
                   <ProductCard key={i} product={product} />
                 ))}
           </motion.div>
-          <CardAd
-            backgroundUrl="https://titou.ma/wp-content/uploads/2024/01/ee.png?id=9668"
-            ctaLink="#"
-            ctaText="Découvrir maintenant"
-            description="Explorez des pièces exclusives pour un style raffiné."
-            title="Nouvelle Collection Luxe"
-          />
         </main>
       </div>
     </motion.div>
