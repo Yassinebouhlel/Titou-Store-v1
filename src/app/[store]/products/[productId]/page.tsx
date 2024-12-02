@@ -11,8 +11,13 @@ import { motion } from "framer-motion";
 export default function ProductPage() {
   const t = useTranslations("Product");
   const { productId } = useParams();
-  const productIndex =
-    productId === "brillant" ? 0 : productId === "mat" ? 1 : 2;
+  // const productIndex =
+  //   productId === "brillant" ? 0 : productId === "mat" ? 1 : 2;
+  const productIndex = 
+    productId === "brillant" ? 0 
+    : productId === "mat" ? 1 
+    : productId === "multicolor" ? 2
+    : 3;
 
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
@@ -38,7 +43,7 @@ export default function ProductPage() {
     return () => clearTimeout(timeoutId);
   }, []);
   // Empty dependency array ensures the effect runs only once
-
+console.log('products',products)
   return (
     <div>
       <section className="bg-primary px-2 pt-20 ">

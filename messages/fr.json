@@ -120,6 +120,9 @@
     "CREAM": "Crème",
     "NAVY_BLUE": "Bleu marine",
     "SALMON": "Saumon",
+    "RED":"Rouge",
+    "GRAY":"Gris",
+    "BLUE_SKY":"Bleue Ciel",
     "CREAM_WITH_BLACK_ACCESSORIES": "Crème avec accessoires noirs",
     "CREAM_WITH_BLUE_CHEWING_GUM_ACCESSORIES": "Crème avec accessoires gomme bleue",
     "CREAM_WITH_GRAY_ACCESSORIES": "Crème avec accessoires gris",
@@ -146,6 +149,7 @@
     "brillant":"Ensemble de 3 valise - Brilliant",
     "mat":"Ensemble de 3 valise - Mat",
     "multicolor":"Ensemble de 3 valise - Multicouleur",
+    "carryonShine":"Bagage à main - Brilliant",
     "subtitlefix":"Découvrez notre ensemble exclusif de 3 valises avec roues fixes, l’ultime compagnon de voyage pour ceux qui recherchent à la fois la fonctionnalité et l’élégance. Chaque valise de cet ensemble est méticuleusement conçue pour offrir une expérience de voyage sans tracas.",
     "subtitleRemove":"Découvrez notre ensemble exclusif de 3 valises avec roues démontables, l’ultime compagnon de voyage pour ceux qui recherchent à la fois la fonctionnalité et l’élégance. Chaque valise de cet ensemble est méticuleusement conçue pour offrir une expérience de voyage sans tracas."
   },

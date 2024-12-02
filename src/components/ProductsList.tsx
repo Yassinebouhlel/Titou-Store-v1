@@ -131,6 +131,9 @@ const ProductListing: React.FC<{
 }> = ({filters, products}) => {
   const [isLoading, setIsLoading] = useState(true);
   const availbleColors = getOrderedColorsByRgb(products);
+  const uniqueArray = availbleColors.filter((item, index) => availbleColors.indexOf(item) === index);
+  console.log("🚀 ~ uniqueArray:", uniqueArray)
+  
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);

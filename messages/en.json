@@ -119,6 +119,9 @@
     "CREAM":"Cream",
     "NAVY_BLUE":"Navy Blue",
     "SALMON":"Salmon",
+    "RED":"Red",
+    "GRAY":"Gray",
+    "BLUE_SKY":"Blue Sky",
     "CREAM_WITH_BLACK_ACCESSORIES":"Cream With Black Accessories ",
     "CREAM_WITH_BLUE_CHEWING_GUM_ACCESSORIES":"Cream With Blue Chewing Gum Accessories",
     "CREAM_WITH_GRAY_ACCESSORIES":"Cream With Gray Accessories",
@@ -145,6 +148,7 @@
     "brillant":"3-Piece Luggage Set - Shine",
     "mat":"3-Piece Luggage Set - Mat",
     "multicolor":"3-Piece Luggage Set - Multicolor",
+    "carryonShine":"Carry-On - Shine",
     "subtitlefix":"Discover our exclusive set of 3 suitcases with fixed wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience.",
     "subtitleRemove":"Discover our exclusive set of 3 suitcases with removable wheels, the ultimate travel companion for those seeking both functionality and elegance. Each suitcase in this set is meticulously designed to provide a hassle-free travel experience."
   },

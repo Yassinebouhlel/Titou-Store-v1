@@ -1,103 +1,163 @@
 'use client';
-  
-  import { useState, useEffect } from 'react';
-  import CarouselItem, { Product } from './CarouselItem';
-
-  
-  const SAMPLE_PRODUCTS: Product[] = [
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState, useMemo } from 'react';
+import { GrNext, GrPrevious } from 'react-icons/gr';
+import { useTranslations } from 'next-intl';
+import { data } from "@/constant/config";
+type Card = {
+  id: number;
+  image: string;
+  price: string;
+  description: string;
+  details?: string;
+};
+function Carousel() {
+  const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [visibleCardsCount, setVisibleCardsCount] = useState(4);
+  const t = useTranslations('StoreLanding');
+  const p = useTranslations('ProductList');
+  const selectedStore = document.cookie.split('; ').find(row => row.startsWith('selectedStore='))?.split('=')[1] || 'TN';
+  // Memoize the cards array to prevent recreating on every render
+  const cards = useMemo(() => [
     {
       id: 1,
-      title: "Falija",
-      price: 20,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      backgroundColor: "#bef008",
-      imageUrl: "/images/Transparent/titou-photos-132-removebg-preview.png"
-    },
-    {
-      id: 5,
-      title: "Falija",
-      price: 20,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      backgroundColor: "#bef008",
-      imageUrl: "/images/Transparent/96-removebg-preview.png"
+      image: data[selectedStore].categories[0].colors[0].transparent,
+      price: data[selectedStore].categories[0].price,
+      description: p(data[selectedStore].categories[0].id)
     },
     {
       id: 2,
-      title: "Falija",
-      price: 20,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      backgroundColor: "#bef008",
-      imageUrl: "/images/Transparent/titou-photos-132-removebg-preview.png"
+      image: data[selectedStore].categories[1].colors[8].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
     },
     {
-      id: 15,
-      title: "3asba",
-      price: 20,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      backgroundColor: "#bef008",
-      imageUrl: "/images/Transparent/96-removebg-preview.png"
+      id: 3,
+      image: data[selectedStore].categories[1].colors[0].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
     },
-    // Add other products...
-  ];
-  
-  const ProductCarousel = () => {
-    const [active, setActive] = useState(1);
-    const [other1, setOther1] = useState(0);
-    const [other2, setOther2] = useState(2);
-    const [direction, setDirection] = useState<'next' | 'prev'>('next');
-  
-    const handleNext = () => {
-      setDirection('next');
-      setActive(prev => (prev + 1) >= SAMPLE_PRODUCTS.length ? 0 : prev + 1);
-      setOther1(prev => prev - 1 < 0 ? SAMPLE_PRODUCTS.length - 1 : prev - 1);
-      setOther2(prev => (prev + 1) >= SAMPLE_PRODUCTS.length ? 0 : prev + 1);
+    {
+      id: 4,
+      image: data[selectedStore].categories[1].colors[4].transparent,
+      price: data[selectedStore].categories[1].price,
+      description: p(data[selectedStore].categories[1].id)
+    },
+    {
+      id: 5,
+      image: data[selectedStore].categories[0].colors[4].transparent,
+      price: data[selectedStore].categories[0].price,
+      description: p(data[selectedStore].categories[0].id)
+    },
+    {
+      id: 6,
+      image: data[selectedStore].categories[2].colors[11].transparent,
+      price: data[selectedStore].categories[2].price,
+      description: p(data[selectedStore].categories[2].id)
+    }
+  ], [data, selectedStore, p]);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+  useEffect(() => {
+    const updateVisibleCardsCount = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCardsCount(1);
+      } else {
+        setVisibleCardsCount(4);
+      }
     };
-  
-    const handlePrev = () => {
-      setDirection('prev');
-      setActive(prev => prev - 1 < 0 ? SAMPLE_PRODUCTS.length - 1 : prev - 1);
-      setOther1(prev => (prev + 1) >= SAMPLE_PRODUCTS.length ? 0 : prev + 1);
-      setOther2(prev => (other1 + 1) >= SAMPLE_PRODUCTS.length ? 0 : other1 + 1);
-    };
-  
-    useEffect(() => {
-      const interval = setInterval(handleNext, 500);
-      return () => clearInterval(interval);
-    }, [active]);
-  
-    return (
-      <section className={`-mt-20 w-full h-screen overflow-hidden ${direction}`}>
-        <div className="h-full relative">
-          {SAMPLE_PRODUCTS.map((product, index) => (
-            <CarouselItem
-              key={product.id}
-              product={product}
-              className={`
-                
-                ${index === active ? 'block active' : ''}
-                ${index === other1 ? 'block other_1' : ''}
-                ${index === other2 ? 'block other_2' : ''}
-              `}
-            />
-          ))}
-        </div>
-        <div className="absolute bottom-5 right-[750px] grid grid-cols-2 gap-2.5 z-10">
-          <button
-            onClick={handlePrev}
-            className="w-12 h-12 bg-transparent border border-white/30 text-white font-mono text-lg font-bold leading-none shadow-lg transition-colors hover:bg-white/30"
-          >
-            {"<"}
-          </button>
-          <button
-            onClick={handleNext}
-            className="w-12 h-12 bg-transparent border border-white/30 text-white font-mono text-lg font-bold leading-none shadow-lg transition-colors hover:bg-white/30"
-          >
-            {">"}
-          </button>
-        </div>
-      </section>
+    updateVisibleCardsCount();
+    window.addEventListener('resize', updateVisibleCardsCount);
+    return () => window.removeEventListener('resize', updateVisibleCardsCount);
+  }, []);
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? cards.length - visibleCardsCount : prev - 1
     );
   };
-  
-  export default ProductCarousel;
-  
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === cards.length - visibleCardsCount ? 0 : prev + 1
+    );
+  };
+  const handleProductClick = (productId: number) => {
+    router.push(`/products/${productId}`);
+  };
+  const visibleCards = cards.slice(
+    currentIndex,
+    currentIndex + visibleCardsCount
+  );
+  const handleInfiniteLoop = (
+    cardsToDisplay: Array<Card>
+  ) => {
+    if (cardsToDisplay.length < visibleCardsCount) {
+      const remainingCount = visibleCardsCount - cardsToDisplay.length;    
+      return [...cardsToDisplay, ...cards.slice(0, remainingCount)];
+    }
+    return cardsToDisplay;
+  };
+  return (
+    <div className="relative w-full overflow-hidden rounded-custom-card bg-[#F0E7D5] pb-4 mb-8">
+      <h1 className="px-20 py-10 text-center text-3xl">{t('BestSeller')}</h1>
+      <div className="relative flex items-center justify-center">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="flex w-full gap-x-4 sm:gap-x-10 overflow-hidden px-6 sm:px-6 py-4 sm:py-10"
+          exit={{ opacity: 0, x: -100 }}
+          initial={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+        >
+          {handleInfiniteLoop(visibleCards).map((card) => (
+            <motion.div
+              key={`${card.id}-${currentIndex}`}
+              className="w-full sm:w-1/4 flex flex-col items-center transform transition-transform hover:scale-105"
+              onClick={() => handleProductClick(card.id)}
+              transition={{ type: 'spring', stiffness: 300 }}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="rounded-custom-card bg-white p-4 text-left shadow-lg max-h-[200px] min-h-[200px] w-full">
+                {loading ? (
+                  <div className="mx-auto mb-6 mt-2 h-[200px] w-[200px] animate-pulse bg-gray-200" />
+                ) : (
+                  <Image
+                    alt={card.description}
+                    className="mx-auto hover:scale-125 mb-6 -mt-20"
+                    height={300}
+                    loading="lazy"
+                    src={card.image}
+                    width={300}
+                  />
+                )}
+              </div>
+              <div className="flex flex-col items-center mt-4">
+                <div className="-mb-1 font-bold text-2xl">{card.price} $</div>
+                <div className="text-sm text-gray-500">{card.description}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="absolute -bottom-3 right-4 flex w-full justify-end gap-x-4 p-4 text-white">
+        <button
+          className="rounded-full bg-[#d3cdbd8e] p-2 hover:bg-[#b2ac9cad]"
+          onClick={prevSlide}
+        >
+          <GrPrevious size={24} />
+        </button>
+        <button
+          className="rounded-full bg-[#d3cdbd8e] p-2 hover:bg-[#b2ac9cad]"
+          onClick={nextSlide}
+        >
+          <GrNext size={24} />
+        </button>
+      </div>
+    </div>
+  );
+}
+export default Carousel;

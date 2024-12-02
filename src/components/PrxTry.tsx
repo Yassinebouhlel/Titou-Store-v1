@@ -56,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
         <h2 className="font-bold text-lg">{t(`${product.id}`)}</h2>
         
         <div className="flex items-center justify-between ">
-          <p className="mt-2 text-lg font-semibold">${product.price}</p>
+          <p className="mt-2 text-lg font-semibold">{product.price} {product.currency}</p>
         </div>
       </div>
       <Link href={`/products/${product.id}`}>

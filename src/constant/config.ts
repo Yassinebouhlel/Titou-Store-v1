@@ -628,7 +628,8 @@ export const categories: Array<Category> = [
           '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-139.jpg',
           '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-140.jpg',
           '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-141.jpg'
-        ]
+        ],
+        transparent: '/images/Transparent/titou-photos-132-removebg-preview.png'
       },
       {
         color: 'SALMON WITH GRAY ACCESSORIES',
@@ -810,7 +811,7 @@ export const data: any = {
         ],
         subtitle:'subtitleRemove',
         price: 249.99,
-        currency: '$',
+        currency: '$ CAD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -1013,7 +1014,7 @@ export const data: any = {
         ],
         subtitle:'subtitlefix',
         price: 199.99,
-        currency: '$',
+        currency: '$ CAD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -1324,7 +1325,7 @@ export const data: any = {
         ],
         subtitle:'subtitleRemove',
         price: 299.99,
-        currency: '$',
+        currency: '$ CAD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -1332,11 +1333,92 @@ export const data: any = {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
         }
-      }
+      },
+      {
+        id: 'carryonShine',
+        name: 'Valise carryOn - Brilliant',
+        colors: [
+          {
+            color: 'BLACK',
+            idColor:'BLACK',
+            code: ['#000000'],
+            images: [
+              '/images/CarryOnBrilliant/black.png'
+            ],
+          },
+          {
+            color: 'BLUE SKY',
+            idColor:'BLUE_SKY',
+            code: ['#57bce1'],
+            images: [
+              '/images/CarryOnBrilliant/blue.png'
+            ],
+          },
+          {
+            color: 'CREAM',
+            idColor:'CREAM',
+            code: ['#d2ccc0'],
+            images: [
+              '/images/CarryOnBrilliant/cream.png'
+            ],
+          },
+          {
+            color: 'GRAY',
+            idColor:'GRAY',
+            code: ['#5f6065'],
+            images: [
+              '/images/CarryOnBrilliant/gray.png'
+            ],
+          },
+          {
+            color: 'RED',
+            idColor:'RED',
+            code: ['#FF0000'],
+            images: [
+              '/images/CarryOnBrilliant/red.png'
+            ],
+          },
+          {
+            color: 'SALMON',
+            idColor:'SALMON',
+            code: ['#be8e80'],
+            images: [
+              '/images/CarryOnBrilliant/salmon.png'
+            ],
+          },
+          {
+            color: 'BORDEAUX',
+            idColor:'BORDEAUX',
+            code: ['#621620'],
+            images: [
+              '/images/CarryOnBrilliant/velvet.png'
+            ],
+          },
+          {
+            color: 'NAVY_BLUE',
+            idColor:'NAVY_BLUE',
+            code: ['#1f2f48'],
+            images: [
+              '/images/CarryOnBrilliant/navy_blue.png'
+            ],
+          }
+        ],
+        subtitle:'subtitleRemove',
+        price: 109.99,
+        currency: '$ CAD',
+        rating: 4.64,
+        sizes: ['S'],
+        reviews: 6,
+        additionalInfo: {
+          care: 'Titou Care, livraison et support inclus.',
+          paymentNote: ''
+        }
+      },
     ], 
     PreferedLanguage:''
   }, 
-  SA:{ categories: [
+  SA:{ 
+    categories: [
     {
       id: 'brillant',
       name: 'Ensemble de 3 valise - Brilliant',
@@ -1351,7 +1433,8 @@ export const data: any = {
             '/images/Brillant/Black/3.png',
             '/images/Brillant/Black/4.png',
             '/images/Brillant/Black/5.png'
-          ]
+          ],
+          transparent:'/images/Transparent/1-removebg-preview.png'
         },
         {
           color: 'BLUE CHEWING',
@@ -1421,7 +1504,8 @@ export const data: any = {
             '/images/Brillant/NAVY BLUE/titou-photos-13.jpg',
             '/images/Brillant/NAVY BLUE/titou-photos-14.jpg',
             '/images/Brillant/NAVY BLUE/titou-photos-15.jpg'
-          ]
+          ],
+          transparent: '/images/Transparent/titou-photos-1-removebg-preview.png'
         },
         {
           color: 'SALMON',
@@ -1481,7 +1565,8 @@ export const data: any = {
             '/images/Mat/CREAM WITH BLACK ACCESSORIES/93.jpg',
             '/images/Mat/CREAM WITH BLACK ACCESSORIES/94.jpg',
             '/images/Mat/CREAM WITH BLACK ACCESSORIES/95.jpg'
-          ]
+          ],
+          transparent: '/images/Transparent/82-removebg-preview.png'
         },
         {
           color: "CREAM WITH BLUE CHEWING GUM ACCESSORIES",
@@ -1561,7 +1646,8 @@ export const data: any = {
             "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/107.jpg",
             "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/108.jpg",
             "/images/Mat/GREEN CHEWING GUM WITH BLACK ACCESSORIES/109.jpg",
-          ]
+          ],
+          transparent:'/images/Transparent/96-removebg-preview.png'
         },
         {
           color: "GREEN CHEWING GUM WITH GREEN CHEWING GUM ACCESSORIES",
@@ -1644,7 +1730,8 @@ export const data: any = {
             "/images/Mat/YELLOW WITH BLACK ACCESSORIES/13.jpg",
             "/images/Mat/YELLOW WITH BLACK ACCESSORIES/14.jpg",
             "/images/Mat/YELLOW WITH BLACK ACCESSORIES/1.jpg"
-          ]
+          ],
+          transparent:'/images/Transparent/2-removebg-preview.png'
         },
       ],
       subtitle:'subtitlefix',
@@ -1905,7 +1992,8 @@ export const data: any = {
             '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-139.jpg',
             '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-140.jpg',
             '/images/Multicouleur/SALMON WITH CREAM ACCESSORIES/titou-photos-141.jpg'
-          ]
+          ],
+          transparent: '/images/Transparent/titou-photos-132-removebg-preview.png'
         },
         {
           color: 'SALMON WITH GRAY ACCESSORIES',
@@ -1967,7 +2055,87 @@ export const data: any = {
         care: 'Titou Care, livraison et support inclus.',
         paymentNote: ''
       }
-    }
+    },
+    {
+      id: 'carryonShine',
+      name: 'Valise carryOn - Brilliant',
+      colors: [
+        {
+          color: 'BLACK',
+          idColor:'BLACK',
+          code: ['#000000'],
+          images: [
+            '/images/CarryOnBrilliant/black.png'
+          ],
+        },
+        {
+          color: 'BLUE SKY',
+          idColor:'BLUE_SKY',
+          code: ['#57bce1'],
+          images: [
+            '/images/CarryOnBrilliant/blue.png'
+          ],
+        },
+        {
+          color: 'CREAM',
+          idColor:'CREAM',
+          code: ['#d2ccc0'],
+          images: [
+            '/images/CarryOnBrilliant/cream.png'
+          ],
+        },
+        {
+          color: 'GRAY',
+          idColor:'GRAY',
+          code: ['#5f6065'],
+          images: [
+            '/images/CarryOnBrilliant/gray.png'
+          ],
+        },
+        {
+          color: 'RED',
+          idColor:'RED',
+          code: ['#FF0000'],
+          images: [
+            '/images/CarryOnBrilliant/red.png'
+          ],
+        },
+        {
+          color: 'SALMON',
+          idColor:'SALMON',
+          code: ['#be8e80'],
+          images: [
+            '/images/CarryOnBrilliant/salmon.png'
+          ],
+        },
+        {
+          color: 'BORDEAUX',
+          idColor:'BORDEAUX',
+          code: ['#621620'],
+          images: [
+            '/images/CarryOnBrilliant/velvet.png'
+          ],
+        },
+        {
+          color: 'NAVY_BLUE',
+          idColor:'NAVY_BLUE',
+          code: ['#1f2f48'],
+          images: [
+            '/images/CarryOnBrilliant/navy_blue.png'
+          ],
+        }
+      ],
+      subtitle:'subtitleRemove',
+      price: 199,
+      currency: 'SAR',
+      rating: 4.64,
+      sizes: ['S'],
+      reviews: 6,
+      additionalInfo: {
+        care: 'Titou Care, livraison et support inclus.',
+        paymentNote: ''
+      }
+    },
   ], 
   PreferedLanguage:''}, 
   TN:{ 
@@ -2609,7 +2777,87 @@ export const data: any = {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
         }
-      }
+      },
+      {
+        id: 'carryonShine',
+        name: 'Valise carryOn - Brilliant',
+        colors: [
+          {
+            color: 'BLACK',
+            idColor:'BLACK',
+            code: ['#000000'],
+            images: [
+              '/images/CarryOnBrilliant/black.png'
+            ],
+          },
+          {
+            color: 'BLUE SKY',
+            idColor:'BLUE_SKY',
+            code: ['#57bce1'],
+            images: [
+              '/images/CarryOnBrilliant/blue.png'
+            ],
+          },
+          {
+            color: 'CREAM',
+            idColor:'CREAM',
+            code: ['#d2ccc0'],
+            images: [
+              '/images/CarryOnBrilliant/cream.png'
+            ],
+          },
+          {
+            color: 'GRAY',
+            idColor:'GRAY',
+            code: ['#5f6065'],
+            images: [
+              '/images/CarryOnBrilliant/gray.png'
+            ],
+          },
+          {
+            color: 'RED',
+            idColor:'RED',
+            code: ['#FF0000'],
+            images: [
+              '/images/CarryOnBrilliant/red.png'
+            ],
+          },
+          {
+            color: 'SALMON',
+            idColor:'SALMON',
+            code: ['#be8e80'],
+            images: [
+              '/images/CarryOnBrilliant/salmon.png'
+            ],
+          },
+          {
+            color: 'BORDEAUX',
+            idColor:'BORDEAUX',
+            code: ['#621620'],
+            images: [
+              '/images/CarryOnBrilliant/velvet.png'
+            ],
+          },
+          {
+            color: 'NAVY_BLUE',
+            idColor:'NAVY_BLUE',
+            code: ['#1f2f48'],
+            images: [
+              '/images/CarryOnBrilliant/navy_blue.png'
+            ],
+          }
+        ],
+        subtitle:'subtitleRemove',
+        price: 119,
+        currency: 'TND',
+        rating: 4.64,
+        sizes: ['S'],
+        reviews: 6,
+        additionalInfo: {
+          care: 'Titou Care, livraison et support inclus.',
+          paymentNote: ''
+        }
+      },
     ], 
   PreferedLanguage:''}, 
   US:{ 
@@ -2728,7 +2976,7 @@ export const data: any = {
         ],
         subtitle:'subtitleRemove',
         price: 249.99,
-        currency: '$',
+        currency: '$ USD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -2931,7 +3179,7 @@ export const data: any = {
         ],
         subtitle:'subtitlefix',
         price: 199.99,
-        currency: '$',
+        currency: '$ USD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -3242,7 +3490,7 @@ export const data: any = {
         ],
         subtitle:'subtitleRemove',
         price: 299.99,
-        currency: '$',
+        currency: '$ USD',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -3250,7 +3498,87 @@ export const data: any = {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
         }
-      }
+      },
+      {
+        id: 'carryonShine',
+        name: 'Valise carryOn - Brilliant',
+        colors: [
+          {
+            color: 'BLACK',
+            idColor:'BLACK',
+            code: ['#000000'],
+            images: [
+              '/images/CarryOnBrilliant/black.png'
+            ],
+          },
+          {
+            color: 'BLUE SKY',
+            idColor:'BLUE_SKY',
+            code: ['#57bce1'],
+            images: [
+              '/images/CarryOnBrilliant/blue.png'
+            ],
+          },
+          {
+            color: 'CREAM',
+            idColor:'CREAM',
+            code: ['#d2ccc0'],
+            images: [
+              '/images/CarryOnBrilliant/cream.png'
+            ],
+          },
+          {
+            color: 'GRAY',
+            idColor:'GRAY',
+            code: ['#5f6065'],
+            images: [
+              '/images/CarryOnBrilliant/gray.png'
+            ],
+          },
+          {
+            color: 'RED',
+            idColor:'RED',
+            code: ['#FF0000'],
+            images: [
+              '/images/CarryOnBrilliant/red.png'
+            ],
+          },
+          {
+            color: 'SALMON',
+            idColor:'SALMON',
+            code: ['#be8e80'],
+            images: [
+              '/images/CarryOnBrilliant/salmon.png'
+            ],
+          },
+          {
+            color: 'BORDEAUX',
+            idColor:'BORDEAUX',
+            code: ['#621620'],
+            images: [
+              '/images/CarryOnBrilliant/velvet.png'
+            ],
+          },
+          {
+            color: 'NAVY_BLUE',
+            idColor:'NAVY_BLUE',
+            code: ['#1f2f48'],
+            images: [
+              '/images/CarryOnBrilliant/navy_blue.png'
+            ],
+          }
+        ],
+        subtitle:'subtitleRemove',
+        price: 109.99,
+        currency: '$ USD',
+        rating: 4.64,
+        sizes: ['S'],
+        reviews: 6,
+        additionalInfo: {
+          care: 'Titou Care, livraison et support inclus.',
+          paymentNote: ''
+        }
+      },
   ], 
   PreferedLanguage:''}, 
   FR:{ 
@@ -3891,7 +4219,87 @@ export const data: any = {
           care: 'Titou Care, livraison et support inclus.',
           paymentNote: ''
         }
-      }
+      },
+      {
+        id: 'carryonShine',
+        name: 'Valise carryOn - Brilliant',
+        colors: [
+          {
+            color: 'BLACK',
+            idColor:'BLACK',
+            code: ['#000000'],
+            images: [
+              '/images/CarryOnBrilliant/black.png'
+            ],
+          },
+          {
+            color: 'BLUE SKY',
+            idColor:'BLUE_SKY',
+            code: ['#57bce1'],
+            images: [
+              '/images/CarryOnBrilliant/blue.png'
+            ],
+          },
+          {
+            color: 'CREAM',
+            idColor:'CREAM',
+            code: ['#d2ccc0'],
+            images: [
+              '/images/CarryOnBrilliant/cream.png'
+            ],
+          },
+          {
+            color: 'GRAY',
+            idColor:'GRAY',
+            code: ['#5f6065'],
+            images: [
+              '/images/CarryOnBrilliant/gray.png'
+            ],
+          },
+          {
+            color: 'RED',
+            idColor:'RED',
+            code: ['#FF0000'],
+            images: [
+              '/images/CarryOnBrilliant/red.png'
+            ],
+          },
+          {
+            color: 'SALMON',
+            idColor:'SALMON',
+            code: ['#be8e80'],
+            images: [
+              '/images/CarryOnBrilliant/salmon.png'
+            ],
+          },
+          {
+            color: 'BORDEAUX',
+            idColor:'BORDEAUX',
+            code: ['#621620'],
+            images: [
+              '/images/CarryOnBrilliant/velvet.png'
+            ],
+          },
+          {
+            color: 'NAVY_BLUE',
+            idColor:'NAVY_BLUE',
+            code: ['#1f2f48'],
+            images: [
+              '/images/CarryOnBrilliant/navy_blue.png'
+            ],
+          }
+        ],
+        subtitle:'subtitleRemove',
+        price: 109.99,
+        currency: '€',
+        rating: 4.64,
+        sizes: ['S'],
+        reviews: 6,
+        additionalInfo: {
+          care: 'Titou Care, livraison et support inclus.',
+          paymentNote: ''
+        }
+      },
     ], 
     PreferedLanguage:''}, 
   MA:{ categories: [], PreferedLanguage:''}
