@@ -9,6 +9,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineDelete, AiOutlineMenu, AiOutlin
 import LocaleSwitcher from './LocaleSwitcher';
 import Button from '@/components/Button';
 import { useCart } from '@/context/CartContext';
+import { useRouter } from 'next/navigation';
 
 const Navbar: React.FC = () => {
   const [isScrollingUp, setIsScrollingUp] = useState(true);
@@ -50,6 +51,17 @@ const Navbar: React.FC = () => {
       }
     }
   }, []);
+  const router = useRouter();
+  const handleCheckout = () => {
+    // Save cart items in localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Close the cart modal
+    setIsCartModalOpen(false);
+
+    // Navigate to the checkout page
+    router.push('/checkout');
+  };
 
   return (
     <>
@@ -302,7 +314,7 @@ const Navbar: React.FC = () => {
                     Total: {totalPrice.toFixed(2)} {cartItems[0]?.currency || '$'}
                   </p>
                 </div>
-                <Button className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg">
+                <Button className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg" onClick={handleCheckout}>
                   {f('CartButton')}
                 </Button>
               </div>
