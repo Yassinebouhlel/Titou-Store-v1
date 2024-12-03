@@ -6,7 +6,11 @@ interface CartItem {
     name: string;  // Name of the product
     price: number; // Price of the product
     quantity: number; // Quantity of the product
-    selectedColor: string;
+    selectedColor: {
+        images: string[];
+    };
+    currency: string;
+    images: string
   }
 
 const CheckoutPage = () => {
