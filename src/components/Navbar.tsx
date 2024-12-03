@@ -212,61 +212,77 @@ const Navbar: React.FC = () => {
 
       {/* Cart Modal */}
       {isCartModalOpen && (
-          <div className="fixed inset-0 z-50 flex justify-end">
+          <div className="fixed inset-0 z-50 flex flex-col md:flex-row justify-end">
+          {/* Overlay */}
           <div
-            className="w-full h-full bg-black opacity-50"
+            className="fixed inset-0 bg-black opacity-50"
             onClick={() => setIsCartModalOpen(false)}
           />
-
-          <div className="w-full md:w-120 bg-[#F4EEE1] h-full p-6 shadow-lg transition-transform transform translate-x-0">
+    
+          {/* Cart Slide Panel */}
+          <div className="relative w-full md:w-[500px] h-full md:h-full bg-[#F4EEE1] p-4 md:p-6 shadow-lg 
+            overflow-y-auto 
+            transform transition-transform duration-300 
+            translate-x-0 
+            md:ml-auto 
+            flex flex-col">
+            {/* Header */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold text-gray-800">{f('ShoppingCart')}</h2>
               <button
                 className="text-gray-500 hover:text-gray-700 focus:outline-none"
                 onClick={() => setIsCartModalOpen(false)}
               >
-                <span className="text-xl">&times;</span>
+                <span className="text-2xl leading-none">&times;</span>
               </button>
             </div>
-
-            <div className="space-y-4">
+    
+            {/* Cart Items Container */}
+            <div className="flex-grow overflow-y-auto space-y-4 pr-2">
               {cartItems.length > 0 ? (
-                cartItems.map((item: any, index: any) => (
+                cartItems.map((item:any, index:any) => (
                   <div
-                    className="flex justify-between items-center p-3 rounded-md border border-gray-300 bg-gray-50 shadow-sm"
                     key={index}
+                    className="flex flex-col sm:flex-row justify-between items-center 
+                      p-3 rounded-md border border-gray-300 bg-gray-50 shadow-sm 
+                      space-y-2 sm:space-y-0"
                   >
-                    <div className="flex items-center">
+                    {/* Product Info */}
+                    <div className="flex items-center w-full sm:w-auto">
                       <Image
                         src={item.selectedColor.images[0]}
                         alt={item.name}
                         width={50}
                         height={50}
-                        className="rounded-md"
+                        className="rounded-md mr-3"
                       />
-                      <div className="ml-3">
+                      <div>
                         <p className="font-medium text-gray-800">{p(`${item.id}`)}</p>
                         <p className="text-sm text-gray-500">{c(`${item.selectedColor.idColor}`)}</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => updateCartItemQuantity(index, item.quantity - 1)}
-                        className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
-                        disabled={item.quantity === 1}
-                      >
-                        <AiOutlineMinus />
-                      </button>
-                      <span className="px-3">{item.quantity}</span>
-                      <button
-                        onClick={() => updateCartItemQuantity(index, item.quantity + 1)}
-                        className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
-                      >
-                        <AiOutlinePlus />
-                      </button>
+    
+                    {/* Quantity and Actions */}
+                    <div className="flex items-center justify-between w-full sm:w-auto sm:space-x-2">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => updateCartItemQuantity(index, item.quantity - 1)}
+                          className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
+                          disabled={item.quantity === 1}
+                        >
+                          <AiOutlineMinus />
+                        </button>
+                        <span className="px-3">{item.quantity}</span>
+                        <button
+                          onClick={() => updateCartItemQuantity(index, item.quantity + 1)}
+                          className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
+                        >
+                          <AiOutlinePlus />
+                        </button>
+                      </div>
                       <button
                         onClick={() => removeItemFromCart(index)}
-                        className="px-2 py-1 text-[#b2ab9a]-500 hover:text-red-700 focus:outline-none"
+                        className="ml-2 text-[#b2ab9a]-500 hover:text-red-700 focus:outline-none"
                       >
                         <AiOutlineDelete />
                       </button>
@@ -277,10 +293,11 @@ const Navbar: React.FC = () => {
                 <div className="text-center text-gray-500">{f('EmptyCart')}</div>
               )}
             </div>
-
+    
+            {/* Total and Checkout */}
             {cartItems.length > 0 && (
-              <>
-                <div className="border-t border-gray-300 mt-6 pt-4">
+              <div className="mt-4">
+                <div className="border-t border-gray-300 pt-4">
                   <p className="font-bold text-right text-lg text-gray-800">
                     Total: {totalPrice.toFixed(2)} {cartItems[0]?.currency || '$'}
                   </p>
@@ -288,7 +305,7 @@ const Navbar: React.FC = () => {
                 <Button className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg">
                   {f('CartButton')}
                 </Button>
-              </>
+              </div>
             )}
           </div>
         </div>
