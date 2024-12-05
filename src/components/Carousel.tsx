@@ -7,7 +7,8 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { useTranslations } from 'next-intl';
 import { data } from "@/constant/config";
 type Card = {
-  id: number;
+  id: string;
+  idCategory: string;
   image: string;
   price: string;
   description: string;
@@ -24,37 +25,43 @@ function Carousel() {
   // Memoize the cards array to prevent recreating on every render
   const cards = useMemo(() => [
     {
-      id: 1,
+      id: data[selectedStore].categories[0].colors[0].idColor,
+      idCategory: data[selectedStore].categories[0].id,
       image: data[selectedStore].categories[0].colors[0].transparent,
       price: data[selectedStore].categories[0].price,
       description: p(data[selectedStore].categories[0].id)
     },
     {
-      id: 2,
+      id: data[selectedStore].categories[1].colors[8].idColor,
+      idCategory: data[selectedStore].categories[1].id,
       image: data[selectedStore].categories[1].colors[8].transparent,
       price: data[selectedStore].categories[1].price,
       description: p(data[selectedStore].categories[1].id)
     },
     {
-      id: 3,
+      id: data[selectedStore].categories[1].colors[0].idColor,
+      idCategory: data[selectedStore].categories[1].id,
       image: data[selectedStore].categories[1].colors[0].transparent,
       price: data[selectedStore].categories[1].price,
       description: p(data[selectedStore].categories[1].id)
     },
     {
-      id: 4,
+      id: data[selectedStore].categories[1].colors[4].idColor,
+      idCategory: data[selectedStore].categories[1].id,
       image: data[selectedStore].categories[1].colors[4].transparent,
       price: data[selectedStore].categories[1].price,
       description: p(data[selectedStore].categories[1].id)
     },
     {
-      id: 5,
+      id: data[selectedStore].categories[0].colors[4].idColor,
+      idCategory: data[selectedStore].categories[0].id,
       image: data[selectedStore].categories[0].colors[4].transparent,
       price: data[selectedStore].categories[0].price,
       description: p(data[selectedStore].categories[0].id)
     },
     {
-      id: 6,
+      id: data[selectedStore].categories[2].colors[11].idColor,
+      idCategory: data[selectedStore].categories[2].id,
       image: data[selectedStore].categories[2].colors[11].transparent,
       price: data[selectedStore].categories[2].price,
       description: p(data[selectedStore].categories[2].id)
@@ -86,8 +93,11 @@ function Carousel() {
       prev === cards.length - visibleCardsCount ? 0 : prev + 1
     );
   };
-  const handleProductClick = (productId: number) => {
-    router.push(`/products/${productId}`);
+  const handleProductClick = (colorId: string, idCategory: string) => {
+    const sanitizedColorId = encodeURIComponent(colorId.trim().replace(/\s+/g, '-').toLowerCase());
+    const selectedStore = document.cookie.split('; ').find(row => row.startsWith('selectedStore='))?.split('=')[1] || 'TN';
+    const url = `/${selectedStore}/products/${idCategory}?color=${sanitizedColorId}`;
+    router.push(url);
   };
   const visibleCards = cards.slice(
     currentIndex,
@@ -117,7 +127,7 @@ function Carousel() {
             <motion.div
               key={`${card.id}-${currentIndex}`}
               className="w-full sm:w-1/4 flex flex-col items-center transform transition-transform hover:scale-105"
-              onClick={() => handleProductClick(card.id)}
+              onClick={() => handleProductClick(card.id, card.idCategory)}
               transition={{ type: 'spring', stiffness: 300 }}
               style={{ cursor: 'pointer' }}
             >

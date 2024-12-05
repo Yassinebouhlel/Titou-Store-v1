@@ -12,6 +12,8 @@ import { GiUnplugged } from "react-icons/gi";
 import {data} from '@/constant/config';
 import { getCartItems,addItemToCart } from '@/services/cartStorage';
 import { useCart } from '@/context/CartContext';  // Use CartContext
+import { useRouter } from 'next/navigation'; 
+import { useSearchParams } from 'next/navigation'; // Added for reading URL params
 
 
 
@@ -177,6 +179,8 @@ const ProductImage: React.FC<{
 };
 
 const ProductPage: React.FC<{product: any}> = ({product}) => {
+  const router = useRouter(); // Initialize router
+  const searchParams = useSearchParams(); // To read URL parameters
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [isLoading, setIsLoading] = useState(true);
   const { addItemToCart } = useCart();
@@ -192,6 +196,35 @@ const addItemToBasket = async (quantity:any)=>{
   addItemToCart(newItem)
 
 }
+
+   // New function to handle color change with URL update
+  // Function to handle color changes
+  const handleColorChange = (color: any) => {
+    setSelectedColor(color);
+
+    // Update URL with the new color parameter
+    const params = new URLSearchParams(searchParams);
+    params.set('color', color.color.replace(/ /g, '-').toLowerCase());
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
+  // Effect to handle initial color from URL
+  useEffect(() => {
+    const colorFromUrl = searchParams.get('color'); // Get `color` from URL
+
+    if (colorFromUrl) {
+      const matchedColor = product.colors.find(
+        (color: any) => color.color.replace(/ /g, '_').toLowerCase() === colorFromUrl
+      );
+      setSelectedColor(matchedColor || product.colors[0]); // Fallback if no match
+
+    } else {
+
+      setSelectedColor(product.colors[0]); // Default to first color
+    }
+  }, [searchParams, product.colors]);
+      
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
@@ -297,7 +330,7 @@ const addItemToBasket = async (quantity:any)=>{
 
               <ColorSelector
                 colors={product.colors}
-                onColorChange={setSelectedColor}
+                onColorChange={handleColorChange}
                 selectedColor={selectedColor}
               />
               <Counter addItemToBasket={addItemToBasket} />

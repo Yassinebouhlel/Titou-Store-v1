@@ -745,7 +745,7 @@ export const data: any = {
           },
           {
             color: 'CREAM',
-            idColor:'BORDEAUX',
+            idColor:'CREAM',
             code: ['#d2ccc0'],
             images: [
               '/images/Brillant/CREAM/titou-photos-155.jpg',
