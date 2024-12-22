@@ -9,10 +9,7 @@ import { FaLock } from "react-icons/fa";
 import { BsFillLuggageFill } from "react-icons/bs";
 import { GiHammerBreak } from "react-icons/gi";
 import { GiUnplugged } from "react-icons/gi";
-import {data} from '@/constant/config';
-import { getCartItems,addItemToCart } from '@/services/cartStorage';
 import { useCart } from '@/context/CartContext';  // Use CartContext
-import { useRouter } from 'next/navigation'; 
 import { useSearchParams } from 'next/navigation'; // Added for reading URL params
 
 
@@ -179,7 +176,6 @@ const ProductImage: React.FC<{
 };
 
 const ProductPage: React.FC<{product: any}> = ({product}) => {
-  const router = useRouter(); // Initialize router
   const searchParams = useSearchParams(); // To read URL parameters
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [isLoading, setIsLoading] = useState(true);
@@ -205,7 +201,7 @@ const addItemToBasket = async (quantity:any)=>{
     // Update URL with the new color parameter
     const params = new URLSearchParams(searchParams);
     params.set('color', color.color.replace(/ /g, '-').toLowerCase());
-    router.push(`?${params.toString()}`, { scroll: false });
+    //router.push(`?${params.toString()}`, { scroll: false });
   };
 
   // Effect to handle initial color from URL
