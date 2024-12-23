@@ -85,7 +85,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
       {productColors.slice(0, 4).map((color: any) => (
         <motion.button
           key={color.code}
-          className="h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className={"h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"+`${color.code === selectedColor.code && "ring-offset-2 ring-2 outline-none  " }`}
           onClick={() => setSelectedColor(color)}
           style={getBackgroundStyle(color.code)}
           variants={buttonVariants}
@@ -154,7 +154,7 @@ function ColorPicker({productColors, selectedColor, setSelectedColor}: any) {
                 {productColors.slice(4).map((color: any) => (
                   <motion.button
                     key={color.code}
-                    className="h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    className={"h-4 w-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2"+`${color.code === selectedColor.code && "ring-offset-2 ring-2 outline-none  " }`}
                     onClick={() => setSelectedColor(color)}
                     style={getBackgroundStyle(color.code)}
                     variants={colorVariants}

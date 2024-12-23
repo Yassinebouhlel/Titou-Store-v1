@@ -89,11 +89,11 @@ const Navbar: React.FC = () => {
             : "transform -translate-y-full"
         }`}
       >
-        <p style={{fontSize:'0.875rem',lineHeight:'150%',wordSpacing:'1px'}}className={`h-10 w-full bg-[#FFD500] flex items-center justify-center text-center`}>
-          Nous n'acceptons plus de nouveaux abonnements. Les abonnements
-          existants continuent. <strong className="px-1">En savoir plus </strong>
-          <FaArrowRight size={12} className="" />
-        </p>
+        <div style={{fontSize:'0.875rem',lineHeight:'150%',wordSpacing:'1px'}} className={`md:h-10 w-full bg-[#FFD500]  flex flex-col md:flex-row items-center justify-center text-center`}>
+          <p>Nous n'acceptons plus de nouveaux abonnements. Les abonnements existants continuent.</p> 
+<span className="flex items-center"><strong className="px-1">En savoir plus </strong>
+<FaArrowRight size={12} className="" /></span>
+        </div>
         <div className="pt-4 px-4 flex justify-between items-center w-full">
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">

@@ -15,9 +15,9 @@ type Product = {
 
 type ProductCardProps = {
   product: any;
+  oneImage?:boolean
 };
-
-const ProductCard: React.FC<ProductCardProps> = ({product}) => {
+ const ProductCard: React.FC<ProductCardProps> = ({product,oneImage=false}) => {
   const [selectedColor, setSelectedColor] = useState<any>(product.colors[0]);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const arrayOfImgs = [];
@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
   return (
     <motion.div
       animate={{opacity: 1}}
-      className="relative max-w-xs rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
+      className="relative max-w-sm rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
       initial={{opacity: 0}}
       transition={{duration: 0.3}}
       whileHover={{scale: 1.05}}
@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
       <ImageSlider
         currentImageIndex={currentImageIndex}
         handleNextImage={handleNextImage}
-        images={selectedColor.images}
+        images={oneImage ?selectedColor.images : selectedColor.images}
       />
       <ColorPicker
         productColors={product.colors}
@@ -53,18 +53,18 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
         setSelectedColor={setSelectedColor}
       />
       <div className="mt-4 w-full">
-        <h2 className="font-bold text-lg">{t(`${product.id}`)}</h2>
+        <p className="font-bold ">{t(`${product.id}`)}</p>
         
         <div className="flex items-center justify-between ">
-          <p className="mt-2 text-lg font-semibold">{product.price} {product.currency}</p>
+          <p className="mt-2  font-semibold">{product.price} {product.currency}</p>
         </div>
       </div>
       <Link href={`/products/${product.id}`}>
-        <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[75px] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
+  {!oneImage &&      <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[75px] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
           <div className=" cursor-pointer  rounded-full p-2  hover:bg-white   ">
             <FaArrowRight className="" size={24} />
           </div>
-        </div>
+        </div>}
       </Link>
     </motion.div>
   );
@@ -85,7 +85,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     <img
       alt="Product"
       className="h-full w-full object-cover"
-      onClick={handleNextImage}
+      onClick={images.length > 1 ? handleNextImage : ()=>{}}
+    
       src={images[currentImageIndex]}
     />
     {images.length > 1 && (

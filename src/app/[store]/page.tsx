@@ -1,6 +1,6 @@
 "use client";
 import "@/lib/env";
-import { FaExpandArrowsAlt, FaFeatherAlt } from "react-icons/fa";
+import { FaArrowRight, FaExpandArrowsAlt, FaFeatherAlt } from "react-icons/fa";
 import { FaRecycle } from "react-icons/fa6";
 import { GiCarWheel, GiResize } from "react-icons/gi";
 import { IoShieldCheckmark } from "react-icons/io5";
@@ -9,6 +9,7 @@ import ScrollEffectWrapper from "@/components/ScrollEffectWrapper";
 import Carousel from "@/components/Carousel";
 import { useTranslations } from "next-intl";
 import BasicSlider from "@/components/autoSlider/BasicSlider";
+import ProductCarousel from "@/components/product-carousel";
 
 export default function HomePage() {
   const t = useTranslations("benefits");
@@ -19,65 +20,92 @@ export default function HomePage() {
     <main>
       <section className="bg-primary  px-4 mt-4 pt-10">
         <ScrollEffectWrapper>
-       
-            <BasicSlider />
-
+          <BasicSlider />
         </ScrollEffectWrapper>
 
         <ScrollEffectWrapper>
-          <div className="m-4 flex min-h-[500px] py-4 gap-2 rounded-[60px] bg-white itmes-center justify-center  ">
-            <div className="   flex flex-col  items-center md:flex-row justify-between gap-x-6 gap-y-6  ">
-              <div className="flex  flex-col items-center   ">
-                <div className="flex h-[150px] w-[150px]  items-center justify-center rounded-full bg-[#76c7e7] ">
-                  <img src="https://titou.ma/wp-content/uploads/2024/01/camion-100x100.png" />
-                </div>
-                <div className="flex flex-col items-center">
-                  <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                    {t("FreeDelivery")}
-                  </h1>
-                  <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                    {t("FreeDeliveryDescription")}
-                  </p>
-                </div>
-              </div>
+          <div className="px-6  mt-24 relative flex  flex-col items-center justify-center  text-center ">
+            {/* Banner */}
 
-              <div className="flex flex-col items-center  ">
-                <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#f0e7ff] ">
-                  <img src="https://titou.ma/wp-content/uploads/2024/01/paiement-securise-100x100.png" />
-                </div>
-                <div className="flex flex-col items-center  ">
-                  <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                    {t("SecurePayment")}
-                  </h1>
-                  <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                    {t("SecurePaymentDescription")}
-                  </p>
+            <div className="w-full h-full   rounded-custom imageBg ">
+              <div
+                className={`flex flex-col gap-6 p-10 justify-center text-[#01141B]  bg-[#FFD500]  h-full w-3/5 md:w-2/5 min-h-80
+        rounded-tl-custom-top-left rounded-br-custom-bottom-right`}
+              >
+                <p className=" md:text-2xl font-sans text-start pt-8">
+                  Give the gift of travel
+                </p>
+                <h1 className="md:text-5xl font-bold pb-8 text-start">
+                  {" "}
+                  Discover our last collections
+                </h1>
+              </div>
+              <div
+                className={`flex flex-row items-center justify-between p-0 pl-8 text-[#01141B] 
+        bg-[#FFD500] md:w-1/4 w-3/5 min-h-24 rounded-br-custom-bottom-right 
+        rounded-tr-custom-top-right  text-md font-sans text-md `}
+              >
+                Discover bestsellers
+                <div className=" rounded-full  p-3 hover:bg-white mr-2 cursor-pointer   ">
+                  <FaArrowRight size={46} className="" />
                 </div>
               </div>
-              <div className="flex flex-col items-center  ">
-                <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#fcaa9f] ">
-                  <img src="https://titou.ma/wp-content/uploads/2024/01/service-clients-100x100.png" />
+            </div>
+            <ProductCarousel />
+            <div className=" pt-2 flex min-h-[500px] pb-4 gap-2 rounded-b-[60px] bg-white itmes-center justify-center  ">
+              <div className="   flex flex-col  items-center md:flex-row justify-between gap-x-6 gap-y-6  ">
+                <div className="flex  flex-col items-center   ">
+                  <div className="flex h-[150px] w-[150px]  items-center justify-center rounded-full bg-[#76c7e7] ">
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/camion-100x100.png" />
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
+                      {t("FreeDelivery")}
+                    </h1>
+                    <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
+                      {t("FreeDeliveryDescription")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center  ">
+                  <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#f0e7ff] ">
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/paiement-securise-100x100.png" />
+                  </div>
+                  <div className="flex flex-col items-center  ">
+                    <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
+                      {t("SecurePayment")}
+                    </h1>
+                    <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
+                      {t("SecurePaymentDescription")}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                    {t("FullSupport")}
-                  </h1>
-                  <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                    {t("FullSupportDescription")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center  ">
-                <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#a6cbac] ">
-                  <img src="https://titou.ma/wp-content/uploads/2024/01/remise-en-argent-100x100.png" />
+                  <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#fcaa9f] ">
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/service-clients-100x100.png" />
+                  </div>
+                  <div className="flex flex-col items-center  ">
+                    <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
+                      {t("FullSupport")}
+                    </h1>
+                    <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
+                      {t("FullSupportDescription")}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex flex-col items-center  ">
-                  <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
-                    {t("ReturnPolicy")}
-                  </h1>
-                  <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
-                    {t("ReturnPolicyDescription")}
-                  </p>
+                  <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#a6cbac] ">
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/remise-en-argent-100x100.png" />
+                  </div>
+                  <div className="flex flex-col items-center  ">
+                    <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
+                      {t("ReturnPolicy")}
+                    </h1>
+                    <p className="mt-1 px-6 text-center font-sans text-[16px] leading-[150%] tracking-[0.00938rem] ">
+                      {t("ReturnPolicyDescription")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

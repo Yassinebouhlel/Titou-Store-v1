@@ -58,7 +58,7 @@ const FilterSection: React.FC<{
   );
 };
 
-const SkeletonCard: React.FC = () => (
+export const SkeletonCard: React.FC = () => (
   <motion.div
     animate={{opacity: 1}}
     className="min-w-full rounded-lg bg-white p-4 shadow-md"

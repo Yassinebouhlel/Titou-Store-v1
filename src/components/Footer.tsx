@@ -9,8 +9,8 @@ function Footer() {
   const l = useTranslations("LearnMore");
 
   return (
-    <footer className="h-auto bg-[#01141b] p-6 flex flex-col">
-      <div className="flex justify-between">
+    <footer className="h-auto bg-[#01141b] p-3 flex flex-col">
+      <div className="flex justify-between flex flex-col md:flex-row">
         {/* Logo Section */}
         <div className="w-full sm:w-1/2 md:w-1/4 flex flex-col items-start justify-center px-4 mb-6">
           <div className="flex flex-col rounded-full bg-[#FFD500] px-2 py-1">
@@ -152,7 +152,7 @@ function Footer() {
             </svg>
             +216 98 123 456
           </p>
-          <p className="mt-1 text-start font-sans text-[0.875rem] text-white flex items-center">
+          <p className="mt-4 text-start font-sans text-[0.875rem] text-white flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -164,7 +164,12 @@ function Footer() {
             </svg>
             Route de Monastir 4070 Msaken Tunisie
           </p>
-          <div className="mt-4 flex w-full items-center justify-center gap-x-4">
+          <p className="h-2 mt-4"></p>
+     
+        </div>
+      </div>
+      <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+      <div className="mt-4 flex w-full items-center justify-center gap-x-4">
             <a
               href="https://www.instagram.com/titou.store/"
               target="_blank"
@@ -194,9 +199,6 @@ function Footer() {
               />
             </a>
           </div>
-        </div>
-      </div>
-      <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
     </footer>
   );
 }
