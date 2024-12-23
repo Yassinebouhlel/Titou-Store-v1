@@ -28,7 +28,7 @@ function Footer() {
         </div>
 
         {/* Services Section */}
-        <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col items-start justify-center px-4 mb-6">
+        <div className="w-full sm:w-1/2 md:w-1/4 flex flex-col items-start justify-center px-4 mb-6">
           <div className="flex flex-col rounded-full px-2 py-1">
             <p className="font-bold text-[1rem] text-[#FFD500]">{l("more")}</p>
           </div>
@@ -55,7 +55,7 @@ function Footer() {
         </div>
 
         {/* Stores */}
-        <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col items-start justify-center px-4 mb-6">
+        <div className="w-full sm:w-1/2 md:w-1/4 flex flex-col items-start justify-center px-4 mb-6">
           <div className="flex flex-col rounded-full px-2 py-1">
             <p className="font-bold text-[1rem] text-[#FFD500]">Stores</p>
           </div>
@@ -121,7 +121,7 @@ function Footer() {
           </Link>
         </div>
         {/* Contact Section */}
-        <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col items-start justify-center px-4 mb-6">
+        <div className="w-full sm:w-1/2 md:w-1/4 flex flex-col items-start justify-center px-4 mb-6">
           <div className="flex flex-col rounded-full px-2 py-1">
             <p className="font-bold text-[1rem] text-[#FFD500]">Contact</p>
           </div>
