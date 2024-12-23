@@ -1,51 +1,68 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import React, { useEffect, useState, useMemo } from 'react';
-import { BiUser } from 'react-icons/bi';
-import { PiHandbag } from 'react-icons/pi';
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineDelete, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'; // Added menu and close icons
-import LocaleSwitcher from './LocaleSwitcher';
-import Button from '@/components/Button';
-import { useCart } from '@/context/CartContext';
-import { useRouter } from 'next/navigation';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import React, { useEffect, useState, useMemo } from "react";
+import { BiUser } from "react-icons/bi";
+import { PiHandbag } from "react-icons/pi";
+import {
+  AiOutlineMinus,
+  AiOutlinePlus,
+  AiOutlineDelete,
+  AiOutlineMenu,
+  AiOutlineClose,
+} from "react-icons/ai"; // Added menu and close icons
+import LocaleSwitcher from "./LocaleSwitcher";
+import Button from "@/components/Button";
+import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
+import { FaArrowRight } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Mobile menu toggle
-  const [selectedNavItem, setSelectedNavItem] = useState('home');
+  const [selectedNavItem, setSelectedNavItem] = useState("home");
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
-  const { cartItems, isCartModalOpen, setIsCartModalOpen, removeItemFromCart, updateCartItemQuantity } = useCart();
-  const t = useTranslations('NavBar');
-  const p = useTranslations('ProductList');
-  const c = useTranslations('Color');
-  const f = useTranslations('Cart');
+  const {
+    cartItems,
+    isCartModalOpen,
+    setIsCartModalOpen,
+    removeItemFromCart,
+    updateCartItemQuantity,
+  } = useCart();
+  const t = useTranslations("NavBar");
+  const p = useTranslations("ProductList");
+  const c = useTranslations("Color");
+  const f = useTranslations("Cart");
 
   const totalPrice = useMemo(() => {
-    return cartItems.reduce((total: any, item: any) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total: any, item: any) => total + item.price * item.quantity,
+      0
+    );
   }, [cartItems]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
       setIsScrollingUp(scrollTop <= lastScrollTop);
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollTop]);
 
   const handleNavigation = (navItem: string) => {
     setSelectedNavItem(navItem);
-    localStorage.setItem('path', navItem);
-    setIsMobileMenuOpen(false)
+    localStorage.setItem("path", navItem);
+    setIsMobileMenuOpen(false);
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedPath = localStorage.getItem('path');
+    if (typeof window !== "undefined") {
+      const savedPath = localStorage.getItem("path");
       if (savedPath) {
         setSelectedNavItem(savedPath);
       }
@@ -54,23 +71,30 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const handleCheckout = () => {
     // Save cart items in localStorage
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
     // Close the cart modal
     setIsCartModalOpen(false);
 
     // Navigate to the checkout page
-    router.push('/checkout');
+    router.push("/checkout");
   };
 
   return (
     <>
       <nav
-        className={`bg-primary px-4 pt-4 pb-2 w-full fixed top-0 transition-transform duration-300 z-50 ${
-          isScrollingUp ? 'transform translate-y-0' : 'transform -translate-y-full'
+        className={`bg-primary   pb-2 w-full fixed top-0 transition-transform duration-300 z-50 ${
+          isScrollingUp
+            ? "transform translate-y-0"
+            : "transform -translate-y-full"
         }`}
       >
-        <div className="flex justify-between items-center w-full">
+        <p style={{fontSize:'0.875rem',lineHeight:'150%',wordSpacing:'1px'}}className={`h-10 w-full bg-[#FFD500] flex items-center justify-center text-center`}>
+          Nous n'acceptons plus de nouveaux abonnements. Les abonnements
+          existants continuent. <strong className="px-1">En savoir plus </strong>
+          <FaArrowRight size={12} className="" />
+        </p>
+        <div className="pt-4 px-4 flex justify-between items-center w-full">
           {/* Left Side - Logo and Navigation */}
           <div className="flex items-center space-x-8">
             <Link href="/" passHref>
@@ -82,50 +106,58 @@ const Navbar: React.FC = () => {
                 width={20}
               />
             </Link>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" passHref>
                 <span
                   className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                    selectedNavItem === 'home' ? 'underline underline-offset-2' : ''
+                    selectedNavItem === "home"
+                      ? ""
+                      : ""
                   }`}
-                  onClick={() => handleNavigation('home')}
+                  onClick={() => handleNavigation("home")}
                 >
-                  {t('home')}
+                  {t("home")}
                 </span>
               </Link>
 
               <Link href="/products" passHref>
                 <span
                   className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                    selectedNavItem === 'products' ? 'underline underline-offset-2' : ''
+                    selectedNavItem === "products"
+                      ? ""
+                      : ""
                   }`}
-                  onClick={() => handleNavigation('products')}
+                  onClick={() => handleNavigation("products")}
                 >
-                  {t('products')}
+                  {t("products")}
                 </span>
               </Link>
 
               <Link href="/about-us" passHref>
                 <span
                   className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                    selectedNavItem === 'aboutUs' ? 'underline underline-offset-2' : ''
+                    selectedNavItem === "aboutUs"
+                      ? ""
+                      : ""
                   }`}
-                  onClick={() => handleNavigation('aboutUs')}
+                  onClick={() => handleNavigation("aboutUs")}
                 >
-                  {t('aboutUs')}
+                  {t("aboutUs")}
                 </span>
               </Link>
 
               <Link href="/contact" passHref>
                 <span
                   className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                    selectedNavItem === 'contact' ? 'underline underline-offset-2' : ''
+                    selectedNavItem === "contact"
+                      ? ""
+                      : ""
                   }`}
-                  onClick={() => handleNavigation('contact')}
+                  onClick={() => handleNavigation("contact")}
                 >
-                  {t('contact')}
+                  {t("contact")}
                 </span>
               </Link>
             </div>
@@ -136,7 +168,7 @@ const Navbar: React.FC = () => {
             <Link href="/sign-in">
               <Button className="flex items-center space-x-2">
                 <BiUser size={24} />
-                <span>{t('login')}</span>
+                <span>{t("login")}</span>
               </Button>
             </Link>
 
@@ -157,90 +189,107 @@ const Navbar: React.FC = () => {
           {/* Hamburger icon for mobile */}
           <div className="md:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
+              {isMobileMenuOpen ? (
+                <AiOutlineClose size={24} />
+              ) : (
+                <AiOutlineMenu size={24} />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          
           <div className="md:hidden flex flex-col  gap-6 text-xl space-y-4 h-screen mt-16 relative">
-            <div className='flex items-end justify-between absolute top-0 right-0'><div></div><LocaleSwitcher /></div>
+            <div className="flex items-end justify-between absolute top-0 right-0">
+              <div></div>
+              <LocaleSwitcher />
+            </div>
             <Link href="/" passHref>
               <span
                 className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                  selectedNavItem === 'home' ? 'underline underline-offset-2' : ''
+                  selectedNavItem === "home"
+                    ? ""
+                    : ""
                 }`}
-                onClick={() => handleNavigation('home')}
+                onClick={() => handleNavigation("home")}
               >
-                {t('home')}
+                {t("home")}
               </span>
             </Link>
 
             <Link href="/products" passHref>
               <span
                 className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                  selectedNavItem === 'products' ? 'underline underline-offset-2' : ''
+                  selectedNavItem === "products"
+                    ? ""
+                    : ""
                 }`}
-                onClick={() => handleNavigation('products')}
+                onClick={() => handleNavigation("products")}
               >
-                {t('products')}
+                {t("products")}
               </span>
             </Link>
 
             <Link href="/about-us" passHref>
               <span
                 className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                  selectedNavItem === 'aboutUs' ? 'underline underline-offset-2' : ''
+                  selectedNavItem === "aboutUs"
+                    ? ""
+                    : ""
                 }`}
-                onClick={() => handleNavigation('aboutUs')}
+                onClick={() => handleNavigation("aboutUs")}
               >
-                {t('aboutUs')}
+                {t("aboutUs")}
               </span>
             </Link>
 
             <Link href="/contact" passHref>
               <span
                 className={`font-bold text-black hover:text-[#b2ac9c7d] ${
-                  selectedNavItem === 'contact' ? 'underline underline-offset-2' : ''
+                  selectedNavItem === "contact"
+                    ? ""
+                    : ""
                 }`}
-                onClick={() => handleNavigation('contact')}
+                onClick={() => handleNavigation("contact")}
               >
-                {t('contact')}
+                {t("contact")}
               </span>
             </Link>
 
             <Link href="/sign-in">
               <Button className="flex items-center space-x-2">
                 <BiUser size={24} />
-                <span>{t('login')}</span>
+                <span>{t("login")}</span>
               </Button>
             </Link>
-            
           </div>
         )}
       </nav>
 
       {/* Cart Modal */}
       {isCartModalOpen && (
-          <div className="fixed inset-0 z-50 flex flex-col md:flex-row justify-end">
+        <div className="fixed inset-0 z-50 flex flex-col md:flex-row justify-end">
           {/* Overlay */}
           <div
             className="fixed inset-0 bg-black opacity-50"
             onClick={() => setIsCartModalOpen(false)}
           />
-    
+
           {/* Cart Slide Panel */}
-          <div className="relative w-full md:w-[500px] h-full md:h-full bg-[#F4EEE1] p-4 md:p-6 shadow-lg 
+          <div
+            className="relative w-full md:w-[500px] h-full md:h-full bg-[#F4EEE1] p-4 md:p-6 shadow-lg 
             overflow-y-auto 
             transform transition-transform duration-300 
             translate-x-0 
             md:ml-auto 
-            flex flex-col">
+            flex flex-col"
+          >
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-gray-800">{f('ShoppingCart')}</h2>
+              <h2 className="text-xl font-bold text-gray-800">
+                {f("ShoppingCart")}
+              </h2>
               <button
                 className="text-gray-500 hover:text-gray-700 focus:outline-none"
                 onClick={() => setIsCartModalOpen(false)}
@@ -248,11 +297,11 @@ const Navbar: React.FC = () => {
                 <span className="text-2xl leading-none">&times;</span>
               </button>
             </div>
-    
+
             {/* Cart Items Container */}
             <div className="flex-grow overflow-y-auto space-y-4 pr-2">
               {cartItems.length > 0 ? (
-                cartItems.map((item:any, index:any) => (
+                cartItems.map((item: any, index: any) => (
                   <div
                     key={index}
                     className="flex flex-col sm:flex-row justify-between items-center 
@@ -269,16 +318,22 @@ const Navbar: React.FC = () => {
                         className="rounded-md mr-3"
                       />
                       <div>
-                        <p className="font-medium text-gray-800">{p(`${item.id}`)}</p>
-                        <p className="text-sm text-gray-500">{c(`${item.selectedColor.idColor}`)}</p>
+                        <p className="font-medium text-gray-800">
+                          {p(`${item.id}`)}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {c(`${item.selectedColor.idColor}`)}
+                        </p>
                       </div>
                     </div>
-    
+
                     {/* Quantity and Actions */}
                     <div className="flex items-center justify-between w-full sm:w-auto sm:space-x-2">
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={() => updateCartItemQuantity(index, item.quantity - 1)}
+                          onClick={() =>
+                            updateCartItemQuantity(index, item.quantity - 1)
+                          }
                           className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
                           disabled={item.quantity === 1}
                         >
@@ -286,7 +341,9 @@ const Navbar: React.FC = () => {
                         </button>
                         <span className="px-3">{item.quantity}</span>
                         <button
-                          onClick={() => updateCartItemQuantity(index, item.quantity + 1)}
+                          onClick={() =>
+                            updateCartItemQuantity(index, item.quantity + 1)
+                          }
                           className="px-2 py-1 border rounded-md text-gray-600 bg-gray-100 hover:bg-gray-200"
                         >
                           <AiOutlinePlus />
@@ -302,20 +359,26 @@ const Navbar: React.FC = () => {
                   </div>
                 ))
               ) : (
-                <div className="text-center text-gray-500">{f('EmptyCart')}</div>
+                <div className="text-center text-gray-500">
+                  {f("EmptyCart")}
+                </div>
               )}
             </div>
-    
+
             {/* Total and Checkout */}
             {cartItems.length > 0 && (
               <div className="mt-4">
                 <div className="border-t border-gray-300 pt-4">
                   <p className="font-bold text-right text-lg text-gray-800">
-                    Total: {totalPrice.toFixed(2)} {cartItems[0]?.currency || '$'}
+                    Total: {totalPrice.toFixed(2)}{" "}
+                    {cartItems[0]?.currency || "$"}
                   </p>
                 </div>
-                <Button className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg" onClick={handleCheckout}>
-                  {f('CartButton')}
+                <Button
+                  className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg"
+                  onClick={handleCheckout}
+                >
+                  {f("CartButton")}
                 </Button>
               </div>
             )}

@@ -20,7 +20,8 @@ export default function BasicSlider() {
   const [orientation, setOrientation] = useState("vertical") as any;
   return (
     <HeroSlider
-      className="h-[94vh] w-full"
+
+      className="h-[94vh] w-full "
       accessibility={{
         shouldDisplayButtons: false,
         orientation: orientation,
@@ -36,7 +37,9 @@ export default function BasicSlider() {
           );
         },
       }}
-      settings={{}}
+      settings={{
+
+      }}
     >
       <Overlay>
         <Wrapper>
@@ -49,11 +52,14 @@ export default function BasicSlider() {
         shouldRenderMask
         label="Giau Pass - Italy"
         background={{
+          onLoad() {
+            console.log("hey loadx-x")
+          },
           backgroundImageSrc: bg1.src,
-          backgroundColor: "#8A8A8A",
+          backgroundColor: "transparent",
           backgroundAnimation: "fade",
           backgroundAnimationDelay: "0.5",
-          shouldLazyLoad: true,
+          shouldLazyLoad: false,
         }}
       />
 
@@ -61,6 +67,9 @@ export default function BasicSlider() {
         shouldRenderMask
         label="Bogliasco - Italy"
         background={{
+          onLoad(event) {
+            console.log("hey load",event.target)
+          },
           backgroundImageSrc: bg2.src,
           backgroundColor: "#8A8A8A",
           shouldLazyLoad: true,
@@ -76,6 +85,9 @@ export default function BasicSlider() {
           backgroundColor: "#8A8A8A",
           shouldLazyLoad: true,
           backgroundAnimation: "fade",
+          onLoad() {
+            console.log("hey loadx-x")
+          },
         }}
       />
 
@@ -87,6 +99,9 @@ export default function BasicSlider() {
           backgroundColor: "#8A8A8A",
           shouldLazyLoad: true,
           backgroundAnimation: "fade",
+          onLoad() {
+            console.log("hey loadx-x")
+          },
         }}
       />
 

@@ -17,12 +17,11 @@ export default function HomePage() {
 
   return (
     <main>
-      <section className="bg-primary e px-2 pt-10">
+      <section className="bg-primary  px-4 mt-4 pt-10">
         <ScrollEffectWrapper>
-          <div>
-            {" "}
+       
             <BasicSlider />
-          </div>
+
         </ScrollEffectWrapper>
 
         <ScrollEffectWrapper>

@@ -61,7 +61,7 @@ const FilterSection: React.FC<{
 const SkeletonCard: React.FC = () => (
   <motion.div
     animate={{opacity: 1}}
-    className="max-w-xs rounded-lg bg-white p-4 shadow-md"
+    className="min-w-full rounded-lg bg-white p-4 shadow-md"
     initial={{opacity: 0}}
     transition={{duration: 0.5}}
   >
