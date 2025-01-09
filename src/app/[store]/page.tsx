@@ -15,6 +15,7 @@ export default function HomePage() {
   const t = useTranslations("benefits");
   const w = useTranslations("why");
   const s = useTranslations("newsletter");
+  const b = useTranslations("Banner");
 
   return (
     <main>
@@ -33,11 +34,11 @@ export default function HomePage() {
         rounded-tl-custom-top-left rounded-br-custom-bottom-right`}
               >
                 <p className=" md:text-2xl font-sans text-start pt-8">
-                  Give the gift of travel
+                {b("Eng")}
                 </p>
                 <h1 className="md:text-5xl font-bold pb-8 text-start">
                   {" "}
-                  Discover our last collections
+                  {b("PP")}
                 </h1>
               </div>
               <div
@@ -45,7 +46,7 @@ export default function HomePage() {
         bg-[#FFD500] md:w-1/4 w-3/5 min-h-24 rounded-br-custom-bottom-right 
         rounded-tr-custom-top-right  text-md font-sans text-md `}
               >
-                Discover bestsellers
+                {b("Discover")}
                 <div className=" rounded-full  p-3 hover:bg-white mr-2 cursor-pointer   ">
                   <FaArrowRight size={46} className="" />
                 </div>

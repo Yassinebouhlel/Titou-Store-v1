@@ -7,17 +7,19 @@ import bg1 from "./backgrounds/set-rose.jpg";
 import bg2 from "./backgrounds/set-jaune.jpg";
 import bg3 from "./backgrounds/bn-green.jpg";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const arrayOfTitles = [
-  { title: "T1", subTitle: "Sub-Title 1" },
-  { title: "T2", subTitle: "Sub-Title 2" },
-  { title: "T3", subTitle: "Sub-Title 3" },
-  { title: "T4", subTitle: "Sub-Title 4" },
+  { title: "T1", subTitle: "subTitle1" },
+  { title: "T2", subTitle: "subTitle2" },
+  { title: "T3", subTitle: "subTitle3" },
+  { title: "T4", subTitle: "subTitle4" },
 ];
 
 export default function BasicSlider() {
   const [cuurentTitle, setCurrentTitle] = useState(arrayOfTitles[0]);
   const [orientation, setOrientation] = useState("vertical") as any;
+  const t = useTranslations("Slider");
   return (
     <HeroSlider
 
@@ -43,8 +45,8 @@ export default function BasicSlider() {
     >
       <Overlay>
         <Wrapper>
-          <Title>{cuurentTitle.title}</Title>
-          <h2 className="mt-6">{cuurentTitle.subTitle}</h2>
+          <Title>{t(cuurentTitle.title)}</Title>
+          {/* <h2 className="mt-6">{cuurentTitle.subTitle}</h2> */}
         </Wrapper>
       </Overlay>
 

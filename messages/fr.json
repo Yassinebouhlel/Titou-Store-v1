@@ -40,7 +40,8 @@
     "howItWork":"Comment ça marche",
     "home":"Accueil",
     "aboutUs":"À propos de nous"  ,
-    "contact":"Contact"
+    "contact":"Contact",
+    "FreeShipping": "Livraison gratuite pour les commandes supérieures à 199$"
   },
   "benefits":{
     "FreeDelivery":"Livraison gratuite",
@@ -164,5 +165,21 @@
     "Name":"Votre nom",
     "Message": "Votre message",
     "Submit": "Envoyer"
+  },
+  "Slider":{
+    "T1":"La joie à chaque destination",
+    "subTitle1":"",
+    "T2":"Voyagez au-delà de l'ordinaire",
+    "subTitle2":"",
+    "T3":"Explorez le monde en tout confort",
+    "subTitle3":"",
+    "T4":"Des valises pour toutes vos aventures",
+    "subTitle4":""
+  },
+  "Banner":{
+    "Eng":"L'art de l'ingénierie pour la vie",
+    "PP":"Valise incassable en polypropylène",
+    "Discover":"En savoir plus"
   }
+
 }

@@ -179,11 +179,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           handleNextImage={handleNextImage}
           images={oneImage ? selectedColor.images : selectedColor.images}
         />
-        <ColorPicker
+        {/* <ColorPicker
           productColors={product.colors}
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
-        />
+        /> */}
         <div className="mt-4 w-full">
           <p className="font-bold ">{t(`${product.id}`)}</p>
 

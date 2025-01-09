@@ -40,7 +40,8 @@
     "howItWork": "How it works",
     "home":"Home",
     "aboutUs":"About us",
-    "contact":"Contact"
+    "contact":"Contact",
+    "FreeShipping": "Free Shipping for orders over 199$"
   },
   "benefits":{
     "FreeDelivery":"Free Delivery",
@@ -163,5 +164,20 @@
     "Name":"Name",
     "Message": "Message",
     "Submit": "Submit"
+  },
+  "Slider":{
+    "T1":"Joy in Every Destination",
+    "subTitle1":"",
+    "T2":"Travel Beyond The Ordinary",
+    "subTitle2":"",
+    "T3":"Explore the world in comfort",
+    "subTitle3":"",
+    "T4":"Suitcases for all your adventures",
+    "subTitle4":""
+  },
+  "Banner":{
+    "Eng":"The Art Of Engineering For Life",
+    "PP":"Polypropylene Unbreakable Luggage",
+    "Discover":"Discover More"
   }
 }
