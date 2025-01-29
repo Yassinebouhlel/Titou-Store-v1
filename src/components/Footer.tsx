@@ -18,7 +18,7 @@ function Footer() {
               alt="titou logo"
               className="w-20"
               height={20}
-              src="/svg/Logo.svg"
+              src="/svg/old-logo.svg"
               width={20}
             />
           </div>

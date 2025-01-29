@@ -698,6 +698,7 @@ export const data: any = {
   CA:{ 
     categories: [
       {
+        shopifyId: 'gid://shopify/Collection/301694812278',
         id: 'brillant',
         name: 'Ensemble de 3 valise - Brilliant',
         colors: [
@@ -822,6 +823,7 @@ export const data: any = {
       },
       {
         id: 'mat',
+        shopifyId: 'gid://shopify/Collection/301694746742',
         name: 'Ensemble de 3 valise - Mat',
         colors: [
           {
@@ -1025,6 +1027,7 @@ export const data: any = {
       },
       {
         id: 'multicolor',
+        shopifyId: 'gid://shopify/Collection/301694779510',
         name: 'Ensemble de 3 valise - Multicouleur',
         colors: [
           {

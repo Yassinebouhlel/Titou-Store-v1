@@ -79,6 +79,50 @@ const Navbar: React.FC = () => {
     // Navigate to the checkout page
     router.push("/checkout");
   };
+  async function handleCheckoutx() {
+    const SHOPIFY_STORE_URL = "https://v1dj9z-e5.myshopify.com/api/2023-10/graphql.json";
+    const SHOPIFY_ACCESS_TOKEN = "ce8754195ee3bf24158bff3879689518";
+  
+    const lineItems = cartItems.map((item:any) => ({
+      variantId: item.id, // Shopify variant ID
+      quantity: item.quantity,
+    }));
+  const lineItemsw2 = [{merchandiseId:'gid://shopify/ProductVariant/41929672949878',quantity:1},{merchandiseId:'gid://shopify/ProductVariant/41927593066614',quantity:1}];
+  const response = await fetch(`${SHOPIFY_STORE_URL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Storefront-Access-Token": SHOPIFY_ACCESS_TOKEN,
+    },
+    body: JSON.stringify({
+      query: `
+        mutation createCart($input: CartInput!) {
+          cartCreate(input: $input) {
+            cart {
+              id
+              checkoutUrl
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }
+      `,
+      variables: { input: { lines: lineItemsw2 } },
+    }),
+  });
+console.log(response)
+  const result = await response.json();
+
+  if (result.data?.cartCreate?.cart?.checkoutUrl) {
+    // Redirect to Shopify checkout
+    window.location.href = result.data.cartCreate.cart.checkoutUrl;
+  } else {
+    console.error("Cart API Error:", result.data?.cartCreate?.userErrors || result.errors);
+  }
+  }
+  
 
   return (
     <>
@@ -101,7 +145,7 @@ const Navbar: React.FC = () => {
                 alt="titou logo"
                 className="w-20 cursor-pointer"
                 height={20}
-                src="/svg/Logo.svg"
+                src="/svg/old-logo.svg"
                 width={20}
               />
             </Link>
@@ -375,7 +419,7 @@ const Navbar: React.FC = () => {
                 </div>
                 <Button
                   className="w-full mt-4 bg-[#ffd500] font-bold text-xl text-black hover:bg-black hover:text-white py-2 rounded-lg"
-                  onClick={handleCheckout}
+                  onClick={handleCheckoutx}
                 >
                   {f("CartButton")}
                 </Button>
