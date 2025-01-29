@@ -37,16 +37,154 @@ export default function ProductPage() {
   useEffect(() => {
     // Retrieve the selected country from localStorage (or any global state management method you prefer)
     const selectedCountry = getSelectedStore() || "TN";
-    setProducts(data[selectedCountry].categories[productIndex]);
+    // setProducts(data[selectedCountry].categories[productIndex]);
     const timeoutId = setTimeout(() => {
       setLoading(false);
     }, 1000);
-
+    const collectionId = data[selectedCountry].categories[productIndex].shopifyId
+    const shopifyStorefrontUrl = "https://v1dj9z-e5.myshopify.com/api/2023-10/graphql.json";
+    const accessToken = "ce8754195ee3bf24158bff3879689518";
+    
+    fetchCollectionById(collectionId, shopifyStorefrontUrl, accessToken)
+      .then(collection => console.log("collection",collection))
+      .catch(error => console.error(error));
     // Cleanup function to clear the timeout if the component unmounts
     return () => clearTimeout(timeoutId);
   }, []);
   // Empty dependency array ensures the effect runs only once
-console.log('products',products)
+
+  async function fetchCollectionById(collectionId: string, shopifyStorefrontUrl: string, accessToken: string) {
+    const query = `
+      query getCollectionById($id: ID!) {
+        collection(id: $id) {
+          id
+          title
+          description
+          seo {
+            title
+            description
+          }
+          products(first: 100) {
+            edges {
+              node {
+                id
+                title
+                description
+                options {
+                  name
+                  values
+                }
+                variants(first: 10) {
+                  edges {
+                    node {
+                      id
+                      title
+                      price {
+                        amount
+                      }
+                    }
+                  }
+                }
+                images(first: 15) {
+                  edges {
+                    node {
+                    transformedSrc(preferredContentType: WEBP)
+                      src
+                      altText
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+  
+    const variables = { id: collectionId };
+  
+    try {
+      const response = await fetch(shopifyStorefrontUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Shopify-Storefront-Access-Token": accessToken,
+        },
+        body: JSON.stringify({ query, variables }),
+      });
+  
+      const data = await response.json();
+      console.log("dd",data)
+      const shopifyData = data.data.collection.products.edges
+      let re = transformShopifyData(shopifyData)
+      console.log('sx',re)
+      setProducts(re)
+      return data.data.collection;
+    } catch (error) {
+      console.error("Error fetching collection:", error);
+      return null;
+    }
+  }
+  
+  function transformShopifyData(shopifyProducts: any[]) {
+    // Base product structure
+    const transformedProduct = {
+      id: 'brilliant',
+      name: '',
+      colors: [] as any[],
+      subtitle: 'subtitleRemove',
+      price: 0,
+      currency: '$ CAD',
+      rating: 4.64,
+      sizes: [],
+      reviews: 6,
+      additionalInfo: {
+        care: 'Titou Care, livraison et support inclus.',
+        paymentNote: ''
+      }
+    };
+  
+    // Process each product variant (color)
+    shopifyProducts.forEach(product => {
+      const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'Color');
+      const colorCodeOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_code');
+      
+      if (!colorOption || !colorCodeOption) return;
+  
+      const colorName = colorOption.values[0];
+      const colorCode = colorCodeOption.values[0];
+      const images = product.node.images.edges.map((img: { node: { transformedSrc: any; }; }) => img.node.transformedSrc);
+      
+      // Detect transparent image (customize this logic as needed)
+      const transparentImage = product.node.images.edges.find(
+        (        img: { node: { src: string | string[]; }; }) => img.node.src.includes('transparent')
+      )?.node.transformedSrc;
+  
+      transformedProduct.colors.push({
+        color: colorName.toUpperCase(),
+        idColor: colorName.replace(/\s+/g, '_').toUpperCase(),
+        code: [colorCode],
+        images: images,
+        shopifyVarId:product.node.variants.edges[0].node.id,
+        ...(transparentImage && { transparent: transparentImage }),
+        
+      });
+  
+      // Set product name and price from first variant
+      if (!transformedProduct.name) {
+        transformedProduct.name = product.node.title;
+        transformedProduct.price = parseFloat(
+          product.node.variants.edges[0].node.price.amount
+        );
+      }
+    });
+  
+    return transformedProduct;
+  }
+
+
+
+
   return (
     <div>
       <section className="bg-primary px-2 pt-20 ">

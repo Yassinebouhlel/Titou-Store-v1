@@ -82,12 +82,11 @@ const Navbar: React.FC = () => {
   async function handleCheckoutx() {
     const SHOPIFY_STORE_URL = "https://v1dj9z-e5.myshopify.com/api/2023-10/graphql.json";
     const SHOPIFY_ACCESS_TOKEN = "ce8754195ee3bf24158bff3879689518";
-  
+  console.log(cartItems)
     const lineItems = cartItems.map((item:any) => ({
-      variantId: item.id, // Shopify variant ID
+      merchandiseId: item.selectedColor.shopifyVarId, // Shopify variant ID
       quantity: item.quantity,
     }));
-  const lineItemsw2 = [{merchandiseId:'gid://shopify/ProductVariant/41929672949878',quantity:1},{merchandiseId:'gid://shopify/ProductVariant/41927593066614',quantity:1}];
   const response = await fetch(`${SHOPIFY_STORE_URL}`, {
     method: "POST",
     headers: {
@@ -109,7 +108,7 @@ const Navbar: React.FC = () => {
           }
         }
       `,
-      variables: { input: { lines: lineItemsw2 } },
+      variables: { input: { lines: lineItems } },
     }),
   });
 console.log(response)

@@ -3,7 +3,7 @@ const withNextIntl = require('next-intl/plugin')();
 
 const isProd = process.env.NODE_ENV === 'production';
 module.exports = withNextIntl({images: {
-    domains: ['www.titou.ma'], // Add your image domain here
+    domains: ['www.titou.ma','cdn.shopify.com'], // Add your image domain here
 
   },
   assetPrefix: isProd ? '' : '',

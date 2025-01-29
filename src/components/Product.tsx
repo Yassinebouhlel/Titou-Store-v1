@@ -1,6 +1,6 @@
 import {motion} from 'framer-motion';
 import Image from 'next/image';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useRef} from 'react';
 import Counter from '@/components/Counter';
 import {useTranslations} from 'next-intl';
 import { PiAirplaneInFlightFill } from "react-icons/pi";
@@ -53,12 +53,15 @@ const ColorSelector: React.FC<{
 };
 
 // ProductImage Component
-const ProductImage: React.FC<{
-  images: Array<string>;
-  color: string;
-}> = ({ color, images }) => {
+
+const ProductImage: React.FC<{ images: string[]; color: string }> = ({
+  images,
+  color,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const thumbnailsRef = useRef<(HTMLDivElement | null)[]>([]) as any;
+  const carouselRef = useRef<HTMLDivElement | null>(null)as any;
 
   const handleImageLoad = () => {
     setIsLoading(false);
@@ -79,101 +82,133 @@ const ProductImage: React.FC<{
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
- 
 
-  
+  useEffect(() => {
+    if (thumbnailsRef.current[currentImageIndex]) {
+      thumbnailsRef.current[currentImageIndex]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [currentImageIndex]);
 
   return (
-    <div className="relative w-full">
-      <div className="relative w-full overflow-hidden rounded-3xl bg-white">
-        {isLoading && <div className="h-96 w-full animate-pulse bg-gray-200" />}
-        <motion.div
-          key={images[currentImageIndex]}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          initial={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Image
-            alt={`${color} product image`}
-            className={`h-full w-full object-cover object-center ${
-              isLoading ? 'hidden' : 'block'
-            }`}
-            height={500}
-            onLoad={handleImageLoad}
-            priority
-            src={images[currentImageIndex]}
-            width={500}
-          />
-        </motion.div>
+    <div className="w-full max-w-4xl mx-auto">
+      {/* Main Image Container */}
+      <div className="relative aspect-[16/10] w-full mb-4">
+        <div className="relative w-full h-full rounded-2xl bg-white overflow-hidden">
+          {isLoading && (
+            <div className="absolute inset-0 animate-pulse bg-gray-200" />
+          )}
+          <motion.div
+            key={images[currentImageIndex]}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="relative h-full"
+          >
+            <Image
+              alt={`${color} product image ${currentImageIndex + 1}`}
+              className={`h-full w-full object-cover object-center ${
+                isLoading ? "hidden" : "block"
+              }`}
+              fill
+              onLoad={handleImageLoad}
+              priority
+              src={images[currentImageIndex]}
+            />
+          </motion.div>
+        </div>
 
-        {/* Custom Left and Right Navigation Buttons */}
-        <button
-          type="button"
-          className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          onClick={handlePrevImage}
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg
-              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 1 1 5l4 4"
-              />
-            </svg>
-            <span className="sr-only">Previous</span>
-          </span>
-        </button>
-
-        <button
-          type="button"
-          className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-          onClick={handleNextImage}
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg
-              className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-            <span className="sr-only">Next</span>
-          </span>
-        </button>
+        {/* Image Counter */}
+        <div className="absolute bottom-4 right-4 bg-black/75 text-white text-sm px-3 py-1 rounded-full">
+          {currentImageIndex + 1}/{images.length}
+        </div>
       </div>
 
-      <div className="mt-4 flex justify-center">
-        {images.map((image, index) => (
-          <button
-            key={index}
-            aria-label={`View image ${index + 1}`}
-            className={`mx-2 h-3 w-3 rounded-full ${
-              currentImageIndex === index ? 'bg-indigo-600' : 'bg-gray-300'
-            }`}
-            onClick={() => setCurrentImageIndex(index)}
-          />
-        ))}
+      {/* Thumbnails Navigation */}
+      <div className="relative px-12">
+        {/* Navigation Buttons */}
+        <button
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          onClick={handlePrevImage}
+          type="button"
+        >
+          <svg
+            className="w-4 h-4 text-gray"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 1 1 5l4 4"
+            />
+          </svg>
+        </button>
+
+        <button
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          onClick={handleNextImage}
+          type="button"
+        >
+          <svg
+            className="w-4 h-4 text-gray"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 6 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 9 4-4-4-4"
+            />
+          </svg>
+        </button>
+
+        {/* Thumbnails Scroll Container */}
+        <div
+          ref={carouselRef}
+          className="relative overflow-hidden"
+        >
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-2">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                ref={(el:any) => (thumbnailsRef.current[index] = el)}
+                className={`flex-shrink-0 snap-center cursor-pointer rounded-lg overflow-hidden transition-all duration-200 ${
+                  currentImageIndex === index
+                    ? "ring-2 ring-black/75 ring-offset-2"
+                    : "ring-1 ring-gray-200 opacity-65"
+                }`}
+                onClick={() => setCurrentImageIndex(index)}
+              >
+                <div className="relative w-20 h-20">
+                  <Image
+                    alt={`Thumbnail ${index + 1}`}
+                    className="object-cover"
+                    fill
+                    src={image}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
 
 const ProductPage: React.FC<{product: any}> = ({product}) => {
   const searchParams = useSearchParams(); // To read URL parameters
@@ -189,6 +224,7 @@ const addItemToBasket = async (quantity:any)=>{
     quantity
 
   }
+  console.log(newItem)
   addItemToCart(newItem)
 
 }
