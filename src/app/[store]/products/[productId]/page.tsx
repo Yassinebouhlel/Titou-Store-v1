@@ -7,6 +7,9 @@ import { TbTruckReturn } from "react-icons/tb";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import ProductTabs from "@/components/ProductTabs";
+import ReviewSection from "@/components/ReviewSection";
+import ProductCarousel from "@/components/product-carousel";
 
 export default function ProductPage() {
   const t = useTranslations("Product");
@@ -163,6 +166,23 @@ console.log('products',products)
         ) : (
           <>
             <ProductOnePage product={products} />
+            <div className="flex justify-center">
+              <div className="flex flex-col w-full px-6 sm:flex-row bg-[#f0e7d5] mb-8 gap-8">
+                <ProductTabs />
+              </div>
+            </div>
+            <div className="flex justify-center mb-8">
+              
+                <ReviewSection />
+              
+            </div>
+            <div className="flex justify-center mb-8">
+              <div className="relative w-full overflow-hidden rounded-custom-card bg-[#F0E7D5] pb-4 mb-8">
+                <h1 className="px-20 py-10 text-center text-3xl">Shop Related Items</h1>
+                <ProductCarousel />
+              </div> 
+            </div>
+            
             <div className="flex flex-col sm:flex-row bg-[#f0e7d5] py-10 px-5 mb-8 gap-8">
               {/* Free Shipping */}
               <div className="flex-1 flex flex-col items-center text-center">

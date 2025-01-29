@@ -330,82 +330,27 @@ const addItemToBasket = async (quantity:any)=>{
                 selectedColor={selectedColor}
               />
               <Counter addItemToBasket={addItemToBasket} />
-              <div className="border-t border-b border-gray-300 px-6 py-4 mt-6">
-                <div className="flex justify-between items-center cursor-pointer" onClick={toggleDescription}>
-                  <p className="text-[16px] leading-[150%] font-sans">Description</p>
-                  <span className="text-[25px] font-bold">
-                    {isOpen ? '−' : '+'} {/* Conditionally render + or - */}
-                  </span>
-                </div>
-
-                {isOpen && ( // Conditionally render the description content when isOpen is true
-                  <div className="mt-4">
-                    <p className="text-[16px] leading-[150%] font-sans text-gray-600 tracking-[0.00938rem]">
-                      {t('Description1')}
-                    </p>
-
-                    <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Features:</h3>
-                    <ul className="w-full max-w-2xl mx-auto space-y-6">
-                      {[
-                        { Icon: GiCarWheel, description: t('Description2') },
-                        { Icon: FaLock, description: t('Description3') },
-                        { Icon: PiAirplaneInFlightFill, description: t('Description4') },
-                        { Icon: BsFillLuggageFill, description: t('Description5') },
-                        { Icon: GiHammerBreak, description: t('Description6') },
-                        { Icon: GiUnplugged, description: t('Description7') }
-                      ].map(({ Icon, description }, index) => (
-                        <li key={index} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
-                            <Icon className="text-black w-8 h-8" />
-                          </div>
-                          <span className="flex-1 pt-2 text-base text-gray-600">
-                            {description}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Dimensions:</h3>
-                    <div className="overflow-x-auto mt-4">
-                      <table className="w-full text-left text-[14px] sm:text-[16px] text-gray-600 leading-[150%] tracking-[0.00938rem] font-sans">
-                        <thead>
-                          <tr className="bg-gray-200 font-bold">
-                            <th className="px-4 py-2">Size</th>
-                            <th className="px-4 py-2">Dimensions</th>
-                            <th className="px-4 py-2">Volume</th>
-                            <th className="px-4 py-2">Capacity</th>
-                            <th className="px-4 py-2">Weight</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="border px-4 py-2">Big</td>
-                            <td className="border px-4 py-2">75 x 49 x 32 cm</td>
-                            <td className="border px-4 py-2">106 liters</td>
-                            <td className="border px-4 py-2">30 Kg</td>
-                            <td className="border px-4 py-2">4.51 Kg</td>
-                          </tr>
-                          <tr>
-                            <td className="border px-4 py-2">Medium</td>
-                            <td className="border px-4 py-2">65 x 42 x 39 cm</td>
-                            <td className="border px-4 py-2">70 liters</td>
-                            <td className="border px-4 py-2">20 Kg</td>
-                            <td className="border px-4 py-2">3.25 Kg</td>
-                          </tr>
-                          <tr>
-                            <td className="border px-4 py-2">Small</td>
-                            <td className="border px-4 py-2">55 x 32 x 24 cm</td>
-                            <td className="border px-4 py-2">55 liters</td>
-                            <td className="border px-4 py-2">15 Kg</td>
-                            <td className="border px-4 py-2">3.66 Kg</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-              </div>
-
+              <h3 className="mt-4 text-[18px] font-bold leading-[130%] font-sans">Features:</h3>
+                  <ul className="w-full max-w-2xl mx-auto space-y-4">
+                    {[
+                      { Icon: GiCarWheel, description: t('Description2') },
+                      { Icon: FaLock, description: t('Description3') },
+                      { Icon: PiAirplaneInFlightFill, description: t('Description4') },
+                      { Icon: BsFillLuggageFill, description: t('Description5') },
+                      { Icon: GiHammerBreak, description: t('Description6') },
+                      { Icon: GiUnplugged, description: t('Description7') },
+                    ].map(({ Icon, description }, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center gap-4 p-2 bg-[#f0e7d5] rounded-md shadow-sm"
+                      >
+                        <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 bg-[#ffd500] rounded-full">
+                          <Icon className="text-black w-6 h-6" />
+                        </div>
+                        <span className="text-black-700 text-sm">{description}</span>
+                      </li>
+                    ))}
+                  </ul>
             </>
           )}
         </div>
