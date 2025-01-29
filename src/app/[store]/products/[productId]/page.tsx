@@ -22,7 +22,7 @@ export default function ProductPage() {
     : productId === "multicolor" ? 2
     : 3;
 
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState<any>();
   const [loading, setLoading] = useState(true);
 
   function getSelectedStore() {
