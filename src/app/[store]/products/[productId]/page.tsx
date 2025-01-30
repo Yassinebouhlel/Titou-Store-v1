@@ -114,10 +114,10 @@ export default function ProductPage() {
       });
   
       const data = await response.json();
-      console.log("dd",data)
+
       const shopifyData = data.data.collection.products.edges
       let re = transformShopifyData(shopifyData)
-      console.log('sx',re)
+
       setProducts(re)
       return data.data.collection;
     } catch (error) {
@@ -129,60 +129,50 @@ export default function ProductPage() {
   function transformShopifyData(shopifyProducts: any[]) {
     // Base product structure
     const transformedProduct = {
-      id: 'brilliant',
-      name: '',
-      colors: [] as any[],
-      subtitle: 'subtitleRemove',
-      price: 0,
-      currency: '$ CAD',
-      rating: 4.64,
-      sizes: [],
-      reviews: 6,
-      additionalInfo: {
-        care: 'Titou Care, livraison et support inclus.',
-        paymentNote: ''
-      }
+        id: 'brilliant',
+        name: '',
+        colors: [] as any[],
+        subtitle: 'subtitleRemove',
+        price: 0,
+        currency: '$ CAD',
+        rating: 4.64,
+        sizes: [],
+        reviews: 6,
+        additionalInfo: {
+            care: 'Titou Care, livraison et support inclus.',
+            paymentNote: ''
+        }
     };
-  
-    // Process each product variant (color)
+
+    // Process each product
     shopifyProducts.forEach(product => {
-      const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'Color');
-      const colorCodeOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_code');
-      
-      if (!colorOption || !colorCodeOption) return;
-  
-      const colorName = colorOption.values[0];
-      const colorCode = colorCodeOption.values[0];
-      const images = product.node.images.edges.map((img: { node: { transformedSrc: any; }; }) => img.node.transformedSrc);
-      
-      // Detect transparent image (customize this logic as needed)
-      const transparentImage = product.node.images.edges.find(
-        (        img: { node: { src: string | string[]; }; }) => img.node.src.includes('transparent')
-      )?.node.transformedSrc;
-  
-      transformedProduct.colors.push({
-        color: colorName.toUpperCase(),
-        idColor: colorName.replace(/\s+/g, '_').toUpperCase(),
-        code: [colorCode],
-        images: images,
-        shopifyVarId:product.node.variants.edges[0].node.id,
-        ...(transparentImage && { transparent: transparentImage }),
-        
-      });
-  
-      // Set product name and price from first variant
-      if (!transformedProduct.name) {
-        transformedProduct.name = product.node.title;
-        transformedProduct.price = parseFloat(
-          product.node.variants.edges[0].node.price.amount
-        );
-      }
+        const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'Color');
+        const colorCodeOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_code');
+
+        if (!colorOption || !colorCodeOption) return;
+
+        // Collect all color codes for this product
+        const colorCodes = colorCodeOption.values;
+
+        // Create a single color entry for the product with all color codes
+        transformedProduct.colors.push({
+            color: colorOption.values.join(', ').toUpperCase(), // Combine all color names
+            idColor: colorOption.values.join('_').toUpperCase(), // Combine all color names for ID
+            code: colorCodes, // Array of all color codes
+            images: product.node.images.edges.map((img: { node: { transformedSrc: any; }; }) => img.node.transformedSrc),
+            shopifyVarId: product.node.variants.edges[0].node.id, // Use the first variant ID
+        });
+        // Set product name and price from first variant (if not already set)
+        if (!transformedProduct.name) {
+            transformedProduct.name = product.node.title;
+            transformedProduct.price = parseFloat(
+                product.node.variants.edges[0].node.price.amount
+            );
+        }
     });
-  
+
     return transformedProduct;
-  }
-
-
+}
 
 
   return (
