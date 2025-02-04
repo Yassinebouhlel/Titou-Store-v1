@@ -22,7 +22,8 @@ const ColorSelector: React.FC<{
 }> = ({colors, onColorChange, selectedColor}) => {
   const t = useTranslations('Color');
   
-  const selectedColorKey = selectedColor.color.replace(/ /g, "_"); // Replace spaces with underscores
+  const selectedColorKey = selectedColor.color.replace(/[, ]+/g, '_'); // Replace spaces with underscores
+
   
 
   return (
@@ -275,7 +276,7 @@ const addItemToBasket = async (quantity:any)=>{
         <ol className="inline-flex list-none p-0">
           <li className="flex items-center">
             <a className="text-gray-400" href="#">
-              Boutique
+              Shop
             </a>
             <svg
               className="mx-3 h-3 w-3 fill-current"
@@ -287,7 +288,7 @@ const addItemToBasket = async (quantity:any)=>{
           </li>
           <li className="flex items-center">
             <a className="text-gray-400" href="#">
-              Set de 3
+              Luggage Set
             </a>
             <svg
               className="mx-3 h-3 w-3 fill-current"
@@ -330,7 +331,7 @@ const addItemToBasket = async (quantity:any)=>{
 
           {!isLoading && (
             <>
-              <h1 className="font-bold text-2xl">{p(`${product.id}`)}</h1>
+              <h1 className="font-bold text-2xl">{product.name}</h1>
               <div className="mt-0.5 flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <svg
@@ -355,9 +356,6 @@ const addItemToBasket = async (quantity:any)=>{
 
               <p className="mt-4 font-bold text-3xl">
                 {product.price} {product.currency}{' '}
-              </p>
-              <p className="text-sm text-gray-500">
-                {product.additionalInfo.care}
               </p>
 
               <ColorSelector
