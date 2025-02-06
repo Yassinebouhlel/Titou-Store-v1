@@ -361,7 +361,7 @@ console.log(response)
                       />
                       <div>
                         <p className="font-medium text-gray-800">
-                          {p(`${item.id}`)}
+                          {item.name}
                         </p>
                         <p className="text-sm text-gray-500">
                           {c(`${item.selectedColor.idColor}`)}

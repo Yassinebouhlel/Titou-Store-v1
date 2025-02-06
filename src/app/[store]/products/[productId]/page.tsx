@@ -24,7 +24,7 @@ export default function ProductPage() {
 
   const [products, setProducts] = useState<any>();
   const [loading, setLoading] = useState(true);
-
+  
   function getSelectedStore() {
     // Find the 'selectedStore' cookie in document.cookie
     const match = document.cookie
@@ -134,7 +134,7 @@ export default function ProductPage() {
         colors: [] as any[],
         subtitle: 'subtitleRemove',
         price: 0,
-        currency: '$ CAD',
+        currency: '',
         rating: 4.64,
         sizes: [],
         reviews: 6,
@@ -172,11 +172,10 @@ export default function ProductPage() {
         console.log(processColorCodes(colorCodeOption));
 
         if (!colorOption || !colorCodeOption) return;
-        // console.log("🚀 ~ transformShopifyData ~ colorCodeOption:", colorCodeOption)
+        
         // Collect all color codes for this product
         const colorCodes = processColorCodes(colorCodeOption);
-        // console.log('This is the product', product)
-        // console.log("color option",colorOption)
+       
         // Create a single color entry for the product with all color codes
         transformedProduct.colors.push({
             color: colorOption.values.join(', ').toUpperCase(), // Combine all color names
@@ -191,6 +190,11 @@ export default function ProductPage() {
             transformedProduct.price = parseFloat(
                 product.node.variants.edges[0].node.price.amount
             );
+        }
+        if (getSelectedStore() == "US"){
+            transformedProduct.currency = "$ USD"
+        } else if (getSelectedStore() == "CA"){
+            transformedProduct.currency = "$ CAD"
         }
     });
 
