@@ -146,14 +146,37 @@ export default function ProductPage() {
 
     // Process each product
     shopifyProducts.forEach(product => {
-        const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'Color');
+        const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_description');
         const colorCodeOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_code');
 
+        function processColorCodes(colorCodeObject: { values: string[] }): string[] {
+          let processedColors: string[] = [];
+        
+          // Extract the color code string from the object
+          const colorCodeString = colorCodeObject.values[0];
+        
+          // Check if there are two color codes in the string
+          if (colorCodeString.split('#').length - 1 === 2) {
+            // Process the two color codes
+            processedColors = colorCodeString
+              .split('#') // Split by '#'
+              .filter(Boolean) // Remove empty strings
+              .map((color: string) => `#${color}`); // Add '#' back to each color
+          } else {
+            // If there's only one color code, leave it as is
+            processedColors = colorCodeObject.values;
+          }
+        
+          return processedColors;
+        }
+        console.log(processColorCodes(colorCodeOption));
+
         if (!colorOption || !colorCodeOption) return;
-
+        // console.log("🚀 ~ transformShopifyData ~ colorCodeOption:", colorCodeOption)
         // Collect all color codes for this product
-        const colorCodes = colorCodeOption.values;
-
+        const colorCodes = processColorCodes(colorCodeOption);
+        // console.log('This is the product', product)
+        // console.log("color option",colorOption)
         // Create a single color entry for the product with all color codes
         transformedProduct.colors.push({
             color: colorOption.values.join(', ').toUpperCase(), // Combine all color names
