@@ -1,3 +1,5 @@
+"use client";
+
 import {motion} from 'framer-motion';
 import Image from 'next/image';
 import React, {useEffect, useState,useRef} from 'react';
@@ -10,7 +12,7 @@ import { BsFillLuggageFill } from "react-icons/bs";
 import { GiHammerBreak } from "react-icons/gi";
 import { GiUnplugged } from "react-icons/gi";
 import { useCart } from '@/context/CartContext';  // Use CartContext
-import { useSearchParams } from 'next/navigation'; // Added for reading URL params
+import { useSearchParams, useRouter  } from 'next/navigation'; // Added for reading URL params
 
 
 
@@ -213,9 +215,23 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
 
 const ProductPage: React.FC<{product: any}> = ({product}) => {
   const searchParams = useSearchParams(); // To read URL parameters
+  const router = useRouter();
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [isLoading, setIsLoading] = useState(true);
   const { addItemToCart } = useCart();
+
+  // ✅ **Track Product View (ViewContent) on Page Load**
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "ViewContent", {
+        content_name: product.name,
+        content_category: "Luggage",
+        content_ids: [product.id],
+        value: product.price,
+        currency: product.currency,
+      });
+    }
+  }, [product]);
 
 const addItemToBasket = async (quantity:any)=>{
 
@@ -228,7 +244,30 @@ const addItemToBasket = async (quantity:any)=>{
   console.log(newItem)
   addItemToCart(newItem)
 
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "AddToCart", {
+      content_name: product.name,
+      content_category: "Luggage",
+      content_ids: [product.id],
+      value: product.price * quantity,
+      currency: product.currency,
+      quantity: quantity,
+    });
+  }
+
 }
+
+// ✅ **Handle Checkout Event (Optional)**
+const handleCheckout = () => {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "InitiateCheckout", {
+      content_name: "Cart Checkout",
+      value: product.price,
+      currency: product.currency,
+    });
+  }
+  router.push("/checkout");
+};
 
    // New function to handle color change with URL update
   // Function to handle color changes
