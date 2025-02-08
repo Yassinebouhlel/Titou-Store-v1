@@ -19,7 +19,7 @@ const addItem = ()=>{
         >
           <motion.div className="text-center">
             <button
-              className="font-bold text-xl text-black focus:outline-none"
+              className="font-bold text-md md:text-xl text-black focus:outline-none"
               onClick={() => {
                 if (count >= 2) setCount(count - 1);
               }}
@@ -28,11 +28,11 @@ const addItem = ()=>{
             </button>
           </motion.div>
           <motion.div className="text-center">
-            <h1 className="select-none font-bold text-xl">{count}</h1>
+            <p className="select-none font-bold text-md md:text-xl">{count}</p>
           </motion.div>
           <motion.div className="text-center">
             <button
-              className="font-bold text-xl text-black focus:outline-none"
+              className="font-bold text-md md:text-xl text-black focus:outline-none"
               onClick={() => {
                 if (count <= 9) setCount(count + 1);
               }}
@@ -48,7 +48,7 @@ const addItem = ()=>{
           ()=>{
             addItem()
           }
-        } className="w-full rounded-3xl bg-[#FFD500] px-6 py-3 font-bold text-xl text-black hover:bg-black hover:text-white">
+        } className="w-full rounded-3xl border-2 border-black bg-[#FFD500] px-6 py-2 font-bold text-md md:text-xl text-black hover:bg-black hover:text-white">
           {t('AddToCart')}
         </button>
       </div>

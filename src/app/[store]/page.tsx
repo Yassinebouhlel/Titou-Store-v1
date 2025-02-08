@@ -25,18 +25,17 @@ export default function HomePage() {
         </ScrollEffectWrapper>
 
         <ScrollEffectWrapper>
-          <div className="px-6  mt-24 relative flex  flex-col items-center justify-center  text-center ">
+          <div className="px-6 mt-10  md:mt-24 relative flex  flex-col items-center justify-center  text-center ">
             {/* Banner */}
 
             <div className="w-full h-full   rounded-custom imageBg ">
               <div
-                className={`flex flex-col gap-6 p-10 justify-center text-[#01141B]  bg-[#FFD500]  h-full w-3/5 md:w-2/5 min-h-80
-        rounded-tl-custom-top-left rounded-br-custom-bottom-right`}
+                className={`flex flex-col gap-6 p-10 justify-center text-[#01141B]  bg-[#FFD500]  h-full w-3/5 md:w-2/5 min-h-80 rounded-tl-custom-top-left rounded-br-custom-bottom-right`}
               >
-                <p className=" md:text-2xl font-sans text-start pt-8">
-                {b("Eng")}
+                <p className="text-sm md:text-2xl font-sans text-start pt-8">
+                  {b("Eng")}
                 </p>
-                <h1 className="md:text-5xl font-bold pb-8 text-start">
+                <h1 className="text-[1.2rem] md:text-5xl font-bold pb-8 text-start">
                   {" "}
                   {b("PP")}
                 </h1>
@@ -44,10 +43,10 @@ export default function HomePage() {
               <div
                 className={`flex flex-row items-center justify-between p-0 pl-8 text-[#01141B] 
         bg-[#FFD500] md:w-1/4 w-3/5 min-h-24 rounded-br-custom-bottom-right 
-        rounded-tr-custom-top-right  text-md font-sans text-md `}
+        rounded-tr-custom-top-right  text-md font-sans text-md gap-x-1`}
               >
                 {b("Discover")}
-                <div className=" rounded-full  p-3 hover:bg-white mr-2 cursor-pointer   ">
+                <div className=" rounded-full  p-3 bg-white md:bg-transparent hover:bg-white mr-2 cursor-pointer   ">
                   <FaArrowRight size={46} className="" />
                 </div>
               </div>

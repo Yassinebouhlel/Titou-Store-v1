@@ -45,13 +45,13 @@ export default function BasicSlider() {
     >
       <Overlay>
         <Wrapper>
-          <Title>{t(cuurentTitle.title)}</Title>
+          <Title ><span className="text-[2.5rem] md:text-[5rem] md:text-5xl">{t(cuurentTitle.title)}</span></Title>
           {/* <h2 className="mt-6">{cuurentTitle.subTitle}</h2> */}
         </Wrapper>
       </Overlay>
 
       <Slide
-        shouldRenderMask
+        
         label="Giau Pass - Italy"
         background={{
           onLoad() {
@@ -66,7 +66,7 @@ export default function BasicSlider() {
       />
 
       <Slide
-        shouldRenderMask
+        
         label="Bogliasco - Italy"
         background={{
           onLoad(event) {
@@ -80,7 +80,7 @@ export default function BasicSlider() {
       />
 
       <Slide
-        shouldRenderMask
+        
         label="County Clare - Ireland"
         background={{
           backgroundImageSrc: bg3.src,
@@ -94,7 +94,7 @@ export default function BasicSlider() {
       />
 
       <Slide
-        shouldRenderMask
+        
         label="Crater Rock, OR - United States"
         background={{
           backgroundImageSrc: bg2.src,

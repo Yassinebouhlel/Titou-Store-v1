@@ -181,7 +181,7 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
           ref={carouselRef}
           className="relative overflow-hidden"
         >
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-2">
+          <div className="flex gap-4 overflow-x-hidden snap-x snap-mandatory scrollbar-hide py-2">
             {images.map((image, index) => (
               <div
                 key={index}
@@ -275,7 +275,7 @@ const addItemToBasket = async (quantity:any)=>{
       <nav className="mb-4 text-sm">
         <ol className="inline-flex list-none p-0">
           <li className="flex items-center">
-            <a className="text-gray-400" href="#">
+            <a className="text-gray-400 whitespace-nowrap truncate" href="#">
               Shop
             </a>
             <svg
@@ -287,7 +287,7 @@ const addItemToBasket = async (quantity:any)=>{
             </svg>
           </li>
           <li className="flex items-center">
-            <a className="text-gray-400" href="#">
+            <a className="text-gray-400 whitespace-nowrap truncate" href="#">
               Luggage Set
             </a>
             <svg

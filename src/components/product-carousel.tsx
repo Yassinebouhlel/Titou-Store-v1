@@ -168,7 +168,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <motion.div
       animate={{ opacity: 1 }}
-      className="relative max-w-sm rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
+      className="relative  max-w-sm rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
       initial={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ scale: 1.05 }}
@@ -217,7 +217,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   handleNextImage,
   images,
 }) => (
-  <div className="relative h-64 w-full overflow-hidden rounded-t-[24px] ">
+  <div className="relative h-64  md:w-full overflow-hidden rounded-t-[24px] ">
     <img
       alt="Product"
       className="h-full w-full object-cover"

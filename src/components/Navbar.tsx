@@ -242,10 +242,21 @@ console.log(response)
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden flex flex-col  gap-6 text-xl space-y-4 h-screen mt-16 relative">
-            <div className="flex items-end justify-between absolute top-0 right-0">
+          <div className="md:hidden px-4 flex flex-col  gap-6 text-xl space-y-4 h-screen mt-16 relative">
+            <div className="flex items-end justify-between absolute top-0 right-4">
               <div></div>
               <LocaleSwitcher />
+              <div
+              className="relative rounded-full mx-1 bg-white p-2 hover:bg-[#b2ac9c7d]"
+              onClick={() => setIsCartModalOpen((prev: boolean) => !prev)}
+            >
+              <PiHandbag size={24} />
+              {cartItems.length > 0 && (
+                <span className="absolute top-0 right-0 h-4 w-4 bg-yellow-500 rounded-full flex items-center justify-center text-xs text-white">
+                  {cartItems.length}
+                </span>
+              )}
+            </div>
             </div>
             <Link href="/" passHref>
               <span

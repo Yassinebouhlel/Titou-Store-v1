@@ -37,7 +37,7 @@ type ProductCardProps = {
   return (
     <motion.div
       animate={{opacity: 1}}
-      className="relative max-w-sm rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
+      className="relative min-w-1/3 max-w-[28rem] rounded-[32px] bg-white p-4 shadow-md hover:shadow-custom"
       initial={{opacity: 0}}
       transition={{duration: 0.3}}
       whileHover={{scale: 1.05}}
@@ -52,7 +52,7 @@ type ProductCardProps = {
         selectedColor={selectedColor}
         setSelectedColor={setSelectedColor}
       />
-      <div className="mt-4 w-full">
+      <div className="mt-4 w-9/12">
         <p className="font-bold ">{t(`${product.id}`)}</p>
         
         <div className="flex items-center justify-between ">
@@ -60,7 +60,7 @@ type ProductCardProps = {
         </div>
       </div>
       <Link href={`/products/${product.id}`}>
-  {!oneImage &&      <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[75px] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
+  {!oneImage &&      <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[3/12] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
           <div className=" cursor-pointer  rounded-full p-2  hover:bg-white   ">
             <FaArrowRight className="" size={24} />
           </div>

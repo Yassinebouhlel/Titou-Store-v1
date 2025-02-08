@@ -102,7 +102,7 @@
   background-color:#F4EEE1;
 }
 .imageBg{
-  background-image:url('/images/download.jpg');
+  background-image:url('/images/ai-img.png');
  
   object-fit : cover;
   /* height: 100%; */
