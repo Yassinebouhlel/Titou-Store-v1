@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import { ReactNode, useEffect } from "react";
 import Script from "next/script";
 import Footer from "@/components/Footer";
+import { siteConfig } from "@/constant/config";
 
 const FACEBOOK_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || "";
 
@@ -19,10 +20,36 @@ export default async function LocaleLayout({ children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <head>
-        <title>Titou Luggage Store</title>
-      </head>
+   
+      <html lang={locale} className="scroll-smooth">
+  <head>
+    <title>{siteConfig.title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={siteConfig.description} />
+    <link rel="canonical" href={siteConfig.url} />
+    
+    {/* Open Graph */}
+    <meta property="og:title" content={siteConfig.title} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:image" content={`${siteConfig.url}/images/og.jpg`} />
+    <meta property="og:url" content={siteConfig.url} />
+    <meta property="og:type" content="website" />
+    
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <Script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Titou Pro Traveler",
+        "description": `${siteConfig.description} ${siteConfig.keywords.join(' ')}`,
+        "keywords": siteConfig.keywords.join(', '),
+        // ... rest of schema
+      })}
+    </Script>
+  </head>
+
+    
       <body className="bg-primary">
         {/* Inject Facebook Pixel Script */}
         <Script

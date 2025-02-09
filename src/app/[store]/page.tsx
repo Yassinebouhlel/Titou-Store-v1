@@ -10,22 +10,37 @@ import Carousel from "@/components/Carousel";
 import { useTranslations } from "next-intl";
 import BasicSlider from "@/components/autoSlider/BasicSlider";
 import ProductCarousel from "@/components/product-carousel";
+import { redirect,usePathname,useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const t = useTranslations("benefits");
   const w = useTranslations("why");
   const s = useTranslations("newsletter");
   const b = useTranslations("Banner");
+  const searchParams = useSearchParams()
+  const d = usePathname()
+  useEffect(() => {
+    console.log('searchParams',searchParams.get('reload'))
+    if(searchParams.get('reload')==='true'){
+      console.log('searchParams',searchParams)
+      console.log('reloading')
+    window.history.replaceState({}, '', d);
 
+    document.location.reload();
+   
+    }
+  }, []);
+console.log(searchParams)
   return (
-    <main>
+    <>
       <section className="bg-primary  px-4 mt-4 pt-10">
         <ScrollEffectWrapper>
           <BasicSlider />
         </ScrollEffectWrapper>
 
         <ScrollEffectWrapper>
-          <div className="px-6 mt-10  md:mt-24 relative flex  flex-col items-center justify-center  text-center ">
+          <div className="px-2 mt-10  md:mt-24 relative flex  flex-col items-center justify-center  text-center ">
             {/* Banner */}
 
             <div className="w-full h-full   rounded-custom imageBg ">
@@ -56,7 +71,7 @@ export default function HomePage() {
               <div className="   flex flex-col  items-center md:flex-row justify-between gap-x-6 gap-y-6  ">
                 <div className="flex  flex-col items-center   ">
                   <div className="flex h-[150px] w-[150px]  items-center justify-center rounded-full bg-[#76c7e7] ">
-                    <img src="https://titou.ma/wp-content/uploads/2024/01/camion-100x100.png" />
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/camion-100x100.png" alt="Free Delivery"/>
                   </div>
                   <div className="flex flex-col items-center">
                     <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
@@ -70,7 +85,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col items-center  ">
                   <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#f0e7ff] ">
-                    <img src="https://titou.ma/wp-content/uploads/2024/01/paiement-securise-100x100.png" />
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/paiement-securise-100x100.png" alt="Secure Payment" />
                   </div>
                   <div className="flex flex-col items-center  ">
                     <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
@@ -83,7 +98,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#fcaa9f] ">
-                    <img src="https://titou.ma/wp-content/uploads/2024/01/service-clients-100x100.png" />
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/service-clients-100x100.png" alt="Full Support" />
                   </div>
                   <div className="flex flex-col items-center  ">
                     <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
@@ -96,7 +111,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-col items-center  ">
                   <div className="flex h-[150px] w-[150px] items-center justify-center rounded-full bg-[#a6cbac] ">
-                    <img src="https://titou.ma/wp-content/uploads/2024/01/remise-en-argent-100x100.png" />
+                    <img src="https://titou.ma/wp-content/uploads/2024/01/remise-en-argent-100x100.png" alt="Return Policy" />
                   </div>
                   <div className="flex flex-col items-center  ">
                     <h1 className="mt-2 px-6 text-center font-bold text-[25px] leading-[130%] ">
@@ -116,7 +131,7 @@ export default function HomePage() {
             loop
             muted
             playsInline
-            className="w-full h-full rounded-[60px] px-4"
+            className="w-full h-full rounded-[60px] px-2"
             controls={false}
             autoPlay
           >
@@ -125,10 +140,10 @@ export default function HomePage() {
         </ScrollEffectWrapper>
 
         <ScrollEffectWrapper>
-          <h1 className="px-20 py-10 text-center text-3xl">{w("WhyPP")}</h1>
+          <h1 className="px-10 md:px-20 py-10 text-center text-3xl">{w("WhyPP")}</h1>
           <span className="" />
 
-          <div className="grid grid-cols-1 gap-8 p-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 py-4 px-2 md:grid-cols-2 lg:grid-cols-3">
             <CardComponent
               bgColor="bg-[#DFB7FF]"
               description={w("LightweightDescription")}
@@ -179,7 +194,7 @@ export default function HomePage() {
       <div>
         <Carousel />
 
-        <div className="relative flex justify-center items-center bg-[#724740] py-10 px-5">
+        <div className="relative flex justify-center items-center bg-[#724740] py-10 px-2">
           {/* Background Image */}
           {/* <div className="absolute inset-0 bg-cover bg-center opacity-70">
         <Image
@@ -210,6 +225,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 }

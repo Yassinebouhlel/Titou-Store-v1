@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import ProductListing from '@/components/ProductsList';
 import {data} from '@/constant/config';
 
+
 const filters = [
   {
     title: 'Couleurs',
@@ -19,7 +20,7 @@ const filters = [
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
-
+  
   function getSelectedStore() {
     // Find the 'selectedStore' cookie in document.cookie
     const match = document.cookie.split("; ").find(row => row.startsWith("selectedStore="));

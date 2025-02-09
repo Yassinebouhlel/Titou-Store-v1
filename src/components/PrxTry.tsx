@@ -60,7 +60,7 @@ type ProductCardProps = {
         </div>
       </div>
       <Link href={`/products/${product.id}`}>
-  {!oneImage &&      <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[3/12] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
+  {!oneImage &&      <div className="absolute bottom-0 right-0 flex h-[60px] min-w-[70px] md:min-w-[75px] items-center justify-center rounded-b-[32px] rounded-l-[24px] border bg-[#FFD500]  ">
           <div className=" cursor-pointer  rounded-full p-2  hover:bg-white   ">
             <FaArrowRight className="" size={24} />
           </div>
@@ -83,7 +83,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => (
   <div className="relative h-64 w-full overflow-hidden rounded-t-[24px] ">
     <img
-      alt="Product"
+      alt="luggage suitcase"
       className="h-full w-full object-cover"
       onClick={images.length > 1 ? handleNextImage : ()=>{}}
     

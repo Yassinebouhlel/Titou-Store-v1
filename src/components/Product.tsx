@@ -65,7 +65,7 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
   const [isLoading, setIsLoading] = useState(true);
   const thumbnailsRef = useRef<(HTMLDivElement | null)[]>([]) as any;
   const carouselRef = useRef<HTMLDivElement | null>(null)as any;
-
+console.log(color)
   const handleImageLoad = () => {
     setIsLoading(false);
   };
@@ -99,7 +99,7 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Main Image Container */}
-      <div className="relative aspect-[16/10] w-full mb-4">
+      <div className="relative aspect-[12/10] w-full mb-2">
         <div className="relative w-full h-full rounded-2xl bg-white overflow-hidden">
           {isLoading && (
             <div className="absolute inset-0 animate-pulse bg-gray-200" />
@@ -183,12 +183,12 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
           ref={carouselRef}
           className="relative overflow-hidden"
         >
-          <div className="flex gap-4 overflow-x-hidden snap-x snap-mandatory scrollbar-hide py-2">
+          <div className=" flex gap-2 overflow-x-hidden snap-x snap-mandatory scrollbar-hide py-2">
             {images.map((image, index) => (
               <div
                 key={index}
                 ref={(el:any) => (thumbnailsRef.current[index] = el)}
-                className={`flex-shrink-0 snap-center cursor-pointer rounded-lg overflow-hidden transition-all duration-200 ${
+                className={`mx-1 flex-shrink-0 snap-center cursor-pointer rounded-lg overflow-hidden transition-all duration-200 ${
                   currentImageIndex === index
                     ? "ring-2 ring-black/75 ring-offset-2"
                     : "ring-1 ring-gray-200 opacity-65"
@@ -288,6 +288,7 @@ const handleCheckout = () => {
       const matchedColor = product.colors.find(
         (color: any) => color.color.replace(/ /g, '_').toLowerCase() === colorFromUrl
       );
+      console.log(product.colors)
       setSelectedColor(matchedColor || product.colors[0]); // Fallback if no match
 
     } else {

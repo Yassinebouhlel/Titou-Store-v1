@@ -219,7 +219,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => (
   <div className="relative h-64  md:w-full overflow-hidden rounded-t-[24px] ">
     <img
-      alt="Product"
+      alt="lugaage Product"
       className="h-full w-full object-cover"
       src={images[currentImageIndex]}
     />

@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import ReactFlagsSelect from "react-flags-select";
+
 
 function Footer() {
   const t = useTranslations("footer");
@@ -59,7 +59,7 @@ function Footer() {
           <div className="flex flex-col rounded-full px-2 py-1">
             <p className="font-bold text-[1rem] text-[#FFD500]">Stores</p>
           </div>
-          <Link href="/US">
+          <Link href="/US?reload=true">
           <div className="mt-3 flex w-full flex-row gap-x-2 items-center">
             <Image
                 src="/images/countries/usa.jpg"
@@ -74,7 +74,7 @@ function Footer() {
            
             </div>
           </Link>
-          <Link href="/CA">
+          <Link href="/CA?reload=true">
           <div className="mt-3 flex w-full flex-row gap-x-2 items-center">
             <Image
                 src="/images/countries/Flag_of_Canada.png"
@@ -89,7 +89,7 @@ function Footer() {
            
             </div>
           </Link>
-          <Link href="/TN">
+          <Link href="/TN?reload=true">
             <div className="mt-3 flex w-full flex-row gap-x-2 items-center">
             <Image
                 src="/images/countries/Flag_of_Tunisia.png"
@@ -104,7 +104,7 @@ function Footer() {
            
             </div>
           </Link>
-          <Link href="/SA">
+          <Link href="/SA?reload=true">
           <div className="mt-3 flex w-full flex-row gap-x-2 items-center">
             <Image
                 src="/images/countries/saudi-arabia-flag.png"

@@ -26,13 +26,7 @@ function Carousel() {
   // Memoize the cards array to prevent recreating on every render
   const cards = useMemo(
     () => [
-      {
-        id: data[selectedStore].categories[0].colors[0].idColor,
-        idCategory: data[selectedStore].categories[0].id,
-        image: data[selectedStore].categories[0].colors[0].transparent,
-        price: data[selectedStore].categories[0].price,
-        description: p(data[selectedStore].categories[0].id),
-      },
+   
       {
         id: data[selectedStore].categories[1].colors[8].idColor,
         idCategory: data[selectedStore].categories[1].id,
@@ -67,6 +61,13 @@ function Carousel() {
         image: data[selectedStore].categories[2].colors[11].transparent,
         price: data[selectedStore].categories[2].price,
         description: p(data[selectedStore].categories[2].id),
+      },
+      {
+        id: data[selectedStore].categories[0].colors[3].idColor,
+        idCategory: data[selectedStore].categories[0].id,
+        image: data[selectedStore].categories[0].colors[3].transparent,
+        price: data[selectedStore].categories[0].price,
+        description: p(data[selectedStore].categories[0].id),
       },
     ],
     [data, selectedStore, p]

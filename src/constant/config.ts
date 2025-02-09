@@ -19,45 +19,52 @@ type Category = {
   additionalInfo: any;
 };
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Titou - Best Luggage',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Best quality price Luggage / suitecases / Carry-On - Set of 3 / Polypropylene Unbreakable Luggage',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev'
+  url: 'https://titou.store',
+
+    keywords: ['Luggage', 'Premium Suitcases', 'Travel Gear', 'Durable Carry-On'],
+    authors: [{ name: 'Titou', url: 'https://titou.store' }],
+    creator: 'Titou',
+    publisher: 'Titou',
+    manifest: '/site.webmanifest',
+    canonical: 'https://titou.store',
+
+
 };
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`
+    template: `%s | ${siteConfig.title}`,
   },
   description: siteConfig.description,
-  robots: {index: true, follow: true},
-  // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-  // ! copy to /favicon folder
-  icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png'
-  },
-  manifest: `/favicon/site.webmanifest`,
+  keywords: siteConfig.keywords,
+  authors: siteConfig.authors,
   openGraph: {
-    url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
+    url: siteConfig.url,
     siteName: siteConfig.title,
-    images: [`${siteConfig.url}/images/og.jpg`],
+    images: [{
+      url: `${siteConfig.url}/images/og.jpg`,
+      width: 1200,
+      height: 630,
+    }],
+    locale: 'en_US',
     type: 'website',
-    locale: 'en_US'
   },
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/og.jpg`]
-    // creator: '@th_clarence',
-  }
+    creator: siteConfig.creator,
+    images: [`${siteConfig.url}/images/og.jpg`],
+  },
 };
 export const categories: Array<Category> = [
   {
@@ -761,7 +768,8 @@ export const data: any = {
               '/images/Brillant/CREAM/titou-photos-164.jpg',
               '/images/Brillant/CREAM/titou-photos-165.jpg',
               '/images/Brillant/CREAM/titou-photos-154.jpg'
-            ]
+            ],
+transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'NAVY BLUE',
@@ -993,7 +1001,7 @@ export const data: any = {
           },
           {
             color: "YELLOW WITH BLACK ACCESSORIES",
-            idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+            idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
             code: ['#e5d01f','#000000'],
             images: [
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -1405,7 +1413,8 @@ export const data: any = {
             '/images/Brillant/CREAM/titou-photos-164.jpg',
             '/images/Brillant/CREAM/titou-photos-165.jpg',
             '/images/Brillant/CREAM/titou-photos-154.jpg'
-          ]
+          ],
+          transparent: '/images/Transparent/titou-photos-155.png'
         },
         {
           color: 'NAVY BLUE',
@@ -1636,7 +1645,7 @@ export const data: any = {
         },
         {
           color: "YELLOW WITH BLACK ACCESSORIES",
-          idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+          idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
           code: ['#e5d01f','#000000'],
           images: [
             "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -2006,6 +2015,7 @@ export const data: any = {
           images: [
             '/images/CarryOnBrilliant/cream.png'
           ],
+          transparent: '/images/Transparent/titou-photos-155.png'
         },
         {
           color: 'GRAY',
@@ -2126,7 +2136,8 @@ export const data: any = {
               '/images/Brillant/CREAM/titou-photos-164.jpg',
               '/images/Brillant/CREAM/titou-photos-165.jpg',
               '/images/Brillant/CREAM/titou-photos-154.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'NAVY BLUE',
@@ -2358,7 +2369,7 @@ export const data: any = {
           },
           {
             color: "YELLOW WITH BLACK ACCESSORIES",
-            idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+            idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
             code: ['#e5d01f','#000000'],
             images: [
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -2728,6 +2739,7 @@ export const data: any = {
             images: [
               '/images/CarryOnBrilliant/cream.png'
             ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'GRAY',
@@ -2849,7 +2861,8 @@ export const data: any = {
               '/images/Brillant/CREAM/titou-photos-164.jpg',
               '/images/Brillant/CREAM/titou-photos-165.jpg',
               '/images/Brillant/CREAM/titou-photos-154.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'NAVY BLUE',
@@ -3081,7 +3094,7 @@ export const data: any = {
           },
           {
             color: "YELLOW WITH BLACK ACCESSORIES",
-            idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+            idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
             code: ['#e5d01f','#000000'],
             images: [
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -3492,7 +3505,8 @@ export const data: any = {
               '/images/Brillant/CREAM/titou-photos-164.jpg',
               '/images/Brillant/CREAM/titou-photos-165.jpg',
               '/images/Brillant/CREAM/titou-photos-154.jpg'
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'NAVY BLUE',
@@ -3723,7 +3737,7 @@ export const data: any = {
           },
           {
             color: "YELLOW WITH BLACK ACCESSORIES",
-            idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+            idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
             code: ['#e5d01f','#000000'],
             images: [
               "/images/Mat/YELLOW WITH BLACK ACCESSORIES/2.jpg",
@@ -4093,6 +4107,7 @@ export const data: any = {
             images: [
               '/images/CarryOnBrilliant/cream.png'
             ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'GRAY',
@@ -4190,7 +4205,8 @@ export const showCaseData: any = {
              
               '/images/Brillant/CREAM/titou-photos-157.jpg',
               
-            ]
+            ],
+            transparent: '/images/Transparent/titou-photos-155.png'
           },
           {
             color: 'NAVY BLUE',
@@ -4379,7 +4395,7 @@ export const showCaseData: any = {
           },
           {
             color: "YELLOW WITH BLACK ACCESSORIES",
-            idColor:'YELLOW_WITH_BLACK_ACCESSORIES',
+            idColor:'CREAM_WITH_YELLOW_ACCESSORIES',
             code: ['#e5d01f','#000000'],
             images: [
               
