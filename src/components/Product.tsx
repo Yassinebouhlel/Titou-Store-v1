@@ -219,6 +219,7 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [isLoading, setIsLoading] = useState(true);
   const { addItemToCart } = useCart();
+  console.log('This is the product', product)
 
   // ✅ **Track Product View (ViewContent) on Page Load**
   useEffect(() => {
@@ -394,9 +395,29 @@ const handleCheckout = () => {
               </div>
               <p className="mt-2 text-gray-600">{p(`${product.subtitle}`)}</p>
 
-              <p className="mt-4 font-bold text-3xl">
-                {product.price} {product.currency}{' '}
-              </p>
+              <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2">
+                <p className="font-bold text-3xl">
+                  {product.originalPrice > 0 ? (
+                    <>
+                      <span className="line-through text-gray-500 text-xl mr-2"> {/* Smaller font size for original price */}
+                        {product.originalPrice} {product.currency}
+                      </span>
+                      <span>
+                        {product.price} {product.currency}
+                      </span>
+                    </>
+                  ) : (
+                    <span>
+                      {product.price} {product.currency}
+                    </span>
+                  )}
+                </p>
+                {product.originalPrice > 0 && (
+                  <span className="bg-red-500 text-white text-sm px-2 py-1 rounded self-start sm:self-auto"> {/* Sale label */}
+                    Sale
+                  </span>
+                )}
+              </div>
 
               <ColorSelector
                 colors={product.colors}

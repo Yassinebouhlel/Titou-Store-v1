@@ -82,6 +82,9 @@ export default function ProductPage() {
                       price {
                         amount
                       }
+                      compareAtPrice {
+                        amount
+                      }
                     }
                   }
                 }
@@ -117,6 +120,7 @@ export default function ProductPage() {
 
       const shopifyData = data.data.collection.products.edges
       let re = transformShopifyData(shopifyData)
+      console.log("🚀 ~ fetchCollectionById ~ re:", re)
 
       setProducts(re)
       return data.data.collection;
@@ -134,6 +138,7 @@ export default function ProductPage() {
         colors: [] as any[],
         subtitle: 'subtitleRemove',
         price: 0,
+        originalPrice: 0,
         currency: '',
         rating: 4.64,
         sizes: [],
@@ -189,6 +194,9 @@ export default function ProductPage() {
             transformedProduct.name = product.node.title;
             transformedProduct.price = parseFloat(
                 product.node.variants.edges[0].node.price.amount
+            );
+            transformedProduct.originalPrice = parseFloat(
+              product.node.variants.edges[0].node.compareAtPrice.amount
             );
         }
         if (getSelectedStore() == "US"){
