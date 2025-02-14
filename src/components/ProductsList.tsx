@@ -131,7 +131,6 @@ const ProductListing: React.FC<{
 }> = ({filters, products}) => {
   const [isLoading, setIsLoading] = useState(true);
   const availbleColors = getOrderedColorsByRgb(products);
-  
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);

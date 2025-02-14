@@ -1351,6 +1351,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
   SA:{ 
     categories: [
     {
+      shopifyId: 'gid://shopify/Collection/301694812278',
       id: 'brillant',
       name: 'Ensemble de 3 valise - Brilliant',
       colors: [
@@ -1476,6 +1477,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
     },
     {
       id: 'mat',
+      shopifyId: 'gid://shopify/Collection/301694746742',
       name: 'Ensemble de 3 valise - Mat',
       colors: [
         {
@@ -1679,6 +1681,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
     },
     {
       id: 'multicolor',
+      shopifyId: 'gid://shopify/Collection/301694779510',
       name: 'Ensemble de 3 valise - Multicouleur',
       colors: [
         {
@@ -2074,6 +2077,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
   TN:{ 
     categories: [
       {
+        shopifyId: 'gid://shopify/Collection/301694812278',
         id: 'brillant',
         name: 'Ensemble de 3 valise - Brilliant',
         colors: [
@@ -2200,6 +2204,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
       },
       {
         id: 'mat',
+        shopifyId: 'gid://shopify/Collection/301694746742',
         name: 'Ensemble de 3 valise - Mat',
         colors: [
           {
@@ -2403,6 +2408,7 @@ transparent: '/images/Transparent/titou-photos-155.png'
       },
       {
         id: 'multicolor',
+        shopifyId: 'gid://shopify/Collection/301694779510',
         name: 'Ensemble de 3 valise - Multicouleur',
         colors: [
           {

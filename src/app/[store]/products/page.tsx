@@ -3,6 +3,11 @@
 import { useState, useEffect } from 'react';
 import ProductListing from '@/components/ProductsList';
 import {data} from '@/constant/config';
+import { useShopifyData } from "@/hooks/useShopifyData"; // Import the custom hook
+import { transformShopifyData } from '@/utils/transformShopifyData';
+import { getSelectedStore } from '@/utils/selectedStore';
+
+
 
 
 const filters = [
@@ -17,26 +22,39 @@ const filters = [
   }
   // ... more filter sections
 ];
+interface TransformedProduct {
+  id: string;
+  name: string;
+  colors: any[];
+  subtitle: string;
+  price: string;
+  originalPrice: string;
+  currency: string;
+  rating: number;
+  sizes: string[]; // Change from `never[]` to a valid array type
+  reviews: number;
+  additionalInfo: {
+    care: string;
+    paymentNote: string;
+  };
+}
 
 export default function ProductPage() {
-  const [products, setProducts] = useState([]);
-  
-  function getSelectedStore() {
-    // Find the 'selectedStore' cookie in document.cookie
-    const match = document.cookie.split("; ").find(row => row.startsWith("selectedStore="));
-    // If found, return the value after '=', otherwise return null
-    return match ? match.split("=")[1] : null;
-  }
+  const [products, setProducts] = useState<TransformedProduct[]>([]);
+  const selectedCountry = getSelectedStore() || "TN";
+  const { shopifyData, loading, error } = useShopifyData(selectedCountry);
+  console.log("🚀 ~ ProductPage ~ shopifyData:", shopifyData)
+  console.log("🚀 ~ ProductPage ~ selectedCountry:", selectedCountry)
   
   useEffect(() => {
-    // Retrieve the selected country from localStorage (or any global state management method you prefer)
-    const selectedCountry = getSelectedStore() || "TN";
-
-    setProducts(data[selectedCountry].categories)
-   
-  }, []);
-
- 
+    if (shopifyData) {
+      const transformedProducts = shopifyData.map(item =>
+        transformShopifyData(item.products.edges)
+      );
+  
+      setProducts(transformedProducts);
+    }
+  }, [shopifyData]);
 
   return (
     <div>

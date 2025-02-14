@@ -65,7 +65,7 @@ const ProductImage: React.FC<{ images: string[]; color: string }> = ({
   const [isLoading, setIsLoading] = useState(true);
   const thumbnailsRef = useRef<(HTMLDivElement | null)[]>([]) as any;
   const carouselRef = useRef<HTMLDivElement | null>(null)as any;
-console.log(color)
+
   const handleImageLoad = () => {
     setIsLoading(false);
   };
@@ -219,7 +219,7 @@ const ProductPage: React.FC<{product: any}> = ({product}) => {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [isLoading, setIsLoading] = useState(true);
   const { addItemToCart } = useCart();
-  console.log('This is the product', product)
+console.log('productprice', product)
 
   // ✅ **Track Product View (ViewContent) on Page Load**
   useEffect(() => {
@@ -242,7 +242,7 @@ const addItemToBasket = async (quantity:any)=>{
     quantity
 
   }
-  console.log(newItem)
+
   addItemToCart(newItem)
 
   if (typeof window !== "undefined" && window.fbq) {
@@ -289,7 +289,7 @@ const handleCheckout = () => {
       const matchedColor = product.colors.find(
         (color: any) => color.color.replace(/ /g, '_').toLowerCase() === colorFromUrl
       );
-      console.log(product.colors)
+
       setSelectedColor(matchedColor || product.colors[0]); // Fallback if no match
 
     } else {
@@ -397,7 +397,7 @@ const handleCheckout = () => {
 
               <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-2">
                 <p className="font-bold text-3xl">
-                  {product.originalPrice > 0 ? (
+                  {parseFloat(product.originalPrice.replace(/[^0-9.]/g, '')) > 0 ? (
                     <>
                       <span className="line-through text-gray-500 text-xl mr-2"> {/* Smaller font size for original price */}
                         {product.originalPrice} {product.currency}
@@ -412,7 +412,7 @@ const handleCheckout = () => {
                     </span>
                   )}
                 </p>
-                {product.originalPrice > 0 && (
+                {parseFloat(product.originalPrice.replace(/[^0-9.]/g, ''))> 0 && (
                   <span className="bg-red-500 text-white text-sm px-2 py-1 rounded self-start sm:self-auto"> {/* Sale label */}
                     Sale
                   </span>

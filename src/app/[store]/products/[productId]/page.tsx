@@ -10,6 +10,8 @@ import { motion } from "framer-motion";
 import ProductTabs from "@/components/ProductTabs";
 import ReviewSection from "@/components/ReviewSection";
 import ProductCarousel from "@/components/product-carousel";
+import { getSelectedStore } from '@/utils/selectedStore';
+import { transformShopifyData } from '@/utils/transformShopifyData';
 
 export default function ProductPage() {
   const t = useTranslations("Product");
@@ -17,23 +19,14 @@ export default function ProductPage() {
   // const productIndex =
   //   productId === "brillant" ? 0 : productId === "mat" ? 1 : 2;
   const productIndex = 
-    productId === "brillant" ? 0 
-    : productId === "mat" ? 1 
-    : productId === "multicolor" ? 2
+    productId === "Shine" ? 0 
+    : productId === "Mat" ? 1 
+    : productId === "Multicolor" ? 2
     : 3;
 
   const [products, setProducts] = useState<any>();
   const [loading, setLoading] = useState(true);
   
-  function getSelectedStore() {
-    // Find the 'selectedStore' cookie in document.cookie
-    const match = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("selectedStore="));
-    // If found, return the value after '=', otherwise return null
-    return match ? match.split("=")[1] : null;
-  }
-
   useEffect(() => {
     // Retrieve the selected country from localStorage (or any global state management method you prefer)
     const selectedCountry = getSelectedStore() || "TN";
@@ -45,7 +38,7 @@ export default function ProductPage() {
     const shopifyStorefrontUrl = "https://v1dj9z-e5.myshopify.com/api/2023-10/graphql.json";
     const accessToken = "ce8754195ee3bf24158bff3879689518";
     
-    fetchCollectionById(collectionId, shopifyStorefrontUrl, accessToken)
+    fetchCollectionById(collectionId, selectedCountry, shopifyStorefrontUrl, accessToken)
       .then(collection => console.log("collection",collection))
       .catch(error => console.error(error));
     // Cleanup function to clear the timeout if the component unmounts
@@ -53,9 +46,14 @@ export default function ProductPage() {
   }, []);
   // Empty dependency array ensures the effect runs only once
 
-  async function fetchCollectionById(collectionId: string, shopifyStorefrontUrl: string, accessToken: string) {
+  async function fetchCollectionById(
+    collectionId: string,
+    countryCode: string = "US", // Default to US but allows dynamic country selection
+    shopifyStorefrontUrl: string,
+    accessToken: string
+  ) {
     const query = `
-      query getCollectionById($id: ID!) {
+      query getCollectionById($id: ID!, $country: CountryCode!) @inContext(country: $country) {
         collection(id: $id) {
           id
           title
@@ -81,9 +79,11 @@ export default function ProductPage() {
                       title
                       price {
                         amount
+                        currencyCode
                       }
                       compareAtPrice {
                         amount
+                        currencyCode
                       }
                     }
                   }
@@ -104,7 +104,7 @@ export default function ProductPage() {
       }
     `;
   
-    const variables = { id: collectionId };
+    const variables = { id: collectionId, country: countryCode };
   
     try {
       const response = await fetch(shopifyStorefrontUrl, {
@@ -116,98 +116,28 @@ export default function ProductPage() {
         body: JSON.stringify({ query, variables }),
       });
   
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+  
       const data = await response.json();
-
-      const shopifyData = data.data.collection.products.edges
-      let re = transformShopifyData(shopifyData)
-      console.log("🚀 ~ fetchCollectionById ~ re:", re)
-
-      setProducts(re)
+  
+      if (data.errors) {
+        throw new Error(data.errors.map((err: any) => err.message).join(", "));
+      }
+  
+      const shopifyData = data.data.collection?.products?.edges || [];
+      const transformedData = transformShopifyData(shopifyData);
+  
+      console.log("🚀 ~ fetchCollectionById ~ transformedData:", transformedData);
+  
+      setProducts(transformedData);
       return data.data.collection;
     } catch (error) {
       console.error("Error fetching collection:", error);
       return null;
     }
   }
-  
-  function transformShopifyData(shopifyProducts: any[]) {
-    // Base product structure
-    const transformedProduct = {
-        id: 'brilliant',
-        name: '',
-        colors: [] as any[],
-        subtitle: 'subtitleRemove',
-        price: 0,
-        originalPrice: 0,
-        currency: '',
-        rating: 4.64,
-        sizes: [],
-        reviews: 6,
-        additionalInfo: {
-            care: 'Titou Care, livraison et support inclus.',
-            paymentNote: ''
-        }
-    };
-
-    // Process each product
-    shopifyProducts.forEach(product => {
-        const colorOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_description');
-        const colorCodeOption = product.node.options.find((opt: { name: string; }) => opt.name === 'color_code');
-
-        function processColorCodes(colorCodeObject: { values: string[] }): string[] {
-          let processedColors: string[] = [];
-        
-          // Extract the color code string from the object
-          const colorCodeString = colorCodeObject.values[0];
-        
-          // Check if there are two color codes in the string
-          if (colorCodeString.split('#').length - 1 === 2) {
-            // Process the two color codes
-            processedColors = colorCodeString
-              .split('#') // Split by '#'
-              .filter(Boolean) // Remove empty strings
-              .map((color: string) => `#${color}`); // Add '#' back to each color
-          } else {
-            // If there's only one color code, leave it as is
-            processedColors = colorCodeObject.values;
-          }
-        
-          return processedColors;
-        }
-        console.log(processColorCodes(colorCodeOption));
-
-        if (!colorOption || !colorCodeOption) return;
-        
-        // Collect all color codes for this product
-        const colorCodes = processColorCodes(colorCodeOption);
-       
-        // Create a single color entry for the product with all color codes
-        transformedProduct.colors.push({
-            color: colorOption.values.join(', ').toUpperCase(), // Combine all color names
-            idColor: colorOption.values.join('_').toUpperCase(), // Combine all color names for ID
-            code: colorCodes, // Array of all color codes
-            images: product.node.images.edges.map((img: { node: { transformedSrc: any; }; }) => img.node.transformedSrc),
-            shopifyVarId: product.node.variants.edges[0].node.id, // Use the first variant ID
-        });
-        // Set product name and price from first variant (if not already set)
-        if (!transformedProduct.name) {
-            transformedProduct.name = product.node.title;
-            transformedProduct.price = parseFloat(
-                product.node.variants.edges[0].node.price.amount
-            );
-            transformedProduct.originalPrice = parseFloat(
-              product.node.variants.edges[0].node.compareAtPrice.amount
-            );
-        }
-        if (getSelectedStore() == "US"){
-            transformedProduct.currency = "$ USD"
-        } else if (getSelectedStore() == "CA"){
-            transformedProduct.currency = "$ CAD"
-        }
-    });
-
-    return transformedProduct;
-}
 
 
   return (

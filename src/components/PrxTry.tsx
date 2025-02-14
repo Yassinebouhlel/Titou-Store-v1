@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {FaArrowRight} from 'react-icons/fa6';
 import ColorPicker from '@/components/ColorSelector';
 import {useTranslations} from 'next-intl';
+import { formatCurrency } from "@/utils/formatCurrency";
 
 type Product = {
   name: string;
@@ -19,8 +20,7 @@ type ProductCardProps = {
 };
  const ProductCard: React.FC<ProductCardProps> = ({product,oneImage=false}) => {
   const [selectedColor, setSelectedColor] = useState<any>(product.colors[0]);
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const arrayOfImgs = [];
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);  
 
 
   const handleColorSelect = (color: string) => {
@@ -56,7 +56,28 @@ type ProductCardProps = {
         <p className="font-bold ">{t(`${product.id}`)}</p>
         
         <div className="flex items-center justify-between ">
-          <p className="mt-2  font-semibold">{product.price} {product.currency}</p>
+          <p className="mt-2  font-semibold">
+            {/* {product.price} {product.currency} */}
+            {parseFloat(product.originalPrice.replace(/[^0-9.]/g, '')) > 0 ? (
+                    <>
+                      <span className="line-through text-gray-500 text-xl mr-2"> {/* Smaller font size for original price */}
+                        {product.originalPrice} {product.currency}
+                      </span>
+                      <span>
+                        {product.price} {product.currency}
+                      </span>
+                    </>
+                  ) : (
+                    <span>
+                      {product.price} {product.currency}
+                    </span>
+              )}  
+          </p>
+          {parseFloat(product.originalPrice.replace(/[^0-9.]/g, ''))> 0 && (
+                  <span className="bg-red-500 text-white text-sm px-2 py-1 rounded self-start sm:self-auto"> {/* Sale label */}
+                    Sale
+                  </span>
+          )}
         </div>
       </div>
       <Link href={`/products/${product.id}`}>
