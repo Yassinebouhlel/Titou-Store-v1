@@ -43,8 +43,7 @@ export default function ProductPage() {
   const [products, setProducts] = useState<TransformedProduct[]>([]);
   const selectedCountry = getSelectedStore() || "TN";
   const { shopifyData, loading, error } = useShopifyData(selectedCountry);
-  console.log("🚀 ~ ProductPage ~ shopifyData:", shopifyData)
-  console.log("🚀 ~ ProductPage ~ selectedCountry:", selectedCountry)
+
   
   useEffect(() => {
     if (shopifyData) {

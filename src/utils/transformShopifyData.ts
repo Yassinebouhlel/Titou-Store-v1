@@ -53,7 +53,10 @@ console.log('This is shopify products', shopifyProducts)
             console.log('transformedProduct.id', transformedProduct.id)
             transformedProduct.name = product.node.title;
             transformedProduct.price = formatCurrency(product.node.variants.edges[0].node.price.amount , product.node.variants.edges[0].node.price.currencyCode);
-            transformedProduct.originalPrice = formatCurrency(product.node.variants.edges[0].node.compareAtPrice.amount , product.node.variants.edges[0].node.price.currencyCode);
+            if(product.node.variants.edges[0].node.compareAtPrice){
+                transformedProduct.originalPrice = formatCurrency(product.node.variants.edges[0].node.compareAtPrice.amount , product.node.variants.edges[0].node.price.currencyCode);
+
+            }
         }
     });
 

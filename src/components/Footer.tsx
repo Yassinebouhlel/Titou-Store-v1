@@ -69,7 +69,7 @@ function Footer() {
                 className="rounded-full"
               />
               <p className="  font-sans text-[0.875rem] text-white">
-                United State
+                United States
               </p>
            
             </div>

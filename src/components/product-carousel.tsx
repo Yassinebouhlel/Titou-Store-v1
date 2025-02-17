@@ -15,6 +15,8 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import { useShopifyData } from "@/hooks/useShopifyData";
+import { transformShopifyData } from '@/utils/transformShopifyData';
 
 type Product = {
   name: string;
@@ -146,12 +148,13 @@ function ColorPicker({ productColors, selectedColor, setSelectedColor }: any) {
     </div>
   );
 }
-const ProductCard: React.FC<ProductCardProps> = ({
+const ProductCard: React.FC<ProductCardProps & { initialImageIndex?: number }> = ({
   product,
   oneImage = false,
+  initialImageIndex = 0, // Default to first image
 }) => {
   const [selectedColor, setSelectedColor] = useState<any>(product.colors[0]);
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(initialImageIndex);
   const arrayOfImgs = [];
 
   const handleColorSelect = (color: string) => {
@@ -189,8 +192,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
           <div className="flex items-center justify-center ">
             <p className="mt-2 text-center  font-semibold">
-              {product.price} {product.currency}
+            {parseFloat(product.originalPrice.replace(/[^0-9.]/g, '')) > 0 ? (
+                    <>
+                      <span className="line-through text-gray-500 text-xl mr-2"> {/* Smaller font size for original price */}
+                        {product.originalPrice} {product.currency}
+                      </span>
+                      <span>
+                        {product.price} {product.currency}
+                      </span>
+                    </>
+                  ) : (
+                    <span>
+                      {product.price} {product.currency}
+                    </span>
+            )}  
             </p>
+            {parseFloat(product.originalPrice.replace(/[^0-9.]/g, ''))> 0 && (
+                  <span className="bg-red-500 text-white text-sm px-2 py-1 rounded self-start sm:self-auto"> {/* Sale label */}
+                    Sale
+                  </span>
+            )}
           </div>
         </div>
 
@@ -223,19 +244,35 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       className="h-full w-full object-cover"
       src={images[currentImageIndex]}
     />
-    {images.length > 1 && (
-      <div className="absolute bottom-2 right-2 cursor-pointer rounded-full bg-black bg-opacity-50 px-2 py-1 text-xs text-white">
-        Tap to slide
-      </div>
-    )}
+
   </div>
 );
+
+interface TransformedProduct {
+  id: string;
+  name: string;
+  colors: any[];
+  subtitle: string;
+  price: string;
+  originalPrice: string;
+  currency: string;
+  rating: number;
+  sizes: string[]; // Change from `never[]` to a valid array type
+  reviews: number;
+  additionalInfo: {
+    care: string;
+    paymentNote: string;
+  };
+}
+
 export default function ProductCarousel() {
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const baseVelocity = useTransform(x, [0, 100], [0, 0.2]);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<TransformedProduct[]>([]);
+  const selectedCountry = getSelectedStore() || "TN";
+  const { shopifyData, loading, error } = useShopifyData(selectedCountry);
 
   function getSelectedStore() {
     const match = document.cookie
@@ -245,9 +282,16 @@ export default function ProductCarousel() {
   }
 
   useEffect(() => {
-    const selectedCountry = getSelectedStore() || "TN";
-    setProducts(showCaseData[selectedCountry].categories);
-  }, []);
+    
+    if (shopifyData) {
+          const transformedProducts = shopifyData.map(item =>
+            transformShopifyData(item.products.edges)
+          );
+      
+          setProducts(transformedProducts);
+        }
+    // setProducts(showCaseData[selectedCountry].categories);
+  }, [shopifyData]);
 
   const animateToPosition = (velocity: number = 0) => {
     const container = containerRef.current
@@ -317,14 +361,20 @@ export default function ProductCarousel() {
                   <SkeletonCard />
                 </div>
               ))
-            : products.map((product, i) => (
-                <motion.div
-                  key={i}
-                  className={`flex-shrink-0 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-                >
-                  <ProductCard product={product} oneImage={true} />
-                </motion.div>
-              ))}
+            : products.flatMap((product, productIndex) =>
+                product.colors.slice(0, 2).map((color, colorIndex) => (
+                  <motion.div
+                    key={`${product.id}-${color.name}`}
+                    className={`flex-shrink-0 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+                  >
+                    <ProductCard
+                      product={{ ...product, colors: [color] }} // Pass only one color at a time
+                      oneImage={true}
+                      initialImageIndex={1} 
+                    />
+                  </motion.div>
+                ))
+              )}
         </main>
       </motion.div>
        <div className="absolute -bottom-0 right-4 flex w-full justify-end gap-x-4 p-4 text-white">
