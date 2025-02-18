@@ -38,7 +38,13 @@ const Navbar: React.FC = () => {
 
   const totalPrice = useMemo(() => {
     return cartItems.reduce(
-      (total: any, item: any) => total + item.price * item.quantity,
+      (total: any, item: any) => {
+        // Remove all non-numeric characters except the decimal point
+        const numericValue = item.price.replace(/[^0-9.]/g, '');
+        // Convert to a number
+        const price = parseFloat(numericValue);
+        return total + price * item.quantity;
+      },
       0
     );
   }, [cartItems]);
@@ -82,7 +88,7 @@ const Navbar: React.FC = () => {
   async function handleCheckoutx() {
     const SHOPIFY_STORE_URL = "https://v1dj9z-e5.myshopify.com/api/2023-10/graphql.json";
     const SHOPIFY_ACCESS_TOKEN = "ce8754195ee3bf24158bff3879689518";
-  console.log(cartItems)
+
     const lineItems = cartItems.map((item:any) => ({
       merchandiseId: item.selectedColor.shopifyVarId, // Shopify variant ID
       quantity: item.quantity,
@@ -121,7 +127,7 @@ console.log(response)
     console.error("Cart API Error:", result.data?.cartCreate?.userErrors || result.errors);
   }
   }
-  
+  console.log('cartItems', cartItems)
 
   return (
     <>
@@ -424,7 +430,7 @@ console.log(response)
                 <div className="border-t border-gray-300 pt-4">
                   <p className="font-bold text-right text-lg text-gray-800">
                     Total: {totalPrice.toFixed(2)}{" "}
-                    {cartItems[0]?.currency || "$"}
+                    {cartItems[0]?.price.match(/[A-Z]{3}|[^0-9.,\s]+/)[0] || "$"}
                   </p>
                 </div>
                 <Button
